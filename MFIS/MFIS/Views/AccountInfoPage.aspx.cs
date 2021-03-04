@@ -14,18 +14,70 @@ namespace MFIS.Views
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
 
+        int AutoGenSlNo = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
+            if (Request.QueryString["AutoGenSlNo"] != null)
             {
-                ClearAll();
-                GenerateSerialNumber();
+                AutoGenSlNo = int.Parse(Request.QueryString["AutoGenSlNo"]);
+                FillTextbox(AutoGenSlNo);
             }
-            catch (Exception exc) { throw exc; }
+            else
+            {
+                try
+                {
+                    ClearAll();
+                    GenerateSerialNumber();
+                }
+                catch (Exception exc) { throw exc; }
+            }
+
             if (!IsPostBack)
             {
                 FillComAreaName();
             }
+        }
+
+        private void FillTextbox(int autoGenSlNo)
+        {
+            query = @"select * from CustInfo where AutoSLNo =" + autoGenSlNo;
+            dt = db.ExecuteQuery(query);
+
+            if (dt.Rows.Count > 0)
+            {
+                TxtSlNoAll.Text = dt.Rows[0]["SlNoAll"].ToString();
+                TxtSlNo.Text = dt.Rows[0]["SlNo"].ToString();
+                txtCustIDNO.Text = dt.Rows[0]["CustIDNO"].ToString();
+                TxtAccName.Text = dt.Rows[0]["AccName"].ToString();
+                TxtCustName.Text = dt.Rows[0]["CustName"].ToString();
+                TxtFName.Text = dt.Rows[0]["FName"].ToString();
+                TxtMName.Text = dt.Rows[0]["MName"].ToString();
+                TxtSpouse.Text = dt.Rows[0]["SpouseName"].ToString();
+                TxtParmanent_Add.Text = dt.Rows[0]["Parmanent_Add"].ToString();
+                TxtPresent_Add.Text = dt.Rows[0]["Present_Add"].ToString();
+                TxtPS.Text = dt.Rows[0]["PS"].ToString();
+                TxtCityDistrict.Text = dt.Rows[0]["CityDistrict"].ToString();
+
+                TxtDOB.Text = dt.Rows[0]["DateOfBirth"].ToString("mm/dd/yyyy");
+                TxtAdDate.Text = dt.Rows[0]["AdDate"].ToString("mm/dd/yyyy");
+
+                TxtPostCode.Text = dt.Rows[0]["PostCode"].ToString();
+                TxtCountry.Text = dt.Rows[0]["Country"].ToString();
+                TxtTel.Text = dt.Rows[0]["Tel"].ToString();
+                TxtMobileNo.Text = dt.Rows[0]["Mobile"].ToString();
+                TxtMail.Text = dt.Rows[0]["Mail"].ToString();
+                TxtRefAccNo.Text = dt.Rows[0]["RefAccNo"].ToString();
+                TxtRefName.Text = dt.Rows[0]["RefName"].ToString();
+                TxtNIDNo.Text = dt.Rows[0]["NIDNo"].ToString();
+
+                ComAccType.SelectedValue = dt.Rows[0]["AccType"].ToString();
+                ComSex.SelectedValue = dt.Rows[0]["Sex"].ToString();
+                CmbAreaCode.SelectedValue = dt.Rows[0]["AreaCode"].ToString();
+                TxtOccupation.SelectedValue = dt.Rows[0]["Occupation"].ToString();
+                ComReligion.SelectedValue = dt.Rows[0]["Religion"].ToString();
+            }
+
         }
 
         public void ClearAll()
@@ -104,23 +156,48 @@ namespace MFIS.Views
             //AutoSLno
 
             int insertStatus = 0;
+            if (Request.QueryString["AutoGenSlNo"] != null && TxtSlNoAll.Text != "")
+            {
+                query = @"select * from CustInfo where AutoSLNo =" + AutoGenSlNo;
+                dt = db.ExecuteQuery(query);
 
-            try
+                if (dt.Rows.Count > 0)
+                {
+
+                    try
+                    {
+                        query = @"UPDATE [MFiS-4].[dbo].[CustInfo] SET [BranchCode] ='" + TxtSlNo.Text + "',[AreaCode] = '" + CmbAreaCode.SelectedValue + "',[AccType] = '" + ComAccType.SelectedValue + "',[AccName] = '" + TxtAccName.Text + "' ,[CustName] = '" + TxtCustName.Text + "',[Sex] = '" + ComSex.SelectedValue + "',[FName] ='" + TxtFName.Text + "',[MName] ='" + TxtMName.Text + "',[SpouseName] = '" + TxtSpouse.Text + "',[DateOfBirth] = '" + TxtDOB.Text + "',[Parmanent_Add] ='" + TxtParmanent_Add.Text + "',[Present_Add] = '" + TxtPresent_Add.Text + "',[PS] ='" + TxtPS.Text + "',[CityDistrict] = '" + TxtCityDistrict.Text + "',[PostCode] = '" + TxtPostCode.Text + "',[Country] ='" + TxtCountry.Text + "',[Tel] = '" + TxtTel.Text + "',[Mobile] ='" + TxtMobileNo.Text + "',[Mail] ='" + TxtMail.Text + "',[Religion] = '" + ComReligion.SelectedValue + "',[Occupation] = '" + TxtOccupation.SelectedValue + "',[RefAccNo] = '" + TxtRefAccNo.Text + "',[RefName] ='" + TxtRefName.Text + "',[NIDNo] ='" + TxtNIDNo.Text + "' WHERE AutoSLNo = " + AutoGenSlNo + "";
+                    }
+                    catch (Exception exc) { throw exc; }
+                }
+            }
+            else
             {
-                query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,FName,MName,SpouseName,DateOfBirth,Parmanent_Add,Present_Add,PS,CityDistrict,PostCode,Country,Tel,Mobile,Mail,Religion,Occupation,RefAccNo,RefName,NIDNo) 
+                try
+                {
+                    query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,FName,MName,SpouseName,DateOfBirth,Parmanent_Add,Present_Add,PS,CityDistrict,PostCode,Country,Tel,Mobile,Mail,Religion,Occupation,RefAccNo,RefName,NIDNo) 
                       VALUES ('" + TxtSlNoAll.Text + "','" + TxtSlNo.Text + "', '" + TxtAdDate.Text + "', '" + CmbAreaCode.SelectedValue + "', '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.Text + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "')";
-                insertStatus = db.ExecuteNonQuery(query);
+                    insertStatus = db.ExecuteNonQuery(query);
+                }
+                catch (Exception exc) { throw exc; }
+                if (insertStatus != 0)
+                {
+                    ClearAll();
+                }
             }
-            catch (Exception exc) { throw exc; }
-            if (insertStatus != 0)
-            {
-                ClearAll();
-            }
+
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            ClearAll();
+            if (Request.QueryString["AutoGenSlNo"] != null)
+            {
+                Response.Redirect("~/Views/AccountInfoPage.aspx");
+            }
+            else
+            {
+                ClearAll();
+            }
         }
 
         protected void btnView_Click(object sender, EventArgs e)

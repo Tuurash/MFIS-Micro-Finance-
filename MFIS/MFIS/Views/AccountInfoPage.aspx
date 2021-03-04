@@ -322,9 +322,9 @@
                         <br />
 
                         <div id="btnPanel" class="d-flex">
-                            <asp:Button ID="btnInsert" runat="server" Text="Insert" class="btn btn-success col" OnClick="btnInsert_Click" />
-                            <asp:LinkButton ID="btnView" runat="server" Text="View" CssClass="btn btn-info col" OnClick="btnView_Click"></asp:LinkButton><br />
-                            <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger col" OnClick="btnCancel_Click"></asp:LinkButton>
+                            <asp:Button ID="btnInsert" runat="server" Text="Insert" class="btn btn-light col" OnClick="btnInsert_Click" />
+                            <asp:LinkButton ID="btnView" runat="server" Text="View" CssClass="btn btn-light col" OnClick="btnView_Click"></asp:LinkButton><br />
+                            <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-light col" OnClick="btnCancel_Click"></asp:LinkButton>
                         </div>
 
                     </div>

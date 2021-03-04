@@ -72,7 +72,7 @@
                                         <p style="font: small; align-content: center">Date: </p>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtAdDate" required TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                        <asp:TextBox ID="TxtAdDate" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
 
                                 <tr>
@@ -137,7 +137,7 @@
                                         <p style="font: xx-small">Date of Birth: </p>
                                     </td>
                                     <td>
-                                        <asp:TextBox required ID="TxtDOB" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                        <asp:TextBox ID="TxtDOB" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
 
                                 <tr>
@@ -322,7 +322,7 @@
                         <br />
 
                         <div id="btnPanel" class="d-flex">
-                            <asp:Button ID="btnInsert" runat="server" Text="Insert" class="btn btn-light col" OnClick="btnInsert_Click" />
+                            <asp:Button ID="btnInsert" runat="server" Text="Save" class="btn btn-light col" OnClick="btnInsert_Click" />
                             <asp:LinkButton ID="btnView" runat="server" Text="View" CssClass="btn btn-light col" OnClick="btnView_Click"></asp:LinkButton><br />
                             <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-light col" OnClick="btnCancel_Click"></asp:LinkButton>
                         </div>

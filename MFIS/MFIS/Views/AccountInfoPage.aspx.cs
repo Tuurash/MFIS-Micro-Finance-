@@ -18,6 +18,7 @@ namespace MFIS.Views
         {
             try
             {
+                ClearAll();
                 GenerateSerialNumber();
             }
             catch (Exception exc) { throw exc; }
@@ -25,6 +26,19 @@ namespace MFIS.Views
             {
                 FillComAreaName();
             }
+        }
+
+        public void ClearAll()
+        {
+            //VALUES('" + TxtSlNoAll.Text + "', '" + TxtSlNo.Text + "', '" + TxtAdDate.Text + "', '" + CmbAreaCode.Text + "', '" + txtCustIDNO.Text + "', '" + ComAccType.Text + "',
+            //'" + TxtAccName.Text + "', '" + TxtCustName.Text + "', '" + ComSex.Text + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "', '" + TxtSpouse.Text + "',
+            //'" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "', '" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "', '" + TxtCityDistrict.Text + "', '" + TxtPostCode.Text + "',
+            //'" + TxtCountry.Text + "', '" + TxtTel.Text + "', '" + TxtMobileNo.Text + "', '" + TxtMail.Text + "',
+            //'" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "', '" + TxtRefAccNo.Text + "', '" + TxtRefName.Text + "', '" + TxtNIDNo.Text.Trim() + "')";
+
+            TxtSlNoAll.Text = TxtSlNo.Text = txtCustIDNO.Text = TxtAccName.Text = TxtCustName.Text = TxtFName.Text = TxtMName.Text = TxtSpouse.Text = TxtParmanent_Add.Text = TxtPresent_Add.Text = TxtPS.Text = "";
+            TxtCityDistrict.Text = TxtCityDistrict.Text = TxtPostCode.Text = TxtCountry.Text = TxtTel.Text = TxtMobileNo.Text = TxtMail.Text = TxtRefAccNo.Text = TxtRefName.Text = TxtNIDNo.Text = "";
+
         }
 
         private void FillComAreaName()
@@ -88,13 +102,29 @@ namespace MFIS.Views
             //,'" + ComSMS_Service_Yes_No.Text) + "'   SMS_Service_Yes_No removed
             //2 TxtParmanent_Add_Bangla notfound
             //AutoSLno
+
+            int insertStatus = 0;
+
             try
             {
                 query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,FName,MName,SpouseName,DateOfBirth,Parmanent_Add,Present_Add,PS,CityDistrict,PostCode,Country,Tel,Mobile,Mail,Religion,Occupation,RefAccNo,RefName,NIDNo) 
-                      VALUES ('" + TxtSlNoAll.Text + "','" + TxtSlNo.Text + "', '" + TxtAdDate.Text + "', '" + CmbAreaCode.Text + "', '" + txtCustIDNO.Text + "', '" + ComAccType.Text + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.Text + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.Text + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "')";
-                db.ExecuteNonQuery(query);
+                      VALUES ('" + TxtSlNoAll.Text + "','" + TxtSlNo.Text + "', '" + TxtAdDate.Text + "', '" + CmbAreaCode.SelectedValue + "', '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.Text + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "')";
+                insertStatus = db.ExecuteNonQuery(query);
             }
             catch (Exception exc) { throw exc; }
+            if (insertStatus != 0)
+            {
+                ClearAll();
+            }
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearAll();
+        }
+
+        protected void btnView_Click(object sender, EventArgs e)
+        {
 
         }
     }

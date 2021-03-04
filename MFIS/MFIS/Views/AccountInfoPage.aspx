@@ -3,9 +3,12 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
     <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />--%>
+    <link rel="stylesheet" href="../Scripts/bootstrap.min.css" />
+
     <style>
         html {
             margin-top: 2%;
@@ -13,6 +16,7 @@
             margin-right: 10%;
         }
     </style>
+
 </head>
 
 
@@ -33,7 +37,7 @@
                 <div class="input-group" runat="server" id="SearchPanel" visible="false">
                     <asp:TextBox AutoCompleteType="Search" ID="txtSearch" runat="server" CssClass="form-control-lg col" placeholder="Search" aria-label="Search"
                         aria-describedby="search-addon"></asp:TextBox>
-                    <asp:Button type="button" runat="server" ID="btnSearch" OnClick="btnSearch_Click" class="btn btn-outline-primary" />
+                    <asp:Button type="button" runat="server" ID="btnSearch" Text="Search" OnClick="btnSearch_Click" class="btn btn-outline-primary" />
                 </div>
 
             </div>
@@ -45,25 +49,26 @@
                 <div class="row">
 
                     <div id="InsertionPanel" runat="server" class="col">
+
                         <table class="d-flex justify-content-center">
 
                             <tbody>
 
-                                <tr>
+                                <tr runat="server" visible="false">
                                     <td>
                                         <p style="font: small">Serial No: </p>
                                     </td>
                                     <td colspan="3">
-                                        <asp:TextBox required ID="TxtSlNoAll" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                        <asp:TextBox required ID="TxtSlNoAll" Enabled="false" runat="server" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
 
                                 <tr>
                                     <td>
-                                        <p style="font: small">Branch Serial No: </p>
+                                        <p style="font: small; align-content: center">Branch Serial No: </p>
                                     </td>
                                     <td>
                                         <asp:TextBox ID="TxtSlNo" required runat="server" CssClass="form-control"></asp:TextBox></td>
-                                    <td>
+                                    <td align="center">
                                         <p style="font: small; align-content: center">Date: </p>
                                     </td>
                                     <td>
@@ -87,21 +92,24 @@
                                     <td>
                                         <p style="font: small; align-content: center">FieldName: </p>
                                     </td>
-                                    <td colspan="3">
+                                    <td>
                                         <asp:DropDownList required ID="CmbAreaCode" runat="server" CssClass="form-control">
                                         </asp:DropDownList></td>
+                                    <td>
+                                        <p style="font: small">City/District</p>
+                                    </td>
+                                    <td>
+                                        <asp:TextBox ID="TxtCityDistrict" runat="server" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
 
                                 <tr>
                                     <td>
                                         <p style="font: small">Customer ID</p>
                                     </td>
-                                    <td colspan="3">
-                                        <asp:TextBox required ID="txtCustIDNO" runat="server" CssClass="form-control"></asp:TextBox></td>
-                                </tr>
-
-                                <tr>
                                     <td>
+                                        <asp:TextBox required ID="txtCustIDNO" runat="server" CssClass="form-control"></asp:TextBox></td>
+
+                                    <td align="center">
                                         <p style="font: small">A/C Name: </p>
                                     </td>
                                     <td colspan="3">
@@ -125,8 +133,8 @@
                                             <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
                                             <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
                                         </asp:DropDownList></td>
-                                    <td>
-                                        <p style="font: small; align-content: center">Date of Birth: </p>
+                                    <td align="center">
+                                        <p style="font: xx-small">Date of Birth: </p>
                                     </td>
                                     <td>
                                         <asp:TextBox required ID="TxtDOB" TextMode="Date" runat="server" CssClass="form-control"></asp:TextBox></td>
@@ -172,9 +180,6 @@
                                         <asp:TextBox ID="TxtSpouse" runat="server" CssClass="form-control"></asp:TextBox></td>
                                 </tr>
 
-                                <%--asdasd--%>
-
-
                                 <tr>
                                     <td>
                                         <p style="font: small">Police Station: </p>
@@ -185,16 +190,16 @@
                                         <p style="font: small; align-content: center">Nationality: </p>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtCountry" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                        <asp:TextBox ID="TxtCountry" runat="server" CssClass="form-control" Text="Bangladeshi"></asp:TextBox></td>
                                 </tr>
 
-                                <tr>
+                                <%-- <tr>
                                     <td>
                                         <p style="font: small">City/District</p>
                                     </td>
                                     <td colspan="3">
                                         <asp:TextBox ID="TxtCityDistrict" runat="server" CssClass="form-control"></asp:TextBox></td>
-                                </tr>
+                                </tr>--%>
 
                                 <tr>
                                     <td>
@@ -217,7 +222,9 @@
                                 </tr>
 
                             </tbody>
+
                         </table>
+
                     </div>
 
                     <div id="div2" runat="server" class="col">
@@ -288,10 +295,10 @@
                             <tr>
 
                                 <td>
-                                    <asp:TextBox ID="TxtRefAccNo" placeholder="Ref ID No: " runat="server" CssClass="form-control" ></asp:TextBox></td>
+                                    <asp:TextBox ID="TxtRefAccNo" placeholder="Ref ID No: " runat="server" CssClass="form-control"></asp:TextBox></td>
 
                                 <td>
-                                    <asp:TextBox ID="TxtRefName" placeholder="Ref Name:" runat="server" CssClass="form-control" ></asp:TextBox></td>
+                                    <asp:TextBox ID="TxtRefName" placeholder="Ref Name:" runat="server" CssClass="form-control"></asp:TextBox></td>
                             </tr>
 
                             <tr>
@@ -312,11 +319,12 @@
 
                         </table>
 
-                        <div id="btnPanel" class="d-flex justify-content-end">
-                            <asp:Button ID="btnInsert" runat="server" Text="Insert" class="btn btn-success" OnClick="btnInsert_Click" /><br />
-                            <br />
-                            <asp:LinkButton ID="btnView" runat="server" Text="View" CssClass="btn btn-info"></asp:LinkButton><br />
-                            <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger"></asp:LinkButton>
+                        <br />
+
+                        <div id="btnPanel" class="d-flex">
+                            <asp:Button ID="btnInsert" runat="server" Text="Insert" class="btn btn-success col" OnClick="btnInsert_Click" />
+                            <asp:LinkButton ID="btnView" runat="server" Text="View" CssClass="btn btn-info col" OnClick="btnView_Click"></asp:LinkButton><br />
+                            <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger col" OnClick="btnCancel_Click"></asp:LinkButton>
                         </div>
 
                     </div>
@@ -325,11 +333,19 @@
 
             </div>
 
+            <div class="container">
+                <div class="row">
 
+                    <asp:GridView runat="server" ID="GridAccountList" CssClass="table-hover" AutoGenerateColumns="false">
+                    </asp:GridView>
+
+                </div>
+            </div>
 
         </div>
     </form>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--%>
+    <script src="../Scripts/bootstrap.min.js"></script>
 </body>
 
 </html>

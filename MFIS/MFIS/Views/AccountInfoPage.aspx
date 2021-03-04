@@ -333,15 +333,6 @@
 
             </div>
 
-            <div class="container">
-                <div class="row">
-
-                    <asp:GridView runat="server" ID="GridAccountList" CssClass="table-hover" AutoGenerateColumns="false">
-                    </asp:GridView>
-
-                </div>
-            </div>
-
         </div>
     </form>
     <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--%>

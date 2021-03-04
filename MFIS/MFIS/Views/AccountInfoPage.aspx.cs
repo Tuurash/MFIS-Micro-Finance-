@@ -125,7 +125,8 @@ namespace MFIS.Views
 
         protected void btnView_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Views/AccountDetailsPage.aspx");
         }
+
     }
 }

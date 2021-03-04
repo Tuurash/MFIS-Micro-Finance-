@@ -1,0 +1,46 @@
+<%--serial--%>
+                            <asp:TemplateField HeaderText="Serial" Visible="false">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblSlNoAll" runat="server" Text='<%# Bind("SlNoAll")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%--Account Name--%>
+                            <asp:TemplateField HeaderText="Account Name" Visible="true">
+                                <ItemTemplate>
+                                    <%--AutoSLNo taken--%>
+                                    <a href="..\Reports\ReportViewer.aspx?EmployeeCode=<%# Eval("AutoSLNo") %>&ReportName=GetEmployee" target="_blank">
+                                        <asp:Label ID="lblAccName" runat="server" Text='<%# Bind("AccName")%>'></asp:Label></a>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%--Type--%>
+                            <asp:TemplateField HeaderText="Type" Visible="true">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblAccType" runat="server" Text='<%# Bind("AccType")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%--OpeningDate--%>
+                            <asp:TemplateField HeaderText="OpeningDate" Visible="true">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblAdDate" runat="server" Text='<%# Bind("AdDate","{0:dd-MMM-yy}")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%--Customer Name--%>
+                            <asp:TemplateField HeaderText="Customer Name" Visible="true">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblCustName" runat="server" Text='<%# Bind("CustName")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%--Area--%>
+                            <asp:TemplateField HeaderText="Area Code" Visible="true">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblAreaCode" runat="server" Text='<%# Bind("AreaCode")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <%--RefAcc--%>
+                            <asp:TemplateField HeaderText="Ref AccNo" Visible="false">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblRefAccNo" runat="server" Text='<%# Bind("RefAccNo")%>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            

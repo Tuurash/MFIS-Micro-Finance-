@@ -88,11 +88,19 @@
     <Content Include="Scripts\jquery-3.5.1.min.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
+    <Content Include="Views\AccountDetailsPage.aspx" />
     <Content Include="Views\AccountInfoPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AccountDetailsPage.aspx.cs">
+      <DependentUpon>AccountDetailsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AccountDetailsPage.aspx.designer.cs">
+      <DependentUpon>AccountDetailsPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\AccountInfoPage.aspx.cs">
       <DependentUpon>AccountInfoPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

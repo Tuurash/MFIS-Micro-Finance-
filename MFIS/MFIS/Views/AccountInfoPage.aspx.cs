@@ -5,6 +5,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MFIS.Models;
+using System.IO;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace MFIS.Views
 {
@@ -14,6 +18,8 @@ namespace MFIS.Views
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
 
+
+
         int AutoGenSlNo = 0;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -21,7 +27,7 @@ namespace MFIS.Views
             if (Request.QueryString["AutoGenSlNo"] != null)
             {
                 AutoGenSlNo = int.Parse(Request.QueryString["AutoGenSlNo"]);
-                FillTextbox(AutoGenSlNo);
+                FillFromAutoGen(AutoGenSlNo);
             }
             else
             {
@@ -35,15 +41,41 @@ namespace MFIS.Views
 
             if (!IsPostBack)
             {
+                FillDistrictCity();
                 FillComAreaName();
             }
         }
 
-        private void FillTextbox(int autoGenSlNo)
+        private void FillDistrictCity()
+        {
+            Datum obj_District = new Datum();
+            string json = File.ReadAllText(Server.MapPath("~/DistrictList.json"));
+
+            // Create JavascriptSerializer object
+            JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
+            List<Datum> ob = new List<Datum>();
+
+            ob = JsonConvert.DeserializeObject<List<Datum>>(json);
+            ob = ob.ToList();
+
+            TxtCityDistrict.DataSource = ob;
+            TxtCityDistrict.DataTextField = "name";
+            TxtCityDistrict.DataValueField = "name";
+            TxtCityDistrict.DataBind();
+
+        }
+
+        private void FillFromAutoGen(int autoGenSlNo)
         {
             query = @"select * from CustInfo where AutoSLNo =" + autoGenSlNo;
             dt = db.ExecuteQuery(query);
 
+            FillTextbox(dt);
+
+        }
+
+        private void FillTextbox(DataTable dt)
+        {
             if (dt.Rows.Count > 0)
             {
                 TxtSlNoAll.Text = dt.Rows[0]["SlNoAll"].ToString();
@@ -57,7 +89,7 @@ namespace MFIS.Views
                 TxtParmanent_Add.Text = dt.Rows[0]["Parmanent_Add"].ToString();
                 TxtPresent_Add.Text = dt.Rows[0]["Present_Add"].ToString();
                 TxtPS.Text = dt.Rows[0]["PS"].ToString();
-                TxtCityDistrict.Text = dt.Rows[0]["CityDistrict"].ToString();
+                TxtCityDistrict.SelectedValue = dt.Rows[0]["CityDistrict"].ToString();
 
                 TxtDOB.Text = dt.Rows[0]["DateOfBirth"].ToString();
                 TxtAdDate.Text = dt.Rows[0]["AdDate"].ToString();
@@ -77,7 +109,6 @@ namespace MFIS.Views
                 TxtOccupation.SelectedValue = dt.Rows[0]["Occupation"].ToString();
                 ComReligion.SelectedValue = dt.Rows[0]["Religion"].ToString();
             }
-
         }
 
         public void ClearAll()
@@ -89,7 +120,7 @@ namespace MFIS.Views
             //'" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "', '" + TxtRefAccNo.Text + "', '" + TxtRefName.Text + "', '" + TxtNIDNo.Text.Trim() + "')";
 
             TxtSlNoAll.Text = TxtSlNo.Text = txtCustIDNO.Text = TxtAccName.Text = TxtCustName.Text = TxtFName.Text = TxtMName.Text = TxtSpouse.Text = TxtParmanent_Add.Text = TxtPresent_Add.Text = TxtPS.Text = "";
-            TxtCityDistrict.Text = TxtCityDistrict.Text = TxtPostCode.Text = TxtCountry.Text = TxtTel.Text = TxtMobileNo.Text = TxtMail.Text = TxtRefAccNo.Text = TxtRefName.Text = TxtNIDNo.Text = "";
+            TxtPostCode.Text = TxtTel.Text = TxtMobileNo.Text = TxtMail.Text = TxtRefAccNo.Text = TxtRefName.Text = TxtNIDNo.Text = "";
 
         }
 
@@ -125,24 +156,35 @@ namespace MFIS.Views
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            string Criteria = "";
+
             if (dropdownSearchCriteria.SelectedValue != "select")
             {
                 if (dropdownSearchCriteria.SelectedValue == "Serial")
                 {
-
+                    Criteria = "SlNoAll";
                 }
                 else if (dropdownSearchCriteria.SelectedValue == "AccountType")
                 {
-
+                    Criteria = "AccType";
                 }
                 else if (dropdownSearchCriteria.SelectedValue == "CustomerID")
                 {
-
+                    Criteria = "CustIDNO";
                 }
                 else if (dropdownSearchCriteria.SelectedValue == "NID")
                 {
-
+                    Criteria = "NIDNo";
                 }
+
+                query = @"select * from CustInfo where " + Criteria + " = '" + txtSearch.Text + "'";
+                try
+                {
+                    dt = db.ExecuteQuery(query);
+                    FillTextbox(dt);
+                }
+                catch (Exception exc) { throw exc; }
+
             }
 
         }
@@ -163,14 +205,14 @@ namespace MFIS.Views
 
                 if (dt.Rows.Count > 0)
                 {
-                    query = @"UPDATE [MFiS-4].[dbo].[CustInfo] SET [AccType] = '" + ComAccType.SelectedValue + "',[AccName] = '" + TxtAccName.Text + "' ,[CustName] = '" + TxtCustName.Text + "',[Sex] = '" + ComSex.SelectedValue + "',[FName] ='" + TxtFName.Text + "',[MName] ='" + TxtMName.Text + "',[SpouseName] = '" + TxtSpouse.Text + "',[DateOfBirth] = '" + TxtDOB.Text + "',[Parmanent_Add] ='" + TxtParmanent_Add.Text + "',[Present_Add] = '" + TxtPresent_Add.Text + "',[PS] ='" + TxtPS.Text + "',[CityDistrict] = '" + TxtCityDistrict.Text + "',[PostCode] = '" + TxtPostCode.Text + "',[Country] ='" + TxtCountry.Text + "',[Tel] = '" + TxtTel.Text + "',[Mobile] ='" + TxtMobileNo.Text + "',[Mail] ='" + TxtMail.Text + "',[Religion] = '" + ComReligion.SelectedValue + "',[Occupation] = '" + TxtOccupation.SelectedValue + "',[RefAccNo] = '" + TxtRefAccNo.Text + "',[RefName] ='" + TxtRefName.Text + "',[NIDNo] ='" + TxtNIDNo.Text + "' WHERE AutoSLNo = " + AutoGenSlNo + "";
+                    query = @"UPDATE [MFiS-4].[dbo].[CustInfo] SET [AccType] = '" + ComAccType.SelectedValue + "',[AccName] = '" + TxtAccName.Text + "' ,[CustName] = '" + TxtCustName.Text + "',[Sex] = '" + ComSex.SelectedValue + "',[FName] ='" + TxtFName.Text + "',[MName] ='" + TxtMName.Text + "',[SpouseName] = '" + TxtSpouse.Text + "',[DateOfBirth] = '" + TxtDOB.Text + "',[Parmanent_Add] ='" + TxtParmanent_Add.Text + "',[Present_Add] = '" + TxtPresent_Add.Text + "',[PS] ='" + TxtPS.Text + "',[CityDistrict] = '" + TxtCityDistrict.SelectedValue + "',[PostCode] = '" + TxtPostCode.Text + "',[Country] ='" + TxtCountry.Text + "',[Tel] = '" + TxtTel.Text + "',[Mobile] ='" + TxtMobileNo.Text + "',[Mail] ='" + TxtMail.Text + "',[Religion] = '" + ComReligion.SelectedValue + "',[Occupation] = '" + TxtOccupation.SelectedValue + "',[RefAccNo] = '" + TxtRefAccNo.Text + "',[RefName] ='" + TxtRefName.Text + "',[NIDNo] ='" + TxtNIDNo.Text + "' WHERE AutoSLNo = " + AutoGenSlNo + "";
 
                 }
             }
             else
             {
                 query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,FName,MName,SpouseName,DateOfBirth,Parmanent_Add,Present_Add,PS,CityDistrict,PostCode,Country,Tel,Mobile,Mail,Religion,Occupation,RefAccNo,RefName,NIDNo) 
-                      VALUES ('" + TxtSlNoAll.Text + "','" + TxtSlNo.Text + "', '" + TxtAdDate.Text + "', '" + CmbAreaCode.SelectedValue + "', '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.Text + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "')";
+                      VALUES ('" + TxtSlNoAll.Text + "','" + TxtSlNo.Text + "', '" + TxtAdDate.Text + "', '" + CmbAreaCode.SelectedValue + "', '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.SelectedValue + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "')";
 
             }
             try { insertStatus = db.ExecuteNonQuery(query); }

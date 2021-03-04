@@ -37,7 +37,7 @@
                 <div class="input-group" runat="server" id="SearchPanel" visible="false">
                     <asp:TextBox AutoCompleteType="Search" ID="txtSearch" runat="server" CssClass="form-control-lg col" placeholder="Search" aria-label="Search"
                         aria-describedby="search-addon"></asp:TextBox>
-                    <asp:Button type="button" runat="server" ID="btnSearch" Text="Search" OnClick="btnSearch_Click" class="btn btn-outline-primary" />
+                    <asp:LinkButton type="button" runat="server" ID="btnSearch" Text="Search" OnClick="btnSearch_Click" class="btn btn-outline-primary"></asp:LinkButton>
                 </div>
 
             </div>
@@ -99,7 +99,8 @@
                                         <p style="font: small">City/District</p>
                                     </td>
                                     <td>
-                                        <asp:TextBox ID="TxtCityDistrict" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                        <asp:DropDownList ID="TxtCityDistrict" runat="server" CssClass="form-control">
+                                        </asp:DropDownList></td>
                                 </tr>
 
                                 <tr>

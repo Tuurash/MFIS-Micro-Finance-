@@ -38,3 +38,5 @@ D:\Github\MFIS\MFIS\MFIS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.
 D:\Github\MFIS\MFIS\MFIS\obj\Debug\MFIS.csprojResolveAssemblyReference.cache
 D:\Github\MFIS\MFIS\MFIS\obj\Debug\MFIS.dll
 D:\Github\MFIS\MFIS\MFIS\obj\Debug\MFIS.pdb
+D:\Github\MFIS\MFIS\MFIS\bin\Newtonsoft.Json.dll
+D:\Github\MFIS\MFIS\MFIS\bin\Newtonsoft.Json.xml

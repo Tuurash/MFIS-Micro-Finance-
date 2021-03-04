@@ -55,7 +55,7 @@ namespace MFIS.Views {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
         
         /// <summary>
         /// InsertionPanel control.
@@ -118,7 +118,7 @@ namespace MFIS.Views {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCityDistrict;
+        protected global::System.Web.UI.WebControls.DropDownList TxtCityDistrict;
         
         /// <summary>
         /// txtCustIDNO control.

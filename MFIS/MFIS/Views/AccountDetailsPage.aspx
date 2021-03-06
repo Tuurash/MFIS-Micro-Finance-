@@ -51,15 +51,18 @@
 
                 <div class="col-12" runat="server">
                     <asp:GridView runat="server" ID="GridAccountList" CssClass="table table-hover table-responsive" AllowPaging="true"
-                        HeaderStyle-CssClass="thead-dark" PageSize="5" OnPageIndexChanging="OnPaging">
+                        HeaderStyle-CssClass="thead-dark" PageSize="50" OnPageIndexChanging="OnPaging">
                         <Columns>
                             <asp:TemplateField HeaderText="Options" Visible="true">
                                 <ItemTemplate>
                                     <p>
-                                        <asp:LinkButton ID="btnEdit" runat="server" Text="Update" CssClass="btn btn-sm btn-success" CommandArgument='<%# Bind("AutoSLNo")%>' OnClick="btnEdit_Click" />
+                                        <asp:LinkButton ID="btnEdit" runat="server" Text="Update" CssClass="btn btn-sm btn-light" CommandArgument='<%# Bind("AutoSLNo")%>' OnClick="btnEdit_Click" />
                                     </p>
                                     <p>
-                                        <asp:LinkButton ID="btnGetReportByID" runat="server" Text="Report" CssClass="btn btn-sm btn-info" CommandArgument='<%# Bind("AutoSLNo")%>' OnClick="btnEdit_Click" />
+                                        <asp:LinkButton ID="btnGetReportByID" runat="server" Text="Report" CssClass="btn btn-sm btn-light" CommandArgument='<%# Bind("AutoSLNo")%>' OnClick="btnEdit_Click" />
+                                    </p>
+                                    <p>
+                                        <asp:LinkButton ID="btnAccountReg" runat="server" Text="Account Reg." CssClass="btn btn-sm btn-light" CommandArgument='<%# Bind("CustIDNO")%>' OnClick="btnAccountReg_Click" />
                                     </p>
                                 </ItemTemplate>
                             </asp:TemplateField>

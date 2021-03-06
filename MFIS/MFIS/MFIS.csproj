@@ -95,6 +95,7 @@
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Views\AccountDetailsPage.aspx" />
     <Content Include="Views\AccountInfoPage.aspx" />
+    <Content Include="Views\AccountRegistrationPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +117,13 @@
     </Compile>
     <Compile Include="Views\AccountInfoPage.aspx.designer.cs">
       <DependentUpon>AccountInfoPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountRegistrationPage.aspx.cs">
+      <DependentUpon>AccountRegistrationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AccountRegistrationPage.aspx.designer.cs">
+      <DependentUpon>AccountRegistrationPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\DBConnector.cs" />
   </ItemGroup>

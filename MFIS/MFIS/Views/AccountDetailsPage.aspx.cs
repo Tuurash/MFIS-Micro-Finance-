@@ -14,6 +14,7 @@ namespace MFIS.Views
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
         string AutoGenSlNo = "";
+        string CustomerID = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -88,7 +89,12 @@ namespace MFIS.Views
             }
         }
 
-
+        protected void btnAccountReg_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            CustomerID = btn.CommandArgument.ToString();
+            Response.Redirect("~/Views/AccountRegistrationPage.aspx?CustomerID=" + CustomerID);
+        }
     }
 
 }

@@ -9,6 +9,7 @@ using MFIS.Models;
 using System.IO;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace MFIS.Views
 {
@@ -24,6 +25,7 @@ namespace MFIS.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            GetDeviceInfo();
             if (Request.QueryString["AutoGenSlNo"] != null)
             {
                 AutoGenSlNo = int.Parse(Request.QueryString["AutoGenSlNo"]);
@@ -46,9 +48,31 @@ namespace MFIS.Views
             }
         }
 
+        private void GetDeviceInfo()
+        {
+            device obj_device = new device();
+            var DataObj = new List<DeviceInfoRoot>();
+
+            string json = new WebClient().DownloadString("http://api.userstack.com/detect?access_key=26e642baf121685bb63cf249ef70d791&ua=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64;%20rv:86.0)%20Gecko/20100101%20Firefox/86.0");
+            DeviceInfoRoot obj = JsonConvert.DeserializeObject<DeviceInfoRoot>(json);
+            DataObj.Add(obj);
+
+            foreach (var data in DataObj)
+            {
+                string os = data.os.name;
+                string mobile = data.device.is_mobile_device.ToString();
+                string brand = data.device.brand;
+                string brandCode = data.device.brand_code;
+            }
+
+        }
+
+
+
         private void FillDistrictCity()
         {
             Datum obj_District = new Datum();
+
             string json = File.ReadAllText(Server.MapPath("~/DistrictList.json"));
 
             // Create JavascriptSerializer object

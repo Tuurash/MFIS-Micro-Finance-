@@ -212,7 +212,7 @@ namespace MFIS.Views
 
 
             int insertStatus = 0;
-            if (Request.QueryString["AutoGenSlNo"] != null && TxtSlNoAll.Text != "")
+            if (Request.QueryString["AutoGenSlNo"] != null)
             {
                 query = @"select * from CustInfo where AutoSLNo =" + AutoGenSlNo;
                 dt = db.ExecuteQuery(query);
@@ -223,6 +223,16 @@ namespace MFIS.Views
 
                 }
             }
+            else if (txtCustIDNO.Text != "")
+            {
+                query = @"select * from CustInfo where CustIDNO ='" + txtCustIDNO.Text + "'";
+                dt = db.ExecuteQuery(query);
+                if (dt.Rows.Count > 0)
+                {
+                    query = @"UPDATE [MFiS-4].[dbo].[CustInfo] SET [AccType] = '" + ComAccType.SelectedValue + "',[AccName] = '" + TxtAccName.Text + "' ,[CustName] = '" + TxtCustName.Text + "',[Sex] = '" + ComSex.SelectedValue + "',[FName] ='" + TxtFName.Text + "',[MName] ='" + TxtMName.Text + "',[SpouseName] = '" + TxtSpouse.Text + "',[DateOfBirth] = '" + TxtDOB.Text + "',[Parmanent_Add] ='" + TxtParmanent_Add.Text + "',[Present_Add] = '" + TxtPresent_Add.Text + "',[PS] ='" + TxtPS.Text + "',[CityDistrict] = '" + TxtCityDistrict.SelectedValue + "',[PostCode] = '" + TxtPostCode.Text + "',[Country] ='" + TxtCountry.Text + "',[Tel] = '" + TxtTel.Text + "',[Mobile] ='" + TxtMobileNo.Text + "',[Mail] ='" + TxtMail.Text + "',[Religion] = '" + ComReligion.SelectedValue + "',[Occupation] = '" + TxtOccupation.SelectedValue + "',[RefAccNo] = '" + TxtRefAccNo.Text + "',[RefName] ='" + TxtRefName.Text + "',[NIDNo] ='" + TxtNIDNo.Text + "' WHERE AutoSLNo = " + AutoGenSlNo + "";
+                }
+            }
+
             else
             {
                 query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,FName,MName,SpouseName,DateOfBirth,Parmanent_Add,Present_Add,PS,CityDistrict,PostCode,Country,Tel,Mobile,Mail,Religion,Occupation,RefAccNo,RefName,NIDNo) 

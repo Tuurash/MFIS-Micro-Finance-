@@ -18,24 +18,18 @@ namespace MFIS.Views.Nominee
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        protected void btnInsertNominee_Click(object sender, EventArgs e)
-        {
-            int InsertSatatus = 0;
-
-            query = @"INSERT into Nominee (CustAccNo, Name1, Name2, Name3, Name4, Age1, Age2,Age3, Age4, Guardians1, Guardians2,Guardians3, Guardians4,Percent1,Percent2, Percent3,Percent4,Address1,Address2,Address3,Address4,Relation1,Relation2,Relation3,Relation4)
-                      VALUES ('" + txtCustAcNo.Text + "', '" + txtName1.Text + "', '" + txtName2.Text + "', '" + txtName3.Text + "', '" + txtName4.Text + "', '" + txtAge1.Text + "', '" + txtAge2.Text + "', '" + txtAge3.Text + "', '" + txtAge4.Text + "', '" + txtGuardians1.Text + "', '" + txtGuardians2.Text + "', '" + txtGuardians3.Text + "', '" + txtGuardians4.Text + "', '" + txtPercent1.Text + "','" + txtPercent2.Text + "',  '" + txtPercent3.Text + "','" + txtPercent4.Text + "','" + txtAddress1.Text + "','" + txtAddress2.Text + "','" + txtAddress3.Text + "','" + txtAddress4.Text + "','" + txtRelation1.Text + "','" + txtRelation2.Text + "','" + txtRelation3.Text + "','" + txtRelation4.Text + "')";
-            try
+            if (Request.QueryString["CustAcNo"] != null)
             {
-                InsertSatatus = db.ExecuteNonQuery(query);
+                txtCustAcNo.Text = Request.QueryString["CustAcNo"];
             }
-            catch (Exception exc) { throw exc; }
+            if (txtCustAcNo.Text != "")
+            {
+                LoadAccountData();
+            }
 
         }
 
-        protected void btnSearch_ServerClick(object sender, EventArgs e)
+        private void LoadAccountData()
         {
             string CustAcNo = txtCustAcNo.Text;
             query = @"select * from Nominee where CustAccNo='" + CustAcNo + "'";
@@ -78,6 +72,58 @@ namespace MFIS.Views.Nominee
                 txtName1.Text = dt.Rows[0]["Relation3"].ToString();
                 txtName1.Text = dt.Rows[0]["Relation4"].ToString();
 
+            }
+        }
+
+        protected void btnInsertNominee_Click(object sender, EventArgs e)
+        {
+            int InsertSatatus = 0;
+
+            query = @"INSERT into Nominee (CustAccNo, Name1, Name2, Name3, Name4, Age1, Age2,Age3, Age4, Guardians1, Guardians2,Guardians3, Guardians4,Percent1,Percent2, Percent3,Percent4,Address1,Address2,Address3,Address4,Relation1,Relation2,Relation3,Relation4)
+                      VALUES ('" + txtCustAcNo.Text + "', '" + txtName1.Text + "', '" + txtName2.Text + "', '" + txtName3.Text + "', '" + txtName4.Text + "', '" + txtAge1.Text + "', '" + txtAge2.Text + "', '" + txtAge3.Text + "', '" + txtAge4.Text + "', '" + txtGuardians1.Text + "', '" + txtGuardians2.Text + "', '" + txtGuardians3.Text + "', '" + txtGuardians4.Text + "', '" + txtPercent1.Text + "','" + txtPercent2.Text + "',  '" + txtPercent3.Text + "','" + txtPercent4.Text + "','" + txtAddress1.Text + "','" + txtAddress2.Text + "','" + txtAddress3.Text + "','" + txtAddress4.Text + "','" + txtRelation1.Text + "','" + txtRelation2.Text + "','" + txtRelation3.Text + "','" + txtRelation4.Text + "')";
+            try
+            {
+                InsertSatatus = db.ExecuteNonQuery(query);
+            }
+            catch (Exception exc) { throw exc; }
+            if (InsertSatatus > 0)
+            {
+                LoadAccountData();
+            }
+        }
+
+        protected void btnSearch_ServerClick(object sender, EventArgs e)
+        {
+            LoadAccountData();
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int UpdateStatus = 0;
+            query = @"Update Nominee set Name1= '" + txtName1.Text + "',Name2= '" + txtName2.Text + "',Name3= '" + txtName3.Text + "',Name4= '" + txtName4.Text + "', Age1= '" + txtAge1.Text + "',  Age2= '" + txtAge2.Text + "', Age3= '" + txtAge3.Text + "', Age4= '" + txtAge4.Text + "',Guardians1 = '" + txtGuardians1.Text + "',Guardians2 = '" + txtGuardians2.Text + "',Guardians3 = '" + txtGuardians3.Text + "',Guardians4 = '" + txtGuardians4.Text + "',Percent1= '" + txtPercent1.Text + "',Percent2= '" + txtPercent2.Text + "',Percent3= '" + txtPercent3.Text + "',Percent4= '" + txtPercent4.Text + "',Address1 = '" + txtAddress1.Text + "',Address2 = '" + txtAddress2.Text + "',Address3 = '" + txtAddress3.Text + "',Address4 = '" + txtAddress4.Text + "',Relation1 = '" + txtRelation1.Text + "',Relation2 = '" + txtRelation2.Text + "',Relation3 = '" + txtRelation3.Text + "',Relation4 = '" + txtRelation4.Text + "' where  CustAccNo = '" + txtCustAcNo.Text + "' ";
+            try
+            {
+                UpdateStatus = db.ExecuteNonQuery(query);
+            }
+            catch (Exception exc) { throw exc; }
+            if (UpdateStatus > 0)
+            {
+                LoadAccountData();
+            }
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            int DeleteStatus = 0;
+            query = @"delete from Nominee where CustAccNo='" + txtCustAcNo.Text + "'";
+            try
+            {
+                DeleteStatus = db.ExecuteNonQuery(query);
+            }
+            catch (Exception exc) { throw exc; }
+            if (DeleteStatus > 0)
+            {
+                LoadAccountData();
             }
         }
     }

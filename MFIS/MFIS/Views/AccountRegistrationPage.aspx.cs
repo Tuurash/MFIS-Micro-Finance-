@@ -158,7 +158,7 @@ namespace MFIS.Views
 
         protected void btnNominee_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/Nominee/NomineePage.aspx");
+            Response.Redirect("~/Views/Nominee/NomineePage.aspx?CustAcNo=" + txtCustAccNo.Text);
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)

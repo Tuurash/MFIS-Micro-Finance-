@@ -96,6 +96,7 @@
     <Content Include="Views\AccountDetailsPage.aspx" />
     <Content Include="Views\AccountInfoPage.aspx" />
     <Content Include="Views\AccountRegistrationPage.aspx" />
+    <Content Include="Views\Nominee\NomineePage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +127,13 @@
       <DependentUpon>AccountRegistrationPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\DBConnector.cs" />
+    <Compile Include="Views\Nominee\NomineePage.aspx.cs">
+      <DependentUpon>NomineePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Nominee\NomineePage.aspx.designer.cs">
+      <DependentUpon>NomineePage.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

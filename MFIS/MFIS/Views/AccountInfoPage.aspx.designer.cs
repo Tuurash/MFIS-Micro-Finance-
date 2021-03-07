@@ -31,15 +31,6 @@ namespace MFIS.Views {
         protected global::System.Web.UI.WebControls.DropDownList dropdownSearchCriteria;
         
         /// <summary>
-        /// SearchPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SearchPanel;
-        
-        /// <summary>
         /// txtSearch control.
         /// </summary>
         /// <remarks>
@@ -49,13 +40,13 @@ namespace MFIS.Views {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// btnSearch control.
+        /// A1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
         
         /// <summary>
         /// InsertionPanel control.

@@ -35,7 +35,6 @@ namespace MFIS.Views
             {
                 try
                 {
-                    ClearAll();
                     GenerateSerialNumber();
                 }
                 catch (Exception exc) { throw exc; }
@@ -173,11 +172,6 @@ namespace MFIS.Views
 
         }
 
-        protected void dropdownSearchCriteria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SearchPanel.Visible = true;
-        }
-
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             string Criteria = "";
@@ -215,11 +209,7 @@ namespace MFIS.Views
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-            //BranchCode TxtBrCode removed
-            //,'" + TxtUserID.Text + "'         UserID removed
-            //,'" + ComSMS_Service_Yes_No.Text) + "'   SMS_Service_Yes_No removed
-            //2 TxtParmanent_Add_Bangla notfound
-            //AutoSLno
+
 
             int insertStatus = 0;
             if (Request.QueryString["AutoGenSlNo"] != null && TxtSlNoAll.Text != "")
@@ -236,14 +226,14 @@ namespace MFIS.Views
             else
             {
                 query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,FName,MName,SpouseName,DateOfBirth,Parmanent_Add,Present_Add,PS,CityDistrict,PostCode,Country,Tel,Mobile,Mail,Religion,Occupation,RefAccNo,RefName,NIDNo) 
-                      VALUES ('" + TxtSlNoAll.Text + "','" + TxtSlNo.Text + "', '" + TxtAdDate.Text + "', '" + CmbAreaCode.SelectedValue + "', '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.SelectedValue + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "')";
+                      VALUES (" + TxtSlNoAll.Text + "," + TxtSlNoAll.Text + ", '" + TxtAdDate.Text + "', '" + CmbAreaCode.SelectedValue + "', '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.SelectedValue + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "')";
 
             }
             try { insertStatus = db.ExecuteNonQuery(query); }
             catch (Exception exc) { throw exc; }
             if (insertStatus != 0)
             {
-                //ClearAll();
+                ClearAll();
             }
 
         }

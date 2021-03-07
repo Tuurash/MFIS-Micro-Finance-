@@ -6,8 +6,10 @@
 
 <head runat="server">
     <title></title>
+    <script type="text/javascript" src="../Scripts/jquery-3.5.1.min.js"></script>
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />--%>
     <link rel="stylesheet" href="../Scripts/bootstrap.min.css" />
+
 
     <style>
         html {
@@ -24,23 +26,38 @@
     <form id="form1" runat="server">
         <div>
 
-            <div align="center">
+            <%--##########--%>
 
-                <asp:DropDownList ID="dropdownSearchCriteria" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="dropdownSearchCriteria_SelectedIndexChanged">
+            <div class="d-flex justify-content-center">
+
+                <asp:DropDownList ID="dropdownSearchCriteria" runat="server" CssClass="form-control">
                     <asp:ListItem Text="Select Search Criteria" Value="select"></asp:ListItem>
                     <asp:ListItem Text="Search By Serial No " Value="Serial"></asp:ListItem>
                     <asp:ListItem Text="Search By A/C type " Value="AccountType"></asp:ListItem>
                     <asp:ListItem Text="Search By Customer ID " Value="CustomerID"></asp:ListItem>
                     <asp:ListItem Text="Search By NID " Value="NID"></asp:ListItem>
                 </asp:DropDownList>
-                <%--<asp:TextBox ID="txtSearch" runat="server" CssClass="form-control-lg col" placeholder="Search" Enabled="false"></asp:TextBox>--%>
-                <div class="input-group" runat="server" id="SearchPanel" visible="false">
+
+                <div class="input-group rounded">
+                    <asp:TextBox type="search" runat="server" ID="txtSearch" class="form-control rounded" placeholder="Search"></asp:TextBox>
+                    <span class="input-group-text border-0" id="search-addon">
+                        <a runat="server" id="A1" onserverclick="btnSearch_Click">Search</a>
+                    </span>
+                </div>
+
+            </div>
+
+            <%--##############--%>
+
+            <%--<div align="center">
+
+                <div class="input-group" runat="server" id="SearchPanel" enableviewstate="false">
                     <asp:TextBox AutoCompleteType="Search" ID="txtSearch" runat="server" CssClass="form-control-lg col" placeholder="Search" aria-label="Search"
                         aria-describedby="search-addon"></asp:TextBox>
                     <asp:LinkButton type="button" runat="server" ID="btnSearch" Text="Search" OnClick="btnSearch_Click" class="btn btn-outline-primary"></asp:LinkButton>
                 </div>
 
-            </div>
+            </div>--%>
 
             <br />
 
@@ -287,7 +304,7 @@
                                         ControlToValidate="TxtMobileNo" ErrorMessage="RegularExpressionValidator"
                                         ValidationExpression="[0-9]{12}"></asp:RegularExpressionValidator>
                                 </td>
-                               
+
                             </tr>
 
                             <tr>

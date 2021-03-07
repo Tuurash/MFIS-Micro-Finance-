@@ -18,59 +18,70 @@ namespace MFIS.Views.Nominee
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["CustAcNo"] != null)
-            {
-                txtCustAcNo.Text = Request.QueryString["CustAcNo"];
-            }
+
             if (txtCustAcNo.Text != "")
             {
                 LoadAccountData();
             }
+            else
+            {
+                if (Request.QueryString["CustAcNo"] != null)
+                {
+                    txtCustAcNo.Text = Request.QueryString["CustAcNo"];
+                }
+
+            }
+
 
         }
 
         private void LoadAccountData()
         {
-            string CustAcNo = txtCustAcNo.Text;
-            query = @"select * from Nominee where CustAccNo='" + CustAcNo + "'";
-            try
-            {
-                dt = db.ExecuteQuery(query);
-            }
-            catch (Exception exc) { throw exc; }
-            if (dt.Rows.Count > 0)
+            if (txtCustAcNo.Text != "")
             {
 
-                txtName1.Text = dt.Rows[0]["Name1"].ToString();
-                txtName1.Text = dt.Rows[0]["Name2"].ToString();
-                txtName1.Text = dt.Rows[0]["Name3"].ToString();
-                txtName1.Text = dt.Rows[0]["Name4"].ToString();
+                string CustAcNo = txtCustAcNo.Text;
+                query = @"select * from Nominee where CustAccNo='" + CustAcNo + "'";
+                try
+                {
+                    dt = db.ExecuteQuery(query);
+                }
+                catch (Exception exc) { throw exc; }
+                if (dt.Rows.Count > 0)
+                {
 
-                txtName1.Text = dt.Rows[0]["Age1"].ToString();
-                txtName1.Text = dt.Rows[0]["Age2"].ToString();
-                txtName1.Text = dt.Rows[0]["Age3"].ToString();
-                txtName1.Text = dt.Rows[0]["Age4"].ToString();
+                    txtName1.Text = dt.Rows[0]["Name1"].ToString();
+                    txtName2.Text = dt.Rows[0]["Name2"].ToString();
+                    txtName3.Text = dt.Rows[0]["Name3"].ToString();
+                    txtName4.Text = dt.Rows[0]["Name4"].ToString();
 
-                txtName1.Text = dt.Rows[0]["Guardians1"].ToString();
-                txtName1.Text = dt.Rows[0]["Guardians2"].ToString();
-                txtName1.Text = dt.Rows[0]["Guardians3"].ToString();
-                txtName1.Text = dt.Rows[0]["Guardians4"].ToString();
+                    txtAge1.Text = dt.Rows[0]["Age1"].ToString();
+                    txtAge2.Text = dt.Rows[0]["Age2"].ToString();
+                    txtAge3.Text = dt.Rows[0]["Age3"].ToString();
+                    txtAge4.Text = dt.Rows[0]["Age4"].ToString();
 
-                txtName1.Text = dt.Rows[0]["Percent1"].ToString();
-                txtName1.Text = dt.Rows[0]["Percent2"].ToString();
-                txtName1.Text = dt.Rows[0]["Percent3"].ToString();
-                txtName1.Text = dt.Rows[0]["Percent4"].ToString();
+                    txtGuardians1.Text = dt.Rows[0]["Guardians1"].ToString();
+                    txtGuardians2.Text = dt.Rows[0]["Guardians2"].ToString();
+                    txtGuardians3.Text = dt.Rows[0]["Guardians3"].ToString();
+                    txtGuardians4.Text = dt.Rows[0]["Guardians4"].ToString();
+
+                    txtPercent1.Text = dt.Rows[0]["Percent1"].ToString();
+                    txtPercent2.Text = dt.Rows[0]["Percent2"].ToString();
+                    txtPercent3.Text = dt.Rows[0]["Percent3"].ToString();
+                    txtPercent4.Text = dt.Rows[0]["Percent4"].ToString();
 
 
-                txtName1.Text = dt.Rows[0]["Address1"].ToString();
-                txtName1.Text = dt.Rows[0]["Address2"].ToString();
-                txtName1.Text = dt.Rows[0]["Address3"].ToString();
-                txtName1.Text = dt.Rows[0]["Address4"].ToString();
+                    txtAddress1.Text = dt.Rows[0]["Address1"].ToString();
+                    txtAddress2.Text = dt.Rows[0]["Address2"].ToString();
+                    txtAddress3.Text = dt.Rows[0]["Address3"].ToString();
+                    txtAddress4.Text = dt.Rows[0]["Address4"].ToString();
 
-                txtName1.Text = dt.Rows[0]["Relation1"].ToString();
-                txtName1.Text = dt.Rows[0]["Relation2"].ToString();
-                txtName1.Text = dt.Rows[0]["Relation3"].ToString();
-                txtName1.Text = dt.Rows[0]["Relation4"].ToString();
+                    txtRelation1.Text = dt.Rows[0]["Relation1"].ToString();
+                    txtRelation2.Text = dt.Rows[0]["Relation2"].ToString();
+                    txtRelation3.Text = dt.Rows[0]["Relation3"].ToString();
+                    txtRelation4.Text = dt.Rows[0]["Relation4"].ToString();
+
+                }
 
             }
         }

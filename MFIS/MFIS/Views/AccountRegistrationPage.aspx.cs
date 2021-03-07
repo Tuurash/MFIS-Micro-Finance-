@@ -18,6 +18,7 @@ namespace MFIS.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            GenerateSerialNumber();
             if (Request.QueryString["CustomerID"] != null)
             {
                 CustomerID = Request.QueryString["CustomerID"];
@@ -28,7 +29,20 @@ namespace MFIS.Views
             {
                 FillSchemeDropdown();
                 FillCustomerDropdown();
+
             }
+
+        }
+
+        private void GenerateSerialNumber()
+        {
+            query = @"SELECT MAX(SlNo) AS SlNoAll FROM CustReg";
+            dt = db.ExecuteQuery(query);
+            if (dt.Rows.Count > 0)
+            {
+                TxtSlNo.Text = (int.Parse(dt.Rows[0]["SlNoAll"].ToString()) + 1).ToString();
+            }
+            else { TxtSlNo.Text = "1"; }
 
         }
 
@@ -36,10 +50,14 @@ namespace MFIS.Views
         {
             query = @"select * from CustInfo ";
             dt = db.ExecuteQuery(query);
-            ComSub_DepositScheme.DataSource = dt;
-            ComSub_DepositScheme.DataTextField = "CustIDNO";
-            ComSub_DepositScheme.DataValueField = "CustIDNO";
-            ComSub_DepositScheme.DataBind();
+            txtCustIDNO.DataSource = dt;
+            txtCustIDNO.DataTextField = "CustIDNO";
+            txtCustIDNO.DataValueField = "CustIDNO";
+            txtCustIDNO.DataBind();
+            if (CustomerID != "")
+            {
+                txtCustIDNO.SelectedValue = CustomerID;
+            }
         }
 
         private void FillSchemeDropdown()
@@ -68,18 +86,19 @@ namespace MFIS.Views
             {
                 txtCustIDNO.Text = dt.Rows[0]["CustIDNO"].ToString();
                 TxtCustName.Text = dt.Rows[0]["CustName"].ToString();
+
             }
 
-            query = @"select * from CustReg where CustIDNO = '" + txtCustIDNO.Text + "' Order by SlNo";
+            query = @"select * from CustReg where CustIDNO = '" + CustomerID + "' Order by SlNo";
             FillGrid(query);
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)sender;
-            string SubDepositCodeNo = btn.CommandArgument.ToString();
+            string CustAccNo = btn.CommandArgument.ToString();
 
-            query = @"select * from CustReg where SubDepositCodeNo = '" + SubDepositCodeNo + "' and CustIDNO='" + txtCustIDNO.Text + "'";
+            query = @"select * from CustReg where CustAccNo = '" + CustAccNo + "' and CustIDNO='" + txtCustIDNO.Text + "'";
             dt = db.ExecuteQuery(query);
 
             if (dt.Rows.Count > 0)
@@ -98,6 +117,85 @@ namespace MFIS.Views
         protected void btnViewCustomer_Click(object sender, EventArgs e)
         {
             FillCustomerInfo(txtCustIDNO.Text);
+        }
+
+        protected void btnInsert_Click(object sender, EventArgs e)
+        {
+            int insertStatus = 0;
+            try
+            {
+                //Comments, MemStatus avoided
+                //,'"+txtPYear.Text & "' pyear avoided
+                query = @"INSERT into CustReg (SlNo,Pyear,PDate,CustIDNO,CustAccNo,SubDepositCodeNo,DurationOfMonth,MaturedDate,MInterest,InterestDrawStatus,Active_InActive,SV_AccNo,Active_InActive_Date) 
+                      VALUES ('" + TxtSlNo.Text + "','" + DateTime.Parse(txtIssueDate.Text).Year + "', '" + txtIssueDate.Text + "', '" + txtCustIDNO.SelectedValue + "', '" + txtCustAccNo.Text + "','" + ComSub_DepositScheme.SelectedValue + "', " + txtDuration.Text + ", '" + TxtMaturedDate.Text + "'," + TxtMIntr.Text + ",'" + ComInterestDrawStatus.SelectedValue + "','" + ComActive_InActive.SelectedValue + "','" + TxtSV_AccNo.Text + "', '" + DateTime.Now + "' )";
+                insertStatus = db.ExecuteNonQuery(query);
+            }
+            catch (Exception exc) { throw exc; }
+            if (insertStatus > 0)
+            {
+                FillCustomerInfo(txtCustIDNO.Text);
+            }
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int insertStatus = 0;
+            try
+            {
+                //Comments, MemStatus avoided
+                //,'"+txtPYear.Text & "' pyear avoided
+                query = @"Update CustReg Set SubDepositCodeNo = '" + ComSub_DepositScheme.SelectedValue + "' , DurationOfMonth = " + txtDuration.Text + ", MaturedDate = '" + TxtMaturedDate.Text + "', InterestDrawStatus = '" + ComInterestDrawStatus.Text + "', MInterest = " + TxtMIntr.Text + " ,Active_InActive = '" + ComActive_InActive.SelectedValue + "', SV_AccNo = '" + TxtSV_AccNo.Text + "',Active_InActive_Date = '" + DateTime.Now + "' where CustAccNo = '" + txtCustAccNo.Text + "' ";
+                insertStatus = db.ExecuteNonQuery(query);
+            }
+            catch (Exception exc) { throw exc; }
+            if (insertStatus > 0)
+            {
+                FillCustomerInfo(txtCustIDNO.Text);
+            }
+        }
+
+
+
+        protected void btnNominee_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/Nominee/NomineePage.aspx");
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            clearAll();
+        }
+
+        private void clearAll()
+        {
+            txtIssueDate.Text = "";
+            txtCustAccNo.Text = "";
+
+            txtDuration.Text = "";
+            TxtMIntr.Text = "";
+
+            TxtSlNo.Text = "";
+            TxtMaturedDate.Text = "";
+            ComActive_InActive.SelectedValue = "Active";
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            int DeleteStatus = 0;
+            if (txtCustAccNo.Text != "")
+            {
+                try
+                {
+                    query = @"Delete from CustReg where CustAccNo = '" + txtCustAccNo.Text + "' ";
+                    DeleteStatus = db.ExecuteNonQuery(query);
+                }
+                catch (Exception exc) { throw exc; }
+                if (DeleteStatus > 0)
+                {
+                    FillCustomerInfo(txtCustIDNO.Text);
+                }
+            }
+
         }
     }
 }

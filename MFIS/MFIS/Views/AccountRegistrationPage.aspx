@@ -48,7 +48,7 @@
                                         <p style="font: small; align-content: center">CustomerId no:</p>
                                     </td>
                                     <td colspan="">
-                                        <asp:TextBox ID="txtCustIDNO" required runat="server" CssClass="form-control"></asp:TextBox></td>
+                                        <asp:DropDownList ID="txtCustIDNO" Enabled="false" runat="server" CssClass="form-control"></asp:DropDownList></td>
 
                                     <td>
                                         <asp:LinkButton ID="btnViewCustomer" runat="server" CssClass="btn btn-sm btn-light" Text="view" OnClick="btnViewCustomer_Click"></asp:LinkButton></td>
@@ -106,9 +106,11 @@
                         <br />
 
                         <div id="btnPanel" class="d-flex align-content-end">
-                            <asp:Button ID="btnInsert" runat="server" Text="Save" class="btn btn-light col" />
-                            <asp:LinkButton ID="btnView" runat="server" Text="Nominee" CssClass="btn btn-light col"></asp:LinkButton><br />
-                            <asp:LinkButton ID="btnCancel" runat="server" Text="Delete" CssClass="btn btn-light col"></asp:LinkButton>
+                            <asp:Button ID="btnInsert" runat="server" Text="Save" class="btn btn-light col" OnClick="btnInsert_Click" />
+                            <asp:Button ID="btnUpdate" runat="server" Text="Update" class="btn btn-light col" OnClick="btnUpdate_Click" />
+                            <asp:Button ID="btnDelete" runat="server" Text="Delete" class="btn btn-light col" OnClick="btnDelete_Click" />
+                            <asp:LinkButton ID="btnNominee" runat="server" Text="Nominee" CssClass="btn btn-light col" OnClick="btnNominee_Click"></asp:LinkButton><br />
+                            <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-light col" OnClick="btnCancel_Click"></asp:LinkButton>
                         </div>
                         <br />
                     </div>
@@ -173,7 +175,10 @@
                                     <p style="font: small">Active/Inactive</p>
                                 </td>
                                 <td colspan="3">
-                                    <asp:DropDownList ID="ComActive_InActive" TextMode="Email" runat="server" CssClass="form-control"></asp:DropDownList></td>
+                                    <asp:DropDownList ID="ComActive_InActive" TextMode="Email" runat="server" CssClass="form-control">
+                                        <asp:ListItem Text="Active" Value="Active"></asp:ListItem>
+                                        <asp:ListItem Text="Inactive" Value="Inactive"></asp:ListItem>
+                                    </asp:DropDownList></td>
                             </tr>
 
                         </table>
@@ -217,7 +222,7 @@
                             <asp:TemplateField HeaderText="Options" Visible="true">
                                 <ItemTemplate>
 
-                                    <asp:LinkButton ID="btnEdit" runat="server" Text="Update" CssClass="btn btn-sm btn-light" CommandArgument='<%# Bind("SubDepositCodeNo")%>' OnClick="btnEdit_Click" />
+                                    <asp:LinkButton ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-sm btn-light" CommandArgument='<%# Bind("CustAccNo")%>' OnClick="btnEdit_Click" />
 
 
                                     <asp:LinkButton ID="btnGetReportByID" runat="server" Text="Report" CssClass="btn btn-sm btn-info" CommandArgument='<%# Bind("CustIDNO")%>' />

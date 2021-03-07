@@ -19,17 +19,20 @@ namespace MFIS.Views.Nominee
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (txtCustAcNo.Text != "")
+            if (!IsPostBack)
             {
-                LoadAccountData();
-            }
-            else
-            {
-                if (Request.QueryString["CustAcNo"] != null)
+                if (txtCustAcNo.Text != "")
                 {
-                    txtCustAcNo.Text = Request.QueryString["CustAcNo"];
+                    LoadAccountData();
                 }
+                else
+                {
+                    if (Request.QueryString["CustAcNo"] != null)
+                    {
+                        txtCustAcNo.Text = Request.QueryString["CustAcNo"];
+                    }
 
+                }
             }
 
 

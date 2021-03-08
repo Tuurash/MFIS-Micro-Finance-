@@ -7,7 +7,7 @@
 <head runat="server">
     <title></title>
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />--%>
-    <link rel="stylesheet" href="~/Scripts/bootstrap.min.css" />
+    <link rel="stylesheet" href="..\Scripts\bootstrap.min.css" />
 
     <style>
         html {
@@ -140,6 +140,7 @@
                             <asp:Button ID="btnInsertNominee" runat="server" Text=" Save " CssClass="btn btn-sm btn-light" OnClick="btnInsertNominee_Click" />
                             <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="btn btn-lg btn-light" OnClick="btnUpdate_Click" />
                             <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-lg btn-light" OnClick="btnDelete_Click" />
+                            <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-lg btn-light" OnClick="btnClear_Click" />
 
                         </div>
 
@@ -155,6 +156,6 @@
 
 
     <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--%>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="..\Scripts\bootstrap.min.js"></script>
 </body>
 </html>

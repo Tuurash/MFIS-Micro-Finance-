@@ -72,14 +72,24 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\autography.png" />
-    <Content Include="Images\ProfileImage.png" />
+    <Content Include="Forms\Deposit\Images\autography.png" />
+    <Content Include="Forms\Deposit\Images\ProfileImage.png" />
+    <Content Include="Forms\Payment\frmMSavingsLoan.aspx" />
+    <Content Include="Forms\Payment\Scripts\bootstrap.min.css" />
+    <Content Include="Forms\Payment\Scripts\bootstrap.min.js" />
+    <None Include="Forms\Payment\Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.js" />
+    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.min.js" />
+    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.slim.js" />
+    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\bootstrap.min.css" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.5.1.min.map" />
-    <Content Include="DistrictList.json" />
+    <Content Include="Forms\Deposit\Scripts\bootstrap.min.css" />
+    <Content Include="Forms\Deposit\Scripts\bootstrap.min.js" />
+    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.slim.min.map" />
+    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.min.map" />
+    <Content Include="Forms\Deposit\DistrictList.json" />
+    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.min.map" />
+    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.slim.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -88,50 +98,57 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\jquery-3.5.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.5.1.js" />
-    <Content Include="Scripts\jquery-3.5.1.min.js" />
-    <Content Include="Scripts\jquery-3.5.1.slim.js" />
-    <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
-    <Content Include="Views\AccountDetailsPage.aspx" />
-    <Content Include="Views\AccountInfoPage.aspx" />
-    <Content Include="Views\AccountRegistrationPage.aspx" />
-    <Content Include="Views\Nominee\NomineePage.aspx" />
+    <None Include="Forms\Deposit\Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.js" />
+    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.min.js" />
+    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.slim.js" />
+    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.slim.min.js" />
+    <Content Include="Forms\Deposit\MemberInformation\FrmMemberView.aspx" />
+    <Content Include="Forms\Deposit\MemberInformation\FrmCustInfo.aspx" />
+    <Content Include="Forms\Deposit\MemberInformation\AccountRegistrationPage.aspx" />
+    <Content Include="Forms\Deposit\MemberInformation\NomineePage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\device.cs" />
-    <Compile Include="Models\DeviceInfoRoot.cs" />
-    <Compile Include="Models\DistrictModel.cs" />
-    <Compile Include="Models\os.cs" />
+    <Compile Include="Forms\Deposit\Models\device.cs" />
+    <Compile Include="Forms\Deposit\Models\DeviceInfoRoot.cs" />
+    <Compile Include="Forms\Deposit\Models\DistrictModel.cs" />
+    <Compile Include="Forms\Deposit\Models\os.cs" />
+    <Compile Include="Forms\Payment\frmMSavingsLoan.aspx.cs">
+      <DependentUpon>frmMSavingsLoan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Payment\frmMSavingsLoan.aspx.designer.cs">
+      <DependentUpon>frmMSavingsLoan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\AccountDetailsPage.aspx.cs">
-      <DependentUpon>AccountDetailsPage.aspx</DependentUpon>
+    <Compile Include="Forms\Deposit\MemberInformation\FrmMemberView.aspx.cs">
+      <DependentUpon>FrmMemberView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\AccountDetailsPage.aspx.designer.cs">
-      <DependentUpon>AccountDetailsPage.aspx</DependentUpon>
+    <Compile Include="Forms\Deposit\MemberInformation\FrmMemberView.aspx.designer.cs">
+      <DependentUpon>FrmMemberView.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountInfoPage.aspx.cs">
-      <DependentUpon>AccountInfoPage.aspx</DependentUpon>
+    <Compile Include="Forms\Deposit\MemberInformation\FrmCustInfo.aspx.cs">
+      <DependentUpon>FrmCustInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\AccountInfoPage.aspx.designer.cs">
-      <DependentUpon>AccountInfoPage.aspx</DependentUpon>
+    <Compile Include="Forms\Deposit\MemberInformation\FrmCustInfo.aspx.designer.cs">
+      <DependentUpon>FrmCustInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\AccountRegistrationPage.aspx.cs">
+    <Compile Include="Forms\Deposit\MemberInformation\AccountRegistrationPage.aspx.cs">
       <DependentUpon>AccountRegistrationPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\AccountRegistrationPage.aspx.designer.cs">
+    <Compile Include="Forms\Deposit\MemberInformation\AccountRegistrationPage.aspx.designer.cs">
       <DependentUpon>AccountRegistrationPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\DBConnector.cs" />
-    <Compile Include="Views\Nominee\NomineePage.aspx.cs">
+    <Compile Include="Forms\Deposit\DBConnector.cs" />
+    <Compile Include="Forms\Deposit\MemberInformation\NomineePage.aspx.cs">
       <DependentUpon>NomineePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\Nominee\NomineePage.aspx.designer.cs">
+    <Compile Include="Forms\Deposit\MemberInformation\NomineePage.aspx.designer.cs">
       <DependentUpon>NomineePage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

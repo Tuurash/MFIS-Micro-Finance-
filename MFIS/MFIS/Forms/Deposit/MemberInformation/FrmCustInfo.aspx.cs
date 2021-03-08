@@ -66,13 +66,11 @@ namespace MFIS.Views
 
         }
 
-
-
         private void FillDistrictCity()
         {
             Datum obj_District = new Datum();
 
-            string json = File.ReadAllText(Server.MapPath("~/DistrictList.json"));
+            string json = File.ReadAllText(Server.MapPath("~/Forms/Deposit/DistrictList.json"));
 
             // Create JavascriptSerializer object
             JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
@@ -136,11 +134,6 @@ namespace MFIS.Views
 
         public void ClearAll()
         {
-            //VALUES('" + TxtSlNoAll.Text + "', '" + TxtSlNo.Text + "', '" + TxtAdDate.Text + "', '" + CmbAreaCode.Text + "', '" + txtCustIDNO.Text + "', '" + ComAccType.Text + "',
-            //'" + TxtAccName.Text + "', '" + TxtCustName.Text + "', '" + ComSex.Text + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "', '" + TxtSpouse.Text + "',
-            //'" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "', '" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "', '" + TxtCityDistrict.Text + "', '" + TxtPostCode.Text + "',
-            //'" + TxtCountry.Text + "', '" + TxtTel.Text + "', '" + TxtMobileNo.Text + "', '" + TxtMail.Text + "',
-            //'" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "', '" + TxtRefAccNo.Text + "', '" + TxtRefName.Text + "', '" + TxtNIDNo.Text.Trim() + "')";
 
             TxtSlNoAll.Text = TxtSlNo.Text = txtCustIDNO.Text = TxtAccName.Text = TxtCustName.Text = TxtFName.Text = TxtMName.Text = TxtSpouse.Text = TxtParmanent_Add.Text = TxtPresent_Add.Text = TxtPS.Text = "";
             TxtPostCode.Text = TxtTel.Text = TxtMobileNo.Text = TxtMail.Text = TxtRefAccNo.Text = TxtRefName.Text = TxtNIDNo.Text = "";
@@ -252,7 +245,7 @@ namespace MFIS.Views
         {
             if (Request.QueryString["AutoGenSlNo"] != null)
             {
-                Response.Redirect("~/Views/AccountInfoPage.aspx");
+                Response.Redirect("~/Forms/Deposit/MemberInformation/FrmCustInfo.aspx");
             }
             else
             {
@@ -262,7 +255,7 @@ namespace MFIS.Views
 
         protected void btnView_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/AccountDetailsPage.aspx");
+            Response.Redirect("~/Forms/Deposit/MemberInformation/FrmMemberView.aspx");
         }
 
     }

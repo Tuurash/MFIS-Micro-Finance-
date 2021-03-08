@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace MFIS.Views.Nominee
 {
+
     public partial class NomineePage : System.Web.UI.Page
     {
         string query = "";
@@ -140,5 +141,14 @@ namespace MFIS.Views.Nominee
                 LoadAccountData();
             }
         }
+
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            txtName1.Text = txtAddress1.Text = txtAge1.Text = txtPercent1.Text = txtRelation1.Text = txtGuardians1.Text = "";
+            txtName2.Text = txtAddress2.Text = txtAge2.Text = txtPercent2.Text = txtRelation2.Text = txtGuardians2.Text = "";
+            txtName3.Text = txtAddress3.Text = txtAge3.Text = txtPercent3.Text = txtRelation3.Text = txtGuardians3.Text = "";
+            txtName4.Text = txtAddress4.Text = txtAge4.Text = txtPercent4.Text = txtRelation4.Text = txtGuardians4.Text = "";
+        }
     }
+
 }

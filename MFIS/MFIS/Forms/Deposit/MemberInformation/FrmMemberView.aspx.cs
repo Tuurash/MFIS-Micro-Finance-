@@ -56,7 +56,7 @@ namespace MFIS.Views
             LinkButton btn = (LinkButton)sender;
             AutoGenSlNo = btn.CommandArgument.ToString();
 
-            Response.Redirect("~/Views/AccountInfoPage.aspx?AutoGenSlNo=" + AutoGenSlNo);
+            Response.Redirect("~/Forms/Deposit/MemberInformation/FrmCustInfo.aspx?AutoGenSlNo=" + AutoGenSlNo);
         }
 
         protected void Search(object sender, EventArgs e)
@@ -93,8 +93,9 @@ namespace MFIS.Views
         {
             LinkButton btn = (LinkButton)sender;
             CustomerID = btn.CommandArgument.ToString();
-            Response.Redirect("~/Views/AccountRegistrationPage.aspx?CustomerID=" + CustomerID);
+            Response.Redirect("~/Forms/Deposit/MemberInformation/AccountRegistrationPage.aspx?CustomerID=" + CustomerID);
         }
+
     }
 
 }

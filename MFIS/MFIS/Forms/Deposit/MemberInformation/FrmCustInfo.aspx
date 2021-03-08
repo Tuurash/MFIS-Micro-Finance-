@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AccountInfoPage.aspx.cs" Inherits="MFIS.Views.AccountInfoPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmCustInfo.aspx.cs" Inherits="MFIS.Views.AccountInfoPage" %>
 
 <!DOCTYPE html>
 
@@ -8,7 +8,7 @@
     <title></title>
     <script type="text/javascript" src="../Scripts/jquery-3.5.1.min.js"></script>
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />--%>
-    <link rel="stylesheet" href="../Scripts/bootstrap.min.css" />
+    <link rel="stylesheet" href="..\Scripts\bootstrap.min.css" />
 
 
     <style>
@@ -49,15 +49,6 @@
 
             <%--##############--%>
 
-            <%--<div align="center">
-
-                <div class="input-group" runat="server" id="SearchPanel" enableviewstate="false">
-                    <asp:TextBox AutoCompleteType="Search" ID="txtSearch" runat="server" CssClass="form-control-lg col" placeholder="Search" aria-label="Search"
-                        aria-describedby="search-addon"></asp:TextBox>
-                    <asp:LinkButton type="button" runat="server" ID="btnSearch" Text="Search" OnClick="btnSearch_Click" class="btn btn-outline-primary"></asp:LinkButton>
-                </div>
-
-            </div>--%>
 
             <br />
 
@@ -358,8 +349,10 @@
 
         </div>
     </form>
+
     <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--%>
-    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="..\Scripts\bootstrap.min.css"></script>
+
 </body>
 
 </html>

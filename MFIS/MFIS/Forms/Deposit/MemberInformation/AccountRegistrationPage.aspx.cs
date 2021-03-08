@@ -29,7 +29,6 @@ namespace MFIS.Views
             {
                 FillSchemeDropdown();
                 FillCustomerDropdown();
-
             }
 
         }
@@ -124,8 +123,7 @@ namespace MFIS.Views
             int insertStatus = 0;
             try
             {
-                //Comments, MemStatus avoided
-                //,'"+txtPYear.Text & "' pyear avoided
+
                 query = @"INSERT into CustReg (SlNo,Pyear,PDate,CustIDNO,CustAccNo,SubDepositCodeNo,DurationOfMonth,MaturedDate,MInterest,InterestDrawStatus,Active_InActive,SV_AccNo,Active_InActive_Date) 
                       VALUES ('" + TxtSlNo.Text + "','" + DateTime.Parse(txtIssueDate.Text).Year + "', '" + txtIssueDate.Text + "', '" + txtCustIDNO.SelectedValue + "', '" + txtCustAccNo.Text + "','" + ComSub_DepositScheme.SelectedValue + "', " + txtDuration.Text + ", '" + TxtMaturedDate.Text + "'," + TxtMIntr.Text + ",'" + ComInterestDrawStatus.SelectedValue + "','" + ComActive_InActive.SelectedValue + "','" + TxtSV_AccNo.Text + "', '" + DateTime.Now + "' )";
                 insertStatus = db.ExecuteNonQuery(query);
@@ -154,11 +152,9 @@ namespace MFIS.Views
             }
         }
 
-
-
         protected void btnNominee_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/Nominee/NomineePage.aspx?CustAcNo=" + txtCustAccNo.Text);
+            Response.Redirect("~/Forms/Deposit/MemberInformation/NomineePage.aspx?CustAcNo=" + txtCustAccNo.Text);
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -197,5 +193,6 @@ namespace MFIS.Views
             }
 
         }
+
     }
 }

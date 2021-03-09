@@ -22,6 +22,15 @@ namespace MFIS.Forms.Payment {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// chkPDF control.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,13 @@ namespace MFIS.Forms.Payment {
         protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
-        /// txtIdNo control.
+        /// txt_from_CalendarExtender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtIdNo;
+        protected global::AjaxControlToolkit.CalendarExtender txt_from_CalendarExtender;
         
         /// <summary>
         /// txtCustomerName control.
@@ -67,13 +76,49 @@ namespace MFIS.Forms.Payment {
         protected global::System.Web.UI.WebControls.TextBox txtCustomerName;
         
         /// <summary>
-        /// txtVoucherNo control.
+        /// txtIdNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVoucherNo;
+        protected global::System.Web.UI.WebControls.TextBox txtIdNo;
+        
+        /// <summary>
+        /// DropdownLAno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropdownLAno;
+        
+        /// <summary>
+        /// txtLAAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLAAmount;
+        
+        /// <summary>
+        /// DropdownSAno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropdownSAno;
+        
+        /// <summary>
+        /// txtSAamount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSAamount;
         
         /// <summary>
         /// btnPrint control.
@@ -110,24 +155,6 @@ namespace MFIS.Forms.Payment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
-        
-        /// <summary>
-        /// dgDeposit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgDeposit;
-        
-        /// <summary>
-        /// dgLoan control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgLoan;
         
         /// <summary>
         /// dgHistory control.

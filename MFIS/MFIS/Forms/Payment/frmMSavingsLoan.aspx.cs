@@ -11,7 +11,7 @@ namespace MFIS.Forms.Payment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txtDate.Text = DateTime.Now.Date.ToString();
         }
     }
 }

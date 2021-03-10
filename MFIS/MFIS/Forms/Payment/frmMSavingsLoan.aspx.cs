@@ -21,10 +21,7 @@ namespace MFIS.Forms.Payment
         {
             Time_now = DateTime.Now.Date;
             txtDate.Text = Time_now.ToString();
-            if (!IsPostBack)
-            {
-                FillLoanInfo();
-            }
+
         }
 
         private void GenerateVoucherNo()
@@ -33,32 +30,31 @@ namespace MFIS.Forms.Payment
             lblVoucherNo.Text = GeneratedVoucher;
         }
 
-        private void FillLoanInfo()
-        {
-            query = @"select * from Loan_Application where Loan_Status='Active'";
-            dt = db.ExecuteQuery(query);
-            DropdownLAno.DataSource = dt;
-            DropdownLAno.DataTextField = "LoanNo";
-            DropdownLAno.DataValueField = "LoanNo";
-            DropdownLAno.DataBind();
-            DropdownLAno.Items.Insert(0, "select");
-        }
-
         protected void txtIdNo_TextChanged(object sender, EventArgs e)
         {
-            FindCustomer();
+            FillCustomerInfo();
         }
+
+        private void FillCustomerInfo()
+        {
+            FillLoanInfo();
+            FindCustomer();
+            FillSavingsInfo();
+        }
+
+
 
         private void FindCustomer()
         {
-            query = @"select * from RegStaff where StaffID='" + txtIdNo.Text + "'";
+
+            query = @"select * from CustInfo where CustIDNO = '" + txtIdNo.Text + "'";
             dt = db.ExecuteQuery(query);
             if (dt.Rows.Count > 0)
             {
                 GenerateVoucherNo();
                 ErrorTxtID.Visible = false;
                 maindiv.Visible = true;
-                txtCustomerName.Text = dt.Rows[0]["StaffName"].ToString();
+                txtCustomerName.Text = dt.Rows[0]["CustName"].ToString();
             }
             else { ErrorTxtID.Visible = true; maindiv.Visible = false; txtCustomerName.Text = ""; }
         }
@@ -66,6 +62,26 @@ namespace MFIS.Forms.Payment
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             FindCustomer();
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            LoanInsert();
+            SavingsInsert();
+        }
+
+
+        #region LoanRegion
+
+        private void FillLoanInfo()
+        {
+            query = @"select * from Loan_Application where Loan_Status='Active' and CustIDNO='" + txtIdNo.Text + "'";
+            dt = db.ExecuteQuery(query);
+            DropdownLAno.DataSource = dt;
+            DropdownLAno.DataTextField = "LoanNo";
+            DropdownLAno.DataValueField = "LoanNo";
+            DropdownLAno.DataBind();
+            DropdownLAno.Items.Insert(0, "select");
         }
 
         protected void DropdownLAno_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,9 +104,8 @@ namespace MFIS.Forms.Payment
             else { divLoanStatus.Visible = true; }
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
+        private void LoanInsert()
         {
-
             if (DropdownLAno.SelectedItem.ToString() != "select" && txtLAAmount.Text != "")
             {
                 int insertStatus = 0;
@@ -99,7 +114,7 @@ namespace MFIS.Forms.Payment
                 //Acc Sub subcode=103001
                 //BranchCode, EntryNo, Notes, Profit, CustAccTrSL,Dr, Profit, UserId [Excluded]
                 query = @"INSERT into Loan_DataEntry (PYear, PDate, LoanNo, Account_Sub_SubCode, Cr,TransactionType, TransactionStatus, LedgerCode, AddDate,StaffID,VoucherNo)
-                        VALUES ('" + Time_now.Year + "', '" + Time_now.Date + "','" + DropdownLAno.SelectedValue + "', 103001, " + txtLAAmount.Text + ", '" + DropdownTransType.SelectedValue + "', 'Cr', 1101002, '" + DateTime.Now + "','" + txtIdNo.Text + "','" + lblVoucherNo.Text + "' )";
+                        VALUES ('" + Time_now.Year + "', '" + Time_now.Date + "','" + DropdownLAno.SelectedValue + "', 103001, " + txtLAAmount.Text + ", '" + DropdownTransType.SelectedValue + "', 'Cr', 1101002, '" + DateTime.Now + "','1241','" + lblVoucherNo.Text + "' )";
                 try
                 {
                     insertStatus = db.ExecuteNonQuery(query);
@@ -161,5 +176,60 @@ namespace MFIS.Forms.Payment
             query = @"Update Loan_Application set Loan_Status = 'InActive' where LoanNo = '" + DropdownLAno.SelectedValue + "' ";
             try { UpdateStatus = db.ExecuteNonQuery(query); } catch (Exception exc) { throw exc; }
         }
+
+        #endregion
+
+        #region SavingRegion
+
+        private void FillSavingsInfo()
+        {
+            query = @"select * from CustReg where CustIDNO='" + txtIdNo.Text + "'";
+            try
+            {
+                dt = db.ExecuteQuery(query);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            if (dt.Rows.Count > 0)
+            {
+                DropdownSAno.DataSource = dt;
+                DropdownSAno.DataTextField = "CustAccNo";
+                DropdownSAno.DataValueField = "CustAccNo";
+                DropdownSAno.DataBind();
+                DropdownSAno.Items.Insert(0, "select");
+            }
+        }
+
+        private void SavingsInsert()
+        {
+            if (DropdownSAno.SelectedItem.ToString() != "select" && txtSAamount.Text != "")
+            {
+                int sInsertStatus = 0;
+
+                //, BranchCode, EntryNo, Dr,Notes,CustAccTrSL,Vou_ChqNo
+                query = @"INSERT into Deposit_DataEntry (PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID)
+                    VALUES ('" + Time_now.Year + "', '" + DropdownSAno.SelectedValue + "', '" + Time_now.Date + "', '203001112', " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','1101002' ,'1241')";
+                try
+                {
+                    sInsertStatus = db.ExecuteNonQuery(query);
+                }
+                catch (Exception exc)
+                {
+
+                    throw;
+                }
+                if (sInsertStatus > 0)
+                {
+
+                }
+            }
+
+        }
+
+        #endregion
+
     }
 }

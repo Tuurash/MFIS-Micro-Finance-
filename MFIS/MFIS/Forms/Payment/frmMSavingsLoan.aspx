@@ -63,7 +63,7 @@
                 <div class="form-row">
 
                     <div class="col-md-auto col-lg-12 col-sm-auto">
-                        <label for="txtIdNo">Staff ID no: </label>
+                        <label for="txtIdNo">Customer ID no: </label>
                         <div class="input-group">
 
                             <asp:TextBox runat="server" ID="txtIdNo" AutoPostBack="true" OnTextChanged="txtIdNo_TextChanged" CssClass="form-control"></asp:TextBox>
@@ -97,9 +97,9 @@
                             <label for="txtAmount">Amount: </label>
                             <div class="input-group">
                                 <asp:TextBox runat="server" ID="txtLAAmount" CssClass="form-control"></asp:TextBox>
-                                <asp:DropDownList runat="server" ID="DropdownTransType" CssClass="form-control">
+                                <asp:DropDownList runat="server" ID="DropdownTransType" Visible="false" CssClass="form-control">
                                     <asp:ListItem Text="Payment" Value="Payment"></asp:ListItem>
-                                    <asp:ListItem Text="Reciept" Value="Reciept"></asp:ListItem>
+                                    <asp:ListItem Text="Reciept" Value="Reciept" Selected="True"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmMemberView.aspx.cs" Inherits="MFIS.Views.AccountDetailsPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmMemberView.aspx.cs" Inherits="MFIS.Forms.MemberInformation.AccountDetailsPage" %>
 
 <!DOCTYPE html>
 

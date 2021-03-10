@@ -31,22 +31,13 @@ namespace MFIS.Forms.Payment {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// chkPDF control.
+        /// lblVoucherNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton chkPDF;
-        
-        /// <summary>
-        /// chkAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton chkAll;
+        protected global::System.Web.UI.WebControls.Label lblVoucherNo;
         
         /// <summary>
         /// txtDate control.
@@ -85,6 +76,33 @@ namespace MFIS.Forms.Payment {
         protected global::System.Web.UI.WebControls.TextBox txtIdNo;
         
         /// <summary>
+        /// btnSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearch;
+        
+        /// <summary>
+        /// ErrorTxtID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrorTxtID;
+        
+        /// <summary>
+        /// maindiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl maindiv;
+        
+        /// <summary>
         /// DropdownLAno control.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,33 @@ namespace MFIS.Forms.Payment {
         protected global::System.Web.UI.WebControls.DropDownList DropdownLAno;
         
         /// <summary>
+        /// divLoanStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLoanStatus;
+        
+        /// <summary>
+        /// AmountPayable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AmountPayable;
+        
+        /// <summary>
+        /// LastPaidDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LastPaidDate;
+        
+        /// <summary>
         /// txtLAAmount control.
         /// </summary>
         /// <remarks>
@@ -101,6 +146,15 @@ namespace MFIS.Forms.Payment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLAAmount;
+        
+        /// <summary>
+        /// DropdownTransType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropdownTransType;
         
         /// <summary>
         /// DropdownSAno control.
@@ -119,6 +173,24 @@ namespace MFIS.Forms.Payment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSAamount;
+        
+        /// <summary>
+        /// divPaymentStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPaymentStatus;
+        
+        /// <summary>
+        /// lblPaymentStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPaymentStatus;
         
         /// <summary>
         /// btnPrint control.

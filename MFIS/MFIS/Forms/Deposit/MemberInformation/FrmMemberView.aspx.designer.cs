@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MFIS.Views {
+namespace MFIS.Forms.MemberInformation {
     
     
     public partial class AccountDetailsPage {

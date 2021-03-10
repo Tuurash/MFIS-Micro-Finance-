@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 
-namespace MFIS.Views
+namespace MFIS.Forms
 {
     public class DBConnector
     {

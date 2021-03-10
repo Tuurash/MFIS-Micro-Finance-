@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MFIS.Views.Nominee {
+namespace MFIS.Forms.MemberInformation {
     
     
     public partial class NomineePage {

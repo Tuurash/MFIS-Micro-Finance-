@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MFIS.Views
+namespace MFIS.Forms.MemberInformation
 {
     public partial class AccountDetailsPage : System.Web.UI.Page
     {

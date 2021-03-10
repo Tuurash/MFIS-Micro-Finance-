@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NomineePage.aspx.cs" Inherits="MFIS.Views.Nominee.NomineePage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="NomineePage.aspx.cs" Inherits="MFIS.Forms.MemberInformation.NomineePage" %>
 
 <!DOCTYPE html>
 

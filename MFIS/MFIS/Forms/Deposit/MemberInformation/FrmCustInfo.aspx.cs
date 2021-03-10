@@ -11,7 +11,7 @@ using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using System.Net;
 
-namespace MFIS.Views
+namespace MFIS.Forms.MemberInformation
 {
     public partial class AccountInfoPage : System.Web.UI.Page
     {

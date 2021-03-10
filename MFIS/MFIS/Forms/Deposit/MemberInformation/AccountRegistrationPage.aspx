@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AccountRegistrationPage.aspx.cs" Inherits="MFIS.Views.AccountRegistrationPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AccountRegistrationPage.aspx.cs" Inherits="MFIS.Forms.MemberInformation.AccountRegistrationPage" %>
 
 <!DOCTYPE html>
 

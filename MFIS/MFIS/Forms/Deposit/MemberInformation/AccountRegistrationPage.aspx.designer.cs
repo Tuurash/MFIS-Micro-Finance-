@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MFIS.Views
-{
-
-
-    public partial class AccountRegistrationPage
-    {
-
+namespace MFIS.Forms.MemberInformation {
+    
+    
+    public partial class AccountRegistrationPage {
+        
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// InsertionPanel control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl InsertionPanel;
-
+        
         /// <summary>
         /// TxtSlNo control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtSlNo;
-
+        
         /// <summary>
         /// txtCustIDNO control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList txtCustIDNO;
-
+        
         /// <summary>
         /// btnViewCustomer control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnViewCustomer;
-
+        
         /// <summary>
         /// TxtCustName control.
         /// </summary>
@@ -67,7 +65,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtCustName;
-
+        
         /// <summary>
         /// ComSub_DepositScheme control.
         /// </summary>
@@ -76,7 +74,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ComSub_DepositScheme;
-
+        
         /// <summary>
         /// TxtSV_AccNo control.
         /// </summary>
@@ -85,7 +83,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtSV_AccNo;
-
+        
         /// <summary>
         /// txtIssueDate control.
         /// </summary>
@@ -94,7 +92,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIssueDate;
-
+        
         /// <summary>
         /// btnInsert control.
         /// </summary>
@@ -103,7 +101,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnInsert;
-
+        
         /// <summary>
         /// btnUpdate control.
         /// </summary>
@@ -112,7 +110,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdate;
-
+        
         /// <summary>
         /// btnDelete control.
         /// </summary>
@@ -121,7 +119,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDelete;
-
+        
         /// <summary>
         /// btnNominee control.
         /// </summary>
@@ -130,7 +128,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnNominee;
-
+        
         /// <summary>
         /// btnCancel control.
         /// </summary>
@@ -139,7 +137,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnCancel;
-
+        
         /// <summary>
         /// div2 control.
         /// </summary>
@@ -148,7 +146,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
-
+        
         /// <summary>
         /// TxtMaturedDate control.
         /// </summary>
@@ -157,7 +155,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtMaturedDate;
-
+        
         /// <summary>
         /// txtCustAccNo control.
         /// </summary>
@@ -166,7 +164,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCustAccNo;
-
+        
         /// <summary>
         /// txtDuration control.
         /// </summary>
@@ -175,7 +173,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDuration;
-
+        
         /// <summary>
         /// TxtMIntr control.
         /// </summary>
@@ -184,7 +182,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtMIntr;
-
+        
         /// <summary>
         /// ComInterestDrawStatus control.
         /// </summary>
@@ -193,7 +191,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ComInterestDrawStatus;
-
+        
         /// <summary>
         /// ComActive_InActive control.
         /// </summary>
@@ -202,7 +200,7 @@ namespace MFIS.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ComActive_InActive;
-
+        
         /// <summary>
         /// DataGrid control.
         /// </summary>

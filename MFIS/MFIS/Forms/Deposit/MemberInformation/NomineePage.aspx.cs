@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MFIS.Views.Nominee
+namespace MFIS.Forms.MemberInformation
 {
 
     public partial class NomineePage : System.Web.UI.Page
@@ -15,7 +15,7 @@ namespace MFIS.Views.Nominee
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
 
-        string CustomerAccNo = "";
+        //string CustomerAccNo = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MFIS.Forms.Payment
+namespace MFIS.Forms.Deposit.LoanDeposit
 {
     public partial class frmMSavingsLoan : System.Web.UI.Page
     {
@@ -15,6 +15,7 @@ namespace MFIS.Forms.Payment
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
         DateTime Time_now;
+
         double Balance, TotalPaid = 0;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -42,11 +43,8 @@ namespace MFIS.Forms.Payment
             FillSavingsInfo();
         }
 
-
-
         private void FindCustomer()
         {
-
             query = @"select * from CustInfo where CustIDNO = '" + txtIdNo.Text + "'";
             dt = db.ExecuteQuery(query);
             if (dt.Rows.Count > 0)
@@ -203,6 +201,32 @@ namespace MFIS.Forms.Payment
             }
         }
 
+        protected void DropdownSAno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            divSAStatus.Visible = true;
+            FillSAStatusInfo();
+        }
+
+        private void FillSAStatusInfo()
+        {
+            query = @"select top 1 * from Deposit_DataEntry where CustAccNo='" + DropdownSAno.SelectedValue + "' order by PDate desc ";
+            try
+            {
+                dt = db.ExecuteQuery(query);
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+            if (dt.Rows.Count > 0)
+            {
+                divSAStatus.Visible = true;
+                txtSAlastpaidDate.InnerText = "Last Entry: " + dt.Rows[0]["PDate"].ToString();
+                txtSALastPaidAmount.InnerText = "Amount: " + dt.Rows[0]["Cr"].ToString();
+            }
+        }
+
         private void SavingsInsert()
         {
             if (DropdownSAno.SelectedItem.ToString() != "select" && txtSAamount.Text != "")
@@ -223,13 +247,20 @@ namespace MFIS.Forms.Payment
                 }
                 if (sInsertStatus > 0)
                 {
-
+                    lblSAPaymentStatus.InnerText = "Deposit Entry Done: " + txtSAamount.Text + " taka";
                 }
+
             }
 
         }
 
         #endregion
 
+        protected void btnShow_Click(object sender, EventArgs e)
+        {
+        }
+
+
     }
+
 }

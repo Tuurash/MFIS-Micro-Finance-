@@ -78,22 +78,14 @@
   <ItemGroup>
     <Content Include="Forms\Deposit\Images\autography.png" />
     <Content Include="Forms\Deposit\Images\ProfileImage.png" />
-    <Content Include="Forms\Payment\frmMSavingsLoan.aspx" />
-    <Content Include="Forms\Payment\Scripts\bootstrap.min.css" />
-    <Content Include="Forms\Payment\Scripts\bootstrap.min.js" />
-    <None Include="Forms\Payment\Scripts\jquery-3.5.1.intellisense.js" />
-    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.js" />
-    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.min.js" />
-    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.slim.js" />
-    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.slim.min.js" />
+    <Content Include="Forms\Deposit\LoanDeposit\frmDepositGrid.aspx" />
+    <Content Include="Forms\Deposit\LoanDeposit\frmMSavingsLoan.aspx" />
     <Content Include="packages.config" />
     <Content Include="Forms\Deposit\Scripts\bootstrap.min.css" />
     <Content Include="Forms\Deposit\Scripts\bootstrap.min.js" />
     <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.slim.min.map" />
     <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.min.map" />
     <Content Include="Forms\Deposit\DistrictList.json" />
-    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.min.map" />
-    <Content Include="Forms\Payment\Scripts\jquery-3.5.1.slim.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -114,15 +106,22 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Deposit\LoanDeposit\frmDepositGrid.aspx.cs">
+      <DependentUpon>frmDepositGrid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Deposit\LoanDeposit\frmDepositGrid.aspx.designer.cs">
+      <DependentUpon>frmDepositGrid.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Deposit\Models\device.cs" />
     <Compile Include="Forms\Deposit\Models\DeviceInfoRoot.cs" />
     <Compile Include="Forms\Deposit\Models\DistrictModel.cs" />
     <Compile Include="Forms\Deposit\Models\os.cs" />
-    <Compile Include="Forms\Payment\frmMSavingsLoan.aspx.cs">
+    <Compile Include="Forms\Deposit\LoanDeposit\frmMSavingsLoan.aspx.cs">
       <DependentUpon>frmMSavingsLoan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Forms\Payment\frmMSavingsLoan.aspx.designer.cs">
+    <Compile Include="Forms\Deposit\LoanDeposit\frmMSavingsLoan.aspx.designer.cs">
       <DependentUpon>frmMSavingsLoan.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

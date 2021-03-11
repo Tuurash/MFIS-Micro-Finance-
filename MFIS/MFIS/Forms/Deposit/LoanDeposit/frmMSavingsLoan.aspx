@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmMSavingsLoan.aspx.cs" Inherits="MFIS.Forms.Payment.frmMSavingsLoan" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="frmMSavingsLoan.aspx.cs" Inherits="MFIS.Forms.Deposit.LoanDeposit.frmMSavingsLoan" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 
     <title></title>
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />--%>
-    <link rel="stylesheet" href="Scripts\bootstrap.min.css" />
+    <link rel="stylesheet" href="../Scripts/bootstrap.min.css" />
 
     <style>
         html {
@@ -22,6 +22,7 @@
 </head>
 
 <body>
+
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
@@ -77,7 +78,7 @@
 
                 </div>
 
-                <div runat="server" id="maindiv" visible="false">
+                <div runat="server" id="maindiv">
 
                     <%--Loan--%>
                     <div class="form-row">
@@ -111,7 +112,14 @@
 
                         <div class="col-md-auto col-lg-6 col-sm-auto">
                             <label for="DropdownSAno">S/A(Savings Account): </label>
-                            <asp:DropDownList runat="server" ID="DropdownSAno" CssClass="form-control"></asp:DropDownList>
+                            <asp:DropDownList runat="server" ID="DropdownSAno" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="DropdownSAno_SelectedIndexChanged"></asp:DropDownList>
+
+                            <div id="divSAStatus" class="input-group" visible="false" runat="server">
+                                <p style="color: forestgreen" runat="server" id="txtSAlastpaidDate"></p>
+                                &nbsp 
+                                <p style="color: forestgreen" runat="server" id="txtSALastPaidAmount"></p>
+                            </div>
+
                         </div>
 
                         <div class="col-md-auto col-lg-6 col-sm-auto">
@@ -125,56 +133,24 @@
                     </div>
                     <br />
 
-                    <%--btn--%>
+                    <%--FinalStatus--%>
                     <div class="form-row">
                         <div id="divPaymentStatus" visible="false" runat="server">
                             <p style="color: green" id="lblPaymentStatus" runat="server">Not Fuound! Try Again</p>
-                            <br />
+                            <p style="color: green" id="lblSAPaymentStatus" runat="server">Not Fuound! Try Again</p>
+
                         </div>
+                    </div>
+
+                    <%--btn--%>
+                    <div class="form-row">
                         <div class="col">
-                            <asp:Button runat="server" ID="btnPrint" Text="Print" CssClass="btn btn-sm btn-light" />
-                            <asp:Button runat="server" ID="btnShow" Text="Show" CssClass="btn btn-sm btn-light" />
+                            <%--<asp:Button runat="server" ID="btnPrint" Text="Print" CssClass="btn btn-sm btn-light" />--%>
+                            <asp:Button runat="server" ID="btnShow" Text="Show All" OnClick="btnShow_Click" CssClass="btn btn-sm btn-light" />
                             <asp:Button runat="server" ID="btnClear" Text="Clear" CssClass="btn btn-sm btn-light" />
                             <asp:Button runat="server" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" CssClass="btn btn-sm btn-light" />
                         </div>
                         <br />
-
-                    </div>
-
-                    <%--Grid--%>
-                    <div class="form-row">
-
-                        <div class="col">
-                            <asp:GridView runat="server" ID="dgHistory" CssClass="table table-hover table-responsive" HeaderStyle-CssClass="thead-dark">
-                                <Columns>
-
-                                    <asp:TemplateField HeaderText="Customer A/C no" Visible="true">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="lblCustAcNo" Text="loanNo">asdas</asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-
-                                    <asp:TemplateField HeaderText="Amount" Visible="true">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="lblAmount" Text="Aaa">asd</asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-
-                                    <asp:TemplateField HeaderText="L/C no:" Visible="true">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="lblLC" Text="Aaa">asd</asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-
-                                    <asp:TemplateField HeaderText="Amount" Visible="true">
-                                        <ItemTemplate>
-                                            <asp:Label runat="server" ID="lblAmount2" Text="Aaa">asd</asp:Label>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-
-                                </Columns>
-                            </asp:GridView>
-                        </div>
 
                     </div>
 
@@ -186,7 +162,7 @@
     </form>
 
     <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--%>
-    <script src="Scripts\bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
 </body>
 
 </html>

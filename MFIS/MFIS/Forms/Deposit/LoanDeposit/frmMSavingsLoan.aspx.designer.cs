@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MFIS.Forms.Payment {
+namespace MFIS.Forms.Deposit.LoanDeposit {
     
     
     public partial class frmMSavingsLoan {
@@ -166,6 +166,33 @@ namespace MFIS.Forms.Payment {
         protected global::System.Web.UI.WebControls.DropDownList DropdownSAno;
         
         /// <summary>
+        /// divSAStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSAStatus;
+        
+        /// <summary>
+        /// txtSAlastpaidDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtSAlastpaidDate;
+        
+        /// <summary>
+        /// txtSALastPaidAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtSALastPaidAmount;
+        
+        /// <summary>
         /// txtSAamount control.
         /// </summary>
         /// <remarks>
@@ -193,13 +220,13 @@ namespace MFIS.Forms.Payment {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPaymentStatus;
         
         /// <summary>
-        /// btnPrint control.
+        /// lblSAPaymentStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrint;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSAPaymentStatus;
         
         /// <summary>
         /// btnShow control.
@@ -227,14 +254,5 @@ namespace MFIS.Forms.Payment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
-        
-        /// <summary>
-        /// dgHistory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgHistory;
     }
 }

@@ -14,10 +14,16 @@ namespace MFIS.Forms.Deposit.LoanDeposit
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
         DateTime Time_now;
+        string CustomerID = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            FilldgHistory();
+            if (Request.QueryString["CustomerID"] != null)
+            {
+                CustomerID = Request.QueryString["CustomerID"];
+                FilldgHistory();
+            }
+
         }
 
         private void FilldgHistory()

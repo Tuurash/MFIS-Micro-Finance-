@@ -258,6 +258,8 @@ namespace MFIS.Forms.Deposit.LoanDeposit
 
         protected void btnShow_Click(object sender, EventArgs e)
         {
+            string CustomerID = txtIdNo.Text;
+            Response.Redirect("~/Forms/Deposit/LoanDeposit/frmDepositGrid.aspx?CustomerID=" + CustomerID);
         }
 
 

@@ -234,8 +234,8 @@ namespace MFIS.Forms.Deposit.LoanDeposit
                 int sInsertStatus = 0;
 
                 //, BranchCode, EntryNo, Dr,Notes,CustAccTrSL,Vou_ChqNo
-                query = @"INSERT into Deposit_DataEntry (PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID)
-                    VALUES ('" + Time_now.Year + "', '" + DropdownSAno.SelectedValue + "', '" + Time_now.Date + "', '203001112', " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','1101002' ,'1241')";
+                query = @"INSERT into Deposit_DataEntry (PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo)
+                    VALUES ('" + Time_now.Year + "', '" + DropdownSAno.SelectedValue + "', '" + Time_now.Date + "', '203001112', " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','1101002' ,'1241','" + lblVoucherNo.Text + "')";
                 try
                 {
                     sInsertStatus = db.ExecuteNonQuery(query);
@@ -259,7 +259,7 @@ namespace MFIS.Forms.Deposit.LoanDeposit
         protected void btnShow_Click(object sender, EventArgs e)
         {
             string CustomerID = txtIdNo.Text;
-            Response.Redirect("~/Forms/Deposit/LoanDeposit/frmDepositGrid.aspx?CustomerID=" + CustomerID);
+            Response.Redirect("~/Forms/Deposit/LoanDeposit/frmDepositGrid.aspx?CustomerID=" + CustomerID + "&VoucherNo=" + lblVoucherNo.Text);
         }
 
 

@@ -19,8 +19,6 @@ namespace MFIS.Forms.MemberInformation
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
 
-
-
         int AutoGenSlNo = 0;
 
         protected void Page_Load(object sender, EventArgs e)

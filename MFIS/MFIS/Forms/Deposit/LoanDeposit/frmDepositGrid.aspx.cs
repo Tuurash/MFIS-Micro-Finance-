@@ -13,22 +13,82 @@ namespace MFIS.Forms.Deposit.LoanDeposit
         string query = "";
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
-        DateTime Time_now;
-        string CustomerID = "";
+        
+        string getCustomerID = "";
+        string getVoucherNo = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["CustomerID"] != null)
             {
-                CustomerID = Request.QueryString["CustomerID"];
+                getCustomerID = Request.QueryString["CustomerID"];
                 FilldgHistory();
+            }
+            if (Request.QueryString["VoucherNo"] != null && Request.QueryString["CustomerID"] != null)
+            {
+                getVoucherNo = Request.QueryString["VoucherNo"];
+                FillLastPaymentDetails();
             }
 
         }
 
+        private void FillLastPaymentDetails()
+        {
+            query = @"Exec SelectLastLoanDepositHistory @VoucherNo='" + getVoucherNo + "', @CustID='" + getCustomerID + "'";
+            try
+            {
+                dt = db.ExecuteQuery(query);
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+            if (dt.Rows.Count > 0)
+            {
+                gridLastPayment.DataSource = dt;
+                gridLastPayment.DataBind();
+            }
+        }
+
         private void FilldgHistory()
         {
-            query = @"";
+            query = @"Exec AllLoanDepositHistoryByCustID @CustID='" + getCustomerID + "'";
+            try
+            {
+                dt = db.ExecuteQuery(query);
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+
+            if (dt.Rows.Count > 0)
+            {
+                dgHistory.DataSource = dt;
+                dgHistory.DataBind();
+            }
+
+        }
+
+
+        protected void dgHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            FilldgHistory();
+            dgHistory.PageIndex = e.NewPageIndex;
+            dgHistory.DataBind();
+        }
+
+        protected void btnShowAllHistory_Click(object sender, EventArgs e)
+        {
+            divHistory.Visible = true;
+        }
+
+        protected void btnGetReport_Click(object sender, EventArgs e)
+        {
+            string getReportName = "LoanDepositReport";
+            Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustomerID + "&VoucherNo=" + getVoucherNo + "&ReportName=" + getReportName);
         }
     }
 }

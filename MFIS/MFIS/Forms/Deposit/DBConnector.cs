@@ -35,6 +35,7 @@ namespace MFIS.Forms
 
             return dt;
         }
+
         public int ExecuteNonQuery(string sqlQuery)
         {
             int res = -1;
@@ -50,6 +51,7 @@ namespace MFIS.Forms
 
             return res;
         }
+
         public object ExecuteScalar(string sqlQuery)
         {
             object res;

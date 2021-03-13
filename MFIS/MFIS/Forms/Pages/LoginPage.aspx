@@ -11,15 +11,15 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="Scripts/bootstrap.min.css" />
+    <link rel="stylesheet" href="../Scripts/bootstrap.min.css" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
     <!-- Theme style -->
-    <link rel="stylesheet" href="Scripts/dist/css/AdminLTE.min.css" />
+    <link rel="stylesheet" href="../Scripts/dist/css/AdminLTE.min.css" />
     <!-- iCheck -->
-    <link rel="stylesheet" href="Scripts/plugins/iCheck/square/blue.css" />
+    <link rel="stylesheet" href="../Scripts/plugins/iCheck/square/blue.css" />
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-6 col-lg-6">
-                        <img src="Scripts/System/images/icon/Login.png" height="70" width="220" />
+                        <img src="../Scripts/System/images/icon/Login.png" height="70" width="220" />
                         <br />
                         <%--Detail Segment Start--%>
 
@@ -106,11 +106,11 @@
         <!-- /.login-box -->
 
         <!-- jQuery 2.2.3 -->
-        <script src="Scripts/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../Scripts/plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- Bootstrap 3.3.6 -->
-        <script src="Scripts/bootstrap.min.js"></script>
+        <script src="../Scripts/bootstrap.min.js"></script>
         <!-- iCheck -->
-        <script src="Scripts/plugins/iCheck/icheck.min.js"></script>
+        <script src="../Scripts/plugins/iCheck/icheck.min.js"></script>
 
         <script>
             $(function () {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MFIS.Pages
+namespace MFIS.Forms.Pages
 {
 
 

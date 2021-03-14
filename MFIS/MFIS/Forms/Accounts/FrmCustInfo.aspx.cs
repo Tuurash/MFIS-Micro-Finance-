@@ -67,7 +67,7 @@ namespace MFIS.Forms.Accounts
         {
             Datum obj_District = new Datum();
 
-            string json = File.ReadAllText(Server.MapPath("~/Forms/Deposit/DistrictList.json"));
+            string json = File.ReadAllText(Server.MapPath("DistrictList.json"));
 
             // Create JavascriptSerializer object
             JavaScriptSerializer jsSerializer = new JavaScriptSerializer();

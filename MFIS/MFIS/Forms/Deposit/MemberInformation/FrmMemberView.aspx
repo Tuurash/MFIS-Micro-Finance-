@@ -24,7 +24,7 @@
 
                 <div class="col-12">
 
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center col-md-12">
 
                         <div class="input-group rounded">
                             <asp:DropDownList runat="server" ID="dropDownSort" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="dropDownSort_SelectedIndexChanged">
@@ -33,9 +33,7 @@
                                 <asp:ListItem Text="Opening Date" Value="AdDate"></asp:ListItem>
                                 <asp:ListItem Text="Customer Name" Value="CustName"></asp:ListItem>
                             </asp:DropDownList>
-                        </div>
-
-                        <div class="input-group rounded">
+                        
                             <asp:TextBox type="search" runat="server" ID="txtSearch" class="form-control rounded" placeholder="Search By A/C Name"></asp:TextBox>
                             <span class="input-group-text border-0" id="search-addon">
                                 <a runat="server" id="btnSearch" onserverclick="Search">Search</a>
@@ -50,8 +48,8 @@
                 </div>
 
                 <div class="col-12" runat="server">
-                    <asp:GridView runat="server" ID="GridAccountList" CssClass="table table-hover table-responsive" AllowPaging="true"
-                        HeaderStyle-CssClass="thead-dark" PageSize="50" OnPageIndexChanging="OnPaging">
+                    <asp:GridView runat="server" ID="GridAccountList" CssClass="table table-bordered table-hover" AllowPaging="true"
+                        PageSize="50" OnPageIndexChanging="OnPaging">
                         <Columns>
                             <asp:TemplateField HeaderText="Options" Visible="true">
                                 <ItemTemplate>

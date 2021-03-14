@@ -240,7 +240,7 @@ namespace MFIS.Pages
                     if (dt1.Rows.Count > 0)
                     {
                         Session["USERID"] = txtUserID.Text;
-                        Response.Write("<script>alert('Software is login that User ID. Please enter a different User ID.')</script>");
+                        Response.Write("<script>alert('Software is logged with given User ID. Please enter a different User ID.')</script>");
                     }
                     else
                     {
@@ -270,7 +270,7 @@ namespace MFIS.Pages
 
             if (dt.Rows.Count > 0)
             {
-                Response.Write("<script>alert('Software is login that User ID. Please enter a different User ID.')</script>");
+                Response.Write("<script>alert('Software is logged in with the given User ID. Please enter a different User ID.')</script>");
             }
             else
             {

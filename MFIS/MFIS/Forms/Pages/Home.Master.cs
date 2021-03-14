@@ -15,16 +15,19 @@ namespace MFIS.Forms.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!Page.IsPostBack)
             {
                 if (Session["USERID"] == null)
                 {
-                    Session["USERID"] = "1";
-                    Session["ProjectCode"] = "1";
-                    Session["USER_NAME"] = "GNIS";
-                    Session["EMP_ID"] = "GPAC";
-                    Session["USER_NAME"] = "Demo";
-                    Session["EMP_ID"] = "GPAC";
+                    //Session["USERID"] = "1";
+                    //Session["ProjectCode"] = "1";
+                    //Session["USER_NAME"] = "GNIS";
+                    //Session["EMP_ID"] = "GPAC";
+                    //Session["USER_NAME"] = "Demo";
+                    //Session["EMP_ID"] = "GPAC";
+
+                    Response.Redirect("LoginPage.aspx");
                 }
 
             }

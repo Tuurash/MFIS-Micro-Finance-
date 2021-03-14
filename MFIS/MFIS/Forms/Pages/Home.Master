@@ -2,7 +2,8 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+
+<head runat="server">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Generation Next IT Solution Ltd | GPAC Software</title>
@@ -48,9 +49,9 @@
     </asp:ContentPlaceHolder>
 
     <script type="text/javascript">
-        var u_s_id = '<%=Session["USERID"].ToString() %>';
+        var u_s_id = '<%#Session["USERID"].ToString() %>';
         $(document).ready(function () {
-            var u_s_id = '<%=Session["USERID"].ToString() %>';
+            var u_s_id = '<%#Session["USERID"].ToString() %>';
             //alert(u_s_id);
             $.ajax({
                 url: '../Scripts/home/admin/dashboard/User_Privileges.ashxd',
@@ -88,9 +89,9 @@
             user_name();
         });
         function user_name() {
-            var u_s_id = '<%=Session["USERID"].ToString() %>';
-            var u_s_name = '<%=Session["USER_NAME"].ToString() %>';
-            var u_emp_id = '<%=Session["EMP_ID"].ToString() %>';
+            var u_s_id = '<%#Session["USERID"].ToString() %>';
+            var u_s_name = '<%#Session["USER_NAME"].ToString() %>';
+            var u_emp_id = '<%#Session["EMP_ID"].ToString() %>';
             $("#user_img_1").attr("src", "../Scripts/system/images/icon/" + u_emp_id + ".jpg");
             $("#user_img_2").attr("src", "../Scripts/system/images/icon/" + u_emp_id + ".jpg");
             $('#msg').html(u_s_name);
@@ -174,84 +175,44 @@
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
-                <%--    <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>--%>
+
                 <section class="sidebar">
                     <ul class="sidebar-menu">
-                        <%--      <ul class="sidebar-menu" data-widget="tree">--%>
+                        <%--Deposit--%>
                         <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-edit"></i><span>Accounts 0</span>
+                            <a href="../Scripts/Forms/Sales/SalesMainForm/">
+                                <i class="fa fa-edit"></i><span>Deposit</span>
                                 <span class="pull-right-container">
                                     <i class="fa fa-angle-left pull-right"></i>
                                 </span>
                             </a>
                             <ul class="treeview-menu">
-
+                                <%--Accounts--%>
                                 <li class="treeview">
-                                    <a href="../Accounts/FrmCustInfo.aspx"><i class="fa fa-circle-o"></i>Accounts           
+
+                                    <a href="#"><i class="fa fa-circle-o"></i>Accounts     
                                         <span class="pull-right-container">
                                             <i class="fa fa-angle-left pull-right"></i>
                                         </span>
                                     </a>
-
-                                    <%--<a href="../Forms/Accounts/FrmCustInfo.aspx"><i class="fa fa-circle-o"></i>Accounts           
-                                        <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
-                                    </a>--%>
-
-                                    <%--<ul class="treeview-menu">
-                                        <li class="treeview">
-                                            <a href="#"><i class="fa fa-circle-o"></i>Accounts 1                   
-                                                <span class="pull-right-container">
-                                                    <i class="fa fa-angle-left pull-right"></i>
-                                                </span>
-                                            </a>
-                                            <ul class="treeview-menu">
-                                                <li><a href="../Forms/Accounts/FrmCustInfo.aspx"><i class="fa fa-circle-o"></i>Customer Info</a></li>
-                                                <li><a href="#"><i class="fa fa-circle-o"></i>Account Code</a></li>
-                                                <li><a href="#"><i class="fa fa-circle-o"></i>Opening Balance</a></li>
-                                                <li><a href="#"><i class="fa fa-circle-o"></i>Receipt Voucher</a></li>
-                                                <li><a href="#"><i class="fa fa-circle-o"></i>Payment Voucher</a></li>
-                                                <li><a href="../Scripts/Forms/Account/ContraEntry/"><i class="fa fa-circle-o"></i>Contra Entry</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>--%>
+                                    <ul class="treeview-menu">
+                                        <li><a href="../Accounts/FrmCustInfo.aspx"><i class="fa fa-circle-o"></i>Member Information</a></li>
+                                        <li><a href="../Accounts/FrmMemberView.aspx"><i class="fa fa-circle-o"></i>Member List</a>     </li>
+                                        <li><a href="../Accounts/FrmAccReg.aspx"><i class="fa fa-circle-o"></i>Account Registration</a></li>
+                                        <li><a href="../Accounts/NomineePage.aspx"><i class="fa fa-circle-o"></i>Nominee</a>           </li>
+                                    </ul>
                                 </li>
+                                <%--LoanDeposit--%>
+
+                                <li class="treeview">
+                                    <a href="../LoanDeposit/frmMSavingsLoan.aspx"><i class="fa fa-circle-o"></i>Loan & Savings</a>
+                                    <%--<a href="../LoanDeposit/frmDepositGrid.aspx"><i class="fa fa-circle-o"></i>Loan & Savings</a>--%>
+                                </li>
+
                             </ul>
                         </li>
-                        <li class="treeview">
-                            <a href="../Scripts/Forms/Sales/SalesMainForm/">
-                                <i class="fa fa-edit"></i><span>Sales</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="../Scripts/Forms/Purchase/PurchaseMainForm/">
-                                <i class="fa fa-edit"></i><span>Purchase</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="../Scripts/Forms/Stock/StockMainForm/">
-                                <i class="fa fa-edit"></i><span>Stock</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                        </li>
+
+
                     </ul>
 
                 </section>
@@ -341,5 +302,6 @@
 
     </form>
 </body>
+
 </html>
 

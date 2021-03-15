@@ -86,16 +86,10 @@
     <Content Include="Forms\Accounts\NomineePage.aspx" />
     <Content Include="Forms\Images\autography.png" />
     <Content Include="Forms\Images\ProfileImage.png" />
-    <Content Include="Forms\Deposit\LoanDeposit\frmDepositGrid.aspx" />
-    <Content Include="Forms\Deposit\LoanDeposit\frmMSavingsLoan.aspx" />
     <Content Include="Forms\LoanDeposit\frmDepositGrid.aspx" />
     <Content Include="Forms\LoanDeposit\frmMSavingsLoan.aspx" />
     <Content Include="Forms\Pages\Dashboard.aspx" />
     <Content Include="packages.config" />
-    <Content Include="Forms\Deposit\Scripts\bootstrap.min.css" />
-    <Content Include="Forms\Deposit\Scripts\bootstrap.min.js" />
-    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.slim.min.map" />
-    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.min.map" />
     <Content Include="Forms\Accounts\DistrictList.json" />
     <Content Include="Forms\Pages\LoginPage.aspx" />
     <Content Include="Forms\Scripts\bootstrap.min.css" />
@@ -1709,15 +1703,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Forms\Deposit\Scripts\jquery-3.5.1.intellisense.js" />
-    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.js" />
-    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.min.js" />
-    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.slim.js" />
-    <Content Include="Forms\Deposit\Scripts\jquery-3.5.1.slim.min.js" />
-    <Content Include="Forms\Deposit\MemberInformation\FrmMemberView.aspx" />
-    <Content Include="Forms\Deposit\MemberInformation\FrmCustInfo.aspx" />
-    <Content Include="Forms\Deposit\MemberInformation\AccountRegistrationPage.aspx" />
-    <Content Include="Forms\Deposit\MemberInformation\NomineePage.aspx" />
     <Content Include="Reports\ReportViewer.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -1750,21 +1735,6 @@
     <Compile Include="Forms\Accounts\NomineePage.aspx.designer.cs">
       <DependentUpon>NomineePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Deposit\LoanDeposit\frmDepositGrid.aspx.cs">
-      <DependentUpon>frmDepositGrid.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\Deposit\LoanDeposit\frmDepositGrid.aspx.designer.cs">
-      <DependentUpon>frmDepositGrid.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Deposit\Models\DistrictModel.cs" />
-    <Compile Include="Forms\Deposit\LoanDeposit\frmMSavingsLoan.aspx.cs">
-      <DependentUpon>frmMSavingsLoan.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\Deposit\LoanDeposit\frmMSavingsLoan.aspx.designer.cs">
-      <DependentUpon>frmMSavingsLoan.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Forms\LoanDeposit\frmDepositGrid.aspx.cs">
       <DependentUpon>frmDepositGrid.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1779,6 +1749,10 @@
     <Compile Include="Forms\LoanDeposit\frmMSavingsLoan.aspx.designer.cs">
       <DependentUpon>frmMSavingsLoan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Models\device.cs" />
+    <Compile Include="Forms\Models\DeviceInfoRoot.cs" />
+    <Compile Include="Forms\Models\DistrictModel.cs" />
+    <Compile Include="Forms\Models\os.cs" />
     <Compile Include="Forms\Pages\Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1801,9 +1775,6 @@
     <Compile Include="Forms\Pages\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Pages\Models\device.cs" />
-    <Compile Include="Forms\Pages\Models\DeviceInfoRoot.cs" />
-    <Compile Include="Forms\Pages\Models\os.cs" />
     <Compile Include="Forms\Scripts\System\admin\priviledge\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1822,35 +1793,6 @@
     <Compile Include="Forms\Scripts\System\include\config\connection\db_class.cs" />
     <Compile Include="Forms\Scripts\System\Report_class.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\Deposit\MemberInformation\FrmMemberView.aspx.cs">
-      <DependentUpon>FrmMemberView.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\Deposit\MemberInformation\FrmMemberView.aspx.designer.cs">
-      <DependentUpon>FrmMemberView.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Deposit\MemberInformation\FrmCustInfo.aspx.cs">
-      <DependentUpon>FrmCustInfo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\Deposit\MemberInformation\FrmCustInfo.aspx.designer.cs">
-      <DependentUpon>FrmCustInfo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Deposit\MemberInformation\AccountRegistrationPage.aspx.cs">
-      <DependentUpon>AccountRegistrationPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\Deposit\MemberInformation\AccountRegistrationPage.aspx.designer.cs">
-      <DependentUpon>AccountRegistrationPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Deposit\DBConnector.cs" />
-    <Compile Include="Forms\Deposit\MemberInformation\NomineePage.aspx.cs">
-      <DependentUpon>NomineePage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Forms\Deposit\MemberInformation\NomineePage.aspx.designer.cs">
-      <DependentUpon>NomineePage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Reports\LastPaymentLD_Dateset.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

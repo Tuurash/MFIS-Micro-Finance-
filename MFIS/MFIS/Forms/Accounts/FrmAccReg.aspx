@@ -72,15 +72,9 @@
                                                 </tr>
 
                                                 <%--Passbook no--%>
-                                                <%--<tr>
-                                    <td>
-                                        <p style="font: small">Passbook no:</p>
-                                    </td>
-                                    <td colspan="3">
-                                        <asp:TextBox ID="TxtFName" runat="server" CssClass="form-control"></asp:TextBox></td>
-                                </tr>--%>
 
-                                                <%--Savings Account no--%>
+
+                                                <%--TxtSV_AccNo--%>
                                                 <tr>
                                                     <td>
                                                         <p style="font: small">Savings Account no:</p>

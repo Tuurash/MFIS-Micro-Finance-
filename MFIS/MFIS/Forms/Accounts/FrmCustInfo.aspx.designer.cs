@@ -58,13 +58,13 @@ namespace MFIS.Forms.Accounts {
         protected global::System.Web.UI.WebControls.TextBox TxtSlNoAll;
         
         /// <summary>
-        /// TxtSlNo control.
+        /// txtPrjCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtSlNo;
+        protected global::System.Web.UI.WebControls.TextBox txtPrjCode;
         
         /// <summary>
         /// TxtAdDate control.
@@ -328,6 +328,15 @@ namespace MFIS.Forms.Accounts {
         protected global::System.Web.UI.WebControls.Button btnInsert;
         
         /// <summary>
+        /// btnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
+        
+        /// <summary>
         /// btnView control.
         /// </summary>
         /// <remarks>
@@ -335,6 +344,15 @@ namespace MFIS.Forms.Accounts {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnView;
+        
+        /// <summary>
+        /// btnAccReg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnAccReg;
         
         /// <summary>
         /// btnCancel control.

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MFIS.Pages;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -239,11 +240,7 @@ namespace MFIS.Forms.LoanDeposit
                 {
                     sInsertStatus = db.ExecuteNonQuery(query);
                 }
-                catch (Exception exc)
-                {
-
-                    throw;
-                }
+                catch (Exception) { }
                 if (sInsertStatus > 0)
                 {
                     lblSAPaymentStatus.InnerText = "Deposit Entry Done: " + txtSAamount.Text + " taka";

@@ -1,5 +1,5 @@
-﻿using MFIS.Pages;
-using MFIS.Pages.Models;
+﻿using MFIS.Models;
+using MFIS.Pages;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -326,7 +326,7 @@ namespace MFIS.Pages
                         string UserInfo = @"delete from User_Now where UserID='" + Session["USERID"] + "'";
                         db.ExecuteNonQuery(UserInfo);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         //throw new Exception(ex.Message);
                     }

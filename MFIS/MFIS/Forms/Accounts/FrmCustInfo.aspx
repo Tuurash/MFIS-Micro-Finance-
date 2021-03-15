@@ -5,29 +5,26 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    <div class="col">
+    <div class="col" align="center">
 
         <%--##########--%>
-
-        <div class="d-flex justify-content-center">
-
-            <asp:DropDownList ID="dropdownSearchCriteria" runat="server" CssClass="form-control">
-                <asp:ListItem Text="Select Search Criteria" Value="select"></asp:ListItem>
-                <asp:ListItem Text="Search By Serial No " Value="Serial"></asp:ListItem>
-                <asp:ListItem Text="Search By A/C type " Value="AccountType"></asp:ListItem>
-                <asp:ListItem Text="Search By Customer ID " Value="CustomerID"></asp:ListItem>
-                <asp:ListItem Text="Search By NID " Value="NID"></asp:ListItem>
-            </asp:DropDownList>
-
-            <div class="input-group rounded col-md-12 col-lg-12 col-sm-12">
-                <asp:TextBox type="search" runat="server" ID="txtSearch" class="form-control rounded" placeholder="Search"></asp:TextBox>
-                <span class="input-group-text border-0" id="search-addon">
-                    <a runat="server" id="A1" onserverclick="btnSearch_Click">Search</a>
-                </span>
-            </div>
-
-        </div>
-
+        <table>
+            <tr>
+                <td>
+                    <asp:DropDownList ID="dropdownSearchCriteria" runat="server" CssClass="form-control">
+                        <asp:ListItem Text="Select Search Criteria" Value="select"></asp:ListItem>
+                        <asp:ListItem Text="Search By Serial No " Value="Serial"></asp:ListItem>
+                        <asp:ListItem Text="Search By A/C type " Value="AccountType"></asp:ListItem>
+                        <asp:ListItem Text="Search By Customer ID " Value="CustomerID"></asp:ListItem>
+                        <asp:ListItem Text="Search By NID " Value="NID"></asp:ListItem>
+                    </asp:DropDownList></td>
+                <td>
+                    <asp:TextBox type="search" runat="server" ID="txtSearch" class="form-control rounded" placeholder="Search"></asp:TextBox></td>
+                <td><a runat="server" id="A1" class="btn btn-default" onserverclick="btnSearch_Click">Search</a></td>
+            </tr>
+            <tr>
+        </table>
+        <br />
         <%--##############--%>
 
 
@@ -56,7 +53,7 @@
                                     <p style="font: small; align-content: center">Branch Serial No: </p>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TxtSlNo" required runat="server" CssClass="form-control"></asp:TextBox></td>
+                                    <asp:TextBox ID="txtPrjCode" required runat="server" Enabled="false" CssClass="form-control"></asp:TextBox></td>
                                 <td align="center">
                                     <p style="font: small; align-content: center">Date: </p>
                                 </td>
@@ -183,14 +180,6 @@
                                     <asp:TextBox ID="TxtCountry" runat="server" CssClass="form-control" Text="Bangladeshi"></asp:TextBox></td>
                             </tr>
 
-                            <%-- <tr>
-                                    <td>
-                                        <p style="font: small">City/District</p>
-                                    </td>
-                                    <td colspan="3">
-                                        <asp:TextBox ID="TxtCityDistrict" runat="server" CssClass="form-control"></asp:TextBox></td>
-                                </tr>--%>
-
                             <tr>
                                 <td>
                                     <p style="font: small">Post Code</p>
@@ -316,10 +305,23 @@
 
                     <br />
 
-                    <div id="btnPanel" class="d-flex">
-                        <asp:Button ID="btnInsert" runat="server" Text="Save" class="btn btn-light col" OnClick="btnInsert_Click" />
-                        <asp:LinkButton ID="btnView" runat="server" Text="View" CssClass="btn btn-light col" OnClick="btnView_Click"></asp:LinkButton><br />
-                        <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-light col" OnClick="btnCancel_Click"></asp:LinkButton>
+                    <div id="btnPanel">
+                        <table>
+                            <tr>
+                                <td>
+                                    <asp:Button ID="btnInsert" runat="server" Text="Save" class="btn btn-default" OnClick="btnInsert_Click" /></td>
+                                <td>
+                                    <asp:Button ID="btnUpdate" runat="server" Text="Update" class="btn btn-default" OnClick="btnUpdate_Click" /></td>
+                                <td>
+                                    <asp:LinkButton ID="btnView" runat="server" Text="View" CssClass="btn btn-default" OnClick="btnView_Click"></asp:LinkButton><br />
+                                </td>
+                                <td>
+                                    <asp:LinkButton ID="btnAccReg" runat="server" Text="A/C Reg" CssClass="btn btn-default" OnClick="btnAccReg_Click"></asp:LinkButton><br />
+                                </td>
+                                <td>
+                                    <asp:LinkButton ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" OnClick="btnCancel_Click"></asp:LinkButton></td>
+                            </tr>
+                        </table>
                     </div>
 
                 </div>

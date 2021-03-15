@@ -1,4 +1,5 @@
 ﻿using MFIS.Models;
+using MFIS.Pages;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
 
 namespace MFIS.Forms.Accounts
 {
@@ -22,6 +24,12 @@ namespace MFIS.Forms.Accounts
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["ProjectCode"] != null)
+            {
+                txtPrjCode.Text = Session["ProjectCode"].ToString();
+
+            }
+            else { Response.Redirect("~/Forms/Pages/LoginPage.aspx"); }
             //GetDeviceInfo();
             if (Request.QueryString["AutoGenSlNo"] != null)
             {
@@ -43,25 +51,6 @@ namespace MFIS.Forms.Accounts
                 FillComAreaName();
             }
         }
-
-        //private void GetDeviceInfo()
-        //{
-        //    device obj_device = new device();
-        //    var DataObj = new List<DeviceInfoRoot>();
-
-        //    string json = new WebClient().DownloadString("http://api.userstack.com/detect?access_key=26e642baf121685bb63cf249ef70d791&ua=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64;%20rv:86.0)%20Gecko/20100101%20Firefox/86.0");
-        //    DeviceInfoRoot obj = JsonConvert.DeserializeObject<DeviceInfoRoot>(json);
-        //    DataObj.Add(obj);
-
-        //    foreach (var data in DataObj)
-        //    {
-        //        string os = data.os.name;
-        //        string mobile = data.device.is_mobile_device.ToString();
-        //        string brand = data.device.brand;
-        //        string brandCode = data.device.brand_code;
-        //    }
-
-        //}
 
         private void FillDistrictCity()
         {
@@ -97,7 +86,7 @@ namespace MFIS.Forms.Accounts
             if (dt.Rows.Count > 0)
             {
                 TxtSlNoAll.Text = dt.Rows[0]["SlNoAll"].ToString();
-                TxtSlNo.Text = dt.Rows[0]["SlNo"].ToString();
+                //TxtSlNo.Text = dt.Rows[0]["SlNo"].ToString();
                 txtCustIDNO.Text = dt.Rows[0]["CustIDNO"].ToString();
                 TxtAccName.Text = dt.Rows[0]["AccName"].ToString();
                 TxtCustName.Text = dt.Rows[0]["CustName"].ToString();
@@ -132,7 +121,7 @@ namespace MFIS.Forms.Accounts
         public void ClearAll()
         {
 
-            TxtSlNoAll.Text = TxtSlNo.Text = txtCustIDNO.Text = TxtAccName.Text = TxtCustName.Text = TxtFName.Text = TxtMName.Text = TxtSpouse.Text = TxtParmanent_Add.Text = TxtPresent_Add.Text = TxtPS.Text = "";
+            TxtSlNoAll.Text = txtCustIDNO.Text = TxtAccName.Text = TxtCustName.Text = TxtFName.Text = TxtMName.Text = TxtSpouse.Text = TxtParmanent_Add.Text = TxtPresent_Add.Text = TxtPS.Text = "";
             TxtPostCode.Text = TxtTel.Text = TxtMobileNo.Text = TxtMail.Text = TxtRefAccNo.Text = TxtRefName.Text = TxtNIDNo.Text = "";
 
         }
@@ -199,8 +188,6 @@ namespace MFIS.Forms.Accounts
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
-
-
             int insertStatus = 0;
             if (Request.QueryString["AutoGenSlNo"] != null)
             {
@@ -215,20 +202,10 @@ namespace MFIS.Forms.Accounts
             }
             else if (txtCustIDNO.Text != "")
             {
-                query = @"select * from CustInfo where CustIDNO ='" + txtCustIDNO.Text + "'";
-                dt = db.ExecuteQuery(query);
-                if (dt.Rows.Count > 0)
-                {
-                    query = @"UPDATE [MFiS-4].[dbo].[CustInfo] SET [AccType] = '" + ComAccType.SelectedValue + "',[AccName] = '" + TxtAccName.Text + "' ,[CustName] = '" + TxtCustName.Text + "',[Sex] = '" + ComSex.SelectedValue + "',[FName] ='" + TxtFName.Text + "',[MName] ='" + TxtMName.Text + "',[SpouseName] = '" + TxtSpouse.Text + "',[DateOfBirth] = '" + TxtDOB.Text + "',[Parmanent_Add] ='" + TxtParmanent_Add.Text + "',[Present_Add] = '" + TxtPresent_Add.Text + "',[PS] ='" + TxtPS.Text + "',[CityDistrict] = '" + TxtCityDistrict.SelectedValue + "',[PostCode] = '" + TxtPostCode.Text + "',[Country] ='" + TxtCountry.Text + "',[Tel] = '" + TxtTel.Text + "',[Mobile] ='" + TxtMobileNo.Text + "',[Mail] ='" + TxtMail.Text + "',[Religion] = '" + ComReligion.SelectedValue + "',[Occupation] = '" + TxtOccupation.SelectedValue + "',[RefAccNo] = '" + TxtRefAccNo.Text + "',[RefName] ='" + TxtRefName.Text + "',[NIDNo] ='" + TxtNIDNo.Text + "' WHERE AutoSLNo = " + AutoGenSlNo + "";
-                }
+                query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,BranchCode,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,FName,MName,SpouseName,DateOfBirth,Parmanent_Add,Present_Add,PS,CityDistrict,PostCode,Country,Tel,Mobile,Mail,Religion,Occupation,RefAccNo,RefName,NIDNo) 
+                      VALUES (" + TxtSlNoAll.Text + "," + TxtSlNoAll.Text + ", '" + TxtAdDate.Text + "','" + txtPrjCode.Text + "', '" + CmbAreaCode.SelectedValue + "', '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.SelectedValue + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "')";
 
 
-                else
-                {
-                    query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,FName,MName,SpouseName,DateOfBirth,Parmanent_Add,Present_Add,PS,CityDistrict,PostCode,Country,Tel,Mobile,Mail,Religion,Occupation,RefAccNo,RefName,NIDNo) 
-                      VALUES (" + TxtSlNoAll.Text + "," + TxtSlNoAll.Text + ", '" + TxtAdDate.Text + "', '" + CmbAreaCode.SelectedValue + "', '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.SelectedValue + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "')";
-
-                }
             }
             try { insertStatus = db.ExecuteNonQuery(query); }
             catch (Exception exc) { throw exc; }
@@ -254,6 +231,52 @@ namespace MFIS.Forms.Accounts
         protected void btnView_Click(object sender, EventArgs e)
         {
             Response.Redirect("FrmMemberView.aspx");
+        }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int US = 0;
+
+            if (txtCustIDNO.Text != "")
+            {
+                query = @"select * from CustInfo where CustIDNO ='" + txtCustIDNO.Text + "'";
+                try
+                {
+                    dt = db.ExecuteQuery(query);
+                }
+                catch (Exception) { }
+                if (dt.Rows.Count > 0)
+                {
+                    query = @"UPDATE [MFiS-4].[dbo].[CustInfo] SET [AccType] = '" + ComAccType.SelectedValue + "',[AccName] = '" + TxtAccName.Text + "' ,[CustName] = '" + TxtCustName.Text + "',[Sex] = '" + ComSex.SelectedValue + "',[FName] ='" + TxtFName.Text + "',[MName] ='" + TxtMName.Text + "',[SpouseName] = '" + TxtSpouse.Text + "',[DateOfBirth] = '" + TxtDOB.Text + "',[Parmanent_Add] ='" + TxtParmanent_Add.Text + "',[Present_Add] = '" + TxtPresent_Add.Text + "',[PS] ='" + TxtPS.Text + "',[CityDistrict] = '" + TxtCityDistrict.SelectedValue + "',[PostCode] = '" + TxtPostCode.Text + "',[Country] ='" + TxtCountry.Text + "',[Tel] = '" + TxtTel.Text + "',[Mobile] ='" + TxtMobileNo.Text + "',[Mail] ='" + TxtMail.Text + "',[Religion] = '" + ComReligion.SelectedValue + "',[Occupation] = '" + TxtOccupation.SelectedValue + "',[RefAccNo] = '" + TxtRefAccNo.Text + "',[RefName] ='" + TxtRefName.Text + "',[NIDNo] ='" + TxtNIDNo.Text + "' WHERE AutoSLNo = " + AutoGenSlNo + "";
+                }
+                try { US = db.ExecuteNonQuery(query); }
+                catch (Exception exc) { throw exc; }
+                if (US != 0)
+                {
+                    ClearAll();
+                }
+            }
+        }
+
+        protected void btnAccReg_Click(object sender, EventArgs e)
+        {
+            string CustomerID = "";
+
+            if (txtCustIDNO.Text != "")
+            {
+                query = @"select * from CustInfo where CustIDNO ='" + txtCustIDNO.Text + "'";
+                try
+                {
+                    dt = db.ExecuteQuery(query);
+                }
+                catch (Exception) { }
+                if (dt.Rows.Count > 0)
+                {
+                    CustomerID = txtCustIDNO.Text;
+                    Response.Redirect("FrmAccReg.aspx?CustomerID=" + CustomerID);
+                }
+
+            }
         }
 
     }

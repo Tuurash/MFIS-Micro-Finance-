@@ -44,16 +44,14 @@ namespace MFIS.Forms.Pages
 
             }
             catch (Exception)
-            {
+            { }
 
-                throw;
-            }
 
             HttpContext.Current.Session["USERID"] = null;
             HttpContext.Current.Session.Clear();
             HttpContext.Current.Session.RemoveAll();
             HttpContext.Current.Session.Abandon();
-            Response.Redirect("~/default.aspx");
+            Response.Redirect("../Pages/LoginPage.aspx");
         }
     }
 }

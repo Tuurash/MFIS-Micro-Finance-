@@ -273,8 +273,8 @@
                             <td colspan="3">
                                 <asp:TextBox ID="TxtMobileNo" runat="server" CssClass="form-control" placeholder="01712xxxxxx"></asp:TextBox>
                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                                    ControlToValidate="TxtMobileNo" ErrorMessage="RegularExpressionValidator"
-                                    ValidationExpression="[0-9]{12}"></asp:RegularExpressionValidator>
+                                    ControlToValidate="TxtMobileNo" ErrorMessage="11 Character Required"
+                                    ValidationExpression="[0-9]{11}"></asp:RegularExpressionValidator>
                             </td>
 
                         </tr>

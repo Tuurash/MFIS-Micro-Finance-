@@ -46,21 +46,6 @@ namespace MFIS.Forms.Accounts
 
         }
 
-        //private void FillCustomerDropdown()
-        //{
-        //    query = @"select * from CustInfo ";
-        //    dt = db.ExecuteQuery(query);
-        //    txtCustIDNO.DataSource = dt;
-        //    txtCustIDNO.DataTextField = "CustIDNO";
-        //    txtCustIDNO.DataValueField = "CustIDNO";
-        //    txtCustIDNO.DataBind();
-        //    if (CustomerID != "")
-        //    {
-        //        txtCustIDNO.SelectedValue = CustomerID;
-        //    }
-        //}
-
-
 
 
         private void FillSchemeDropdown()

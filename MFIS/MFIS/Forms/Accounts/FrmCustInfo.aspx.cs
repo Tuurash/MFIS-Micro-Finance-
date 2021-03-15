@@ -1,4 +1,5 @@
-﻿using MFIS.Models;
+﻿using MFIS.Forms.Pages;
+using MFIS.Models;
 using MFIS.Pages;
 using Newtonsoft.Json;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.UI;
@@ -188,6 +190,7 @@ namespace MFIS.Forms.Accounts
 
         protected void btnInsert_Click(object sender, EventArgs e)
         {
+
             int insertStatus = 0;
             if (Request.QueryString["AutoGenSlNo"] != null)
             {
@@ -196,14 +199,14 @@ namespace MFIS.Forms.Accounts
 
                 if (dt.Rows.Count > 0)
                 {
-                    query = @"UPDATE [MFiS-4].[dbo].[CustInfo] SET [AccType] = '" + ComAccType.SelectedValue + "',[AccName] = '" + TxtAccName.Text + "' ,[CustName] = '" + TxtCustName.Text + "',[Sex] = '" + ComSex.SelectedValue + "',[FName] ='" + TxtFName.Text + "',[MName] ='" + TxtMName.Text + "',[SpouseName] = '" + TxtSpouse.Text + "',[DateOfBirth] = '" + TxtDOB.Text + "',[Parmanent_Add] ='" + TxtParmanent_Add.Text + "',[Present_Add] = '" + TxtPresent_Add.Text + "',[PS] ='" + TxtPS.Text + "',[CityDistrict] = '" + TxtCityDistrict.SelectedValue + "',[PostCode] = '" + TxtPostCode.Text + "',[Country] ='" + TxtCountry.Text + "',[Tel] = '" + TxtTel.Text + "',[Mobile] ='" + TxtMobileNo.Text + "',[Mail] ='" + TxtMail.Text + "',[Religion] = '" + ComReligion.SelectedValue + "',[Occupation] = '" + TxtOccupation.SelectedValue + "',[RefAccNo] = '" + TxtRefAccNo.Text + "',[RefName] ='" + TxtRefName.Text + "',[NIDNo] ='" + TxtNIDNo.Text + "' WHERE AutoSLNo = " + AutoGenSlNo + "";
+                    query = @"UPDATE [MFiS-4].[dbo].[CustInfo] SET [AccType] = '" + ComAccType.SelectedValue + "',[AccName] = '" + TxtAccName.Text + "' ,[CustName] = '" + TxtCustName.Text + "',[Sex] = '" + ComSex.SelectedValue + "',[FName] ='" + TxtFName.Text + "',[MName] ='" + TxtMName.Text + "',[SpouseName] = '" + TxtSpouse.Text + "',[DateOfBirth] = '" + TxtDOB.Text + "',[Parmanent_Add] ='" + TxtParmanent_Add.Text + "',[Present_Add] = '" + TxtPresent_Add.Text + "',[PS] ='" + TxtPS.Text + "',[CityDistrict] = '" + TxtCityDistrict.SelectedValue + "',[PostCode] = '" + TxtPostCode.Text + "',[Country] ='" + TxtCountry.Text + "',[Tel] = '" + TxtTel.Text + "',[Mobile] ='" + TxtMobileNo.Text + "',[Mail] ='" + TxtMail.Text + "',[Religion] = '" + ComReligion.SelectedValue + "',[Occupation] = '" + TxtOccupation.SelectedValue + "',[RefAccNo] = '" + TxtRefAccNo.Text + "',[RefName] ='" + TxtRefName.Text + "',[NIDNo] ='" + TxtNIDNo.Text + "',AccName_Bangla='" + Translate(TxtAccName.Text) + "', Parmanent_Add_Bangla ='" + Translate(TxtParmanent_Add.Text) + "' WHERE AutoSLNo = " + AutoGenSlNo + "";
 
                 }
             }
             else if (txtCustIDNO.Text != "")
             {
-                query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,BranchCode,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,FName,MName,SpouseName,DateOfBirth,Parmanent_Add,Present_Add,PS,CityDistrict,PostCode,Country,Tel,Mobile,Mail,Religion,Occupation,RefAccNo,RefName,NIDNo) 
-                      VALUES (" + TxtSlNoAll.Text + "," + TxtSlNoAll.Text + ", '" + TxtAdDate.Text + "','" + txtPrjCode.Text + "', '" + CmbAreaCode.SelectedValue + "', '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.SelectedValue + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "')";
+                query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,BranchCode,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,FName,MName,SpouseName,DateOfBirth,Parmanent_Add,Present_Add,PS,CityDistrict,PostCode,Country,Tel,Mobile,Mail,Religion,Occupation,RefAccNo,RefName,NIDNo,AccName_Bangla,Parmanent_Add_Bangla) 
+                      VALUES (" + TxtSlNoAll.Text + "," + TxtSlNoAll.Text + ", '" + TxtAdDate.Text + "','" + txtPrjCode.Text + "', '" + CmbAreaCode.SelectedValue + "', '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtAccName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "', '" + TxtFName.Text + "', '" + TxtMName.Text + "','" + TxtSpouse.Text + "','" + TxtDOB.Text + "', '" + TxtParmanent_Add.Text + "','" + TxtPresent_Add.Text + "', '" + TxtPS.Text + "','" + TxtCityDistrict.SelectedValue + "', '" + TxtPostCode.Text + "', '" + TxtCountry.Text + "', '" + TxtTel.Text + "','" + TxtMobileNo.Text + "', '" + TxtMail.Text + "', '" + ComReligion.SelectedValue + "', '" + TxtOccupation.SelectedValue + "','" + TxtRefAccNo.Text + "','" + TxtRefName.Text + "','" + TxtNIDNo.Text.Trim() + "','" + Translate(TxtAccName.Text) + "','" + Translate(TxtParmanent_Add.Text) + "')";
 
 
             }
@@ -235,9 +238,20 @@ namespace MFIS.Forms.Accounts
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            int US = 0;
 
-            if (txtCustIDNO.Text != "")
+            int US = 0;
+            if (Request.QueryString["AutoGenSlNo"] != null)
+            {
+                query = @"select * from CustInfo where AutoSLNo =" + AutoGenSlNo;
+                dt = db.ExecuteQuery(query);
+
+                if (dt.Rows.Count > 0)
+                {
+                    query = @"UPDATE [MFiS-4].[dbo].[CustInfo] SET [AccType] = '" + ComAccType.SelectedValue + "',[AccName] = '" + TxtAccName.Text + "' ,[CustName] = '" + TxtCustName.Text + "',[Sex] = '" + ComSex.SelectedValue + "',[FName] ='" + TxtFName.Text + "',[MName] ='" + TxtMName.Text + "',[SpouseName] = '" + TxtSpouse.Text + "',[DateOfBirth] = '" + TxtDOB.Text + "',[Parmanent_Add] ='" + TxtParmanent_Add.Text + "',[Present_Add] = '" + TxtPresent_Add.Text + "',[PS] ='" + TxtPS.Text + "',[CityDistrict] = '" + TxtCityDistrict.SelectedValue + "',[PostCode] = '" + TxtPostCode.Text + "',[Country] ='" + TxtCountry.Text + "',[Tel] = '" + TxtTel.Text + "',[Mobile] ='" + TxtMobileNo.Text + "',[Mail] ='" + TxtMail.Text + "',[Religion] = '" + ComReligion.SelectedValue + "',[Occupation] = '" + TxtOccupation.SelectedValue + "',[RefAccNo] = '" + TxtRefAccNo.Text + "',[RefName] ='" + TxtRefName.Text + "',[NIDNo] ='" + TxtNIDNo.Text + "',AccName_Bangla='" + Translate(TxtAccName.Text) + "', Parmanent_Add_Bangla ='" + Translate(TxtParmanent_Add.Text) + "' WHERE AutoSLNo = " + AutoGenSlNo + "";
+
+                }
+            }
+            else if (txtCustIDNO.Text != "")
             {
                 query = @"select * from CustInfo where CustIDNO ='" + txtCustIDNO.Text + "'";
                 try
@@ -278,6 +292,35 @@ namespace MFIS.Forms.Accounts
 
             }
         }
+
+        private string Translate(string input)
+        {
+            string Translated_Text = "";
+            Translator t = new Translator();
+            string bengaliSpeech = "";
+            try
+            {
+                Translated_Text = t.Translate(input.Trim(), "English", "Bengali");
+                if (t.Error == null)
+                {
+
+                    bengaliSpeech = t.TranslationSpeechUrl;
+                }
+                else
+                {
+                    // MessageBox.Show(t.Error.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            return Translated_Text;
+
+        }
+
 
     }
 }

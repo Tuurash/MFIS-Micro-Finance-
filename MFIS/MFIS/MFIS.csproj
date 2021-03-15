@@ -1775,6 +1775,7 @@
     <Compile Include="Forms\Pages\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Pages\Translator.cs" />
     <Compile Include="Forms\Scripts\System\admin\priviledge\default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <asp:Label runat="server" ID="lblBengali" Visible="false"></asp:Label>
 
     <div class="col" align="center">
 

@@ -13,6 +13,15 @@ namespace MFIS.Forms.Accounts {
     public partial class FrmCustInfo {
         
         /// <summary>
+        /// lblBengali control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBengali;
+        
+        /// <summary>
         /// dropdownSearchCriteria control.
         /// </summary>
         /// <remarks>

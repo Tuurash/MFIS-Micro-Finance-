@@ -22,6 +22,7 @@ namespace MFIS.Forms.MobileForms
 
         int AutoGenSlNo = 0;
         string getBranchCode = "";
+        string getStaffID = "";
         string getSlNoAll = "";
         string getSlNo = "";
         DateTime getAdDate;
@@ -30,9 +31,10 @@ namespace MFIS.Forms.MobileForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["ProjectCode"] != null)
+            if (Session["ProjectCode"] != null && Session["USERID"] != null)
             {   //BranchCode
                 getBranchCode = Session["ProjectCode"].ToString();
+                getStaffID = Session["USERID"].ToString();
                 GenerateSerialNumberByBranch();
                 GenerateCustIDNo();
                 GenerateSerialNumber();
@@ -49,7 +51,7 @@ namespace MFIS.Forms.MobileForms
 
         private void GetAreaCode()
         {
-            query = @"  select AreaCode from Area where BranchCode='" + getBranchCode + "'";
+            query = @"select AreaCode from Area_StaffWise where BranchCode='" + getBranchCode + "' and StaffID='" + getStaffID + "' and Status='Active'";
             try { dt = db.ExecuteQuery(query); } catch (Exception exc) { }
             if (dt.Rows.Count != 0)
             {
@@ -59,18 +61,18 @@ namespace MFIS.Forms.MobileForms
 
         private void GenerateCustIDNo()
         {
-            getCustIDNo = getBranchCode + "-" + int.Parse(getSlNo) + 1.ToString("D6"); ;
+            getCustIDNo = getBranchCode + "-" + int.Parse(getSlNo).ToString("D6"); ;
             txtCustIDNO.Text = getCustIDNo;
         }
 
         private void GenerateSerialNumberByBranch()
         {
-            query = @"select MAX(SlNo) as LastCount from CustInfo where BranchCode='" + getBranchCode + "'";
+            query = @"select MAX(SlNo)+1 as LastCount from CustInfo where BranchCode='" + getBranchCode + "'";
             try { dt = db.ExecuteQuery(query); } catch (Exception) { }
 
             if (dt.Rows.Count > 0)
             {
-                getSlNo = int.Parse(dt.Rows[0]["LastCount"].ToString()) + 1.ToString();
+                getSlNo = dt.Rows[0]["LastCount"].ToString();
                 if (getSlNo == "0" || getSlNo == null)
                 {
                     getSlNo = 1.ToString("D6");
@@ -81,11 +83,11 @@ namespace MFIS.Forms.MobileForms
 
         private void GenerateSerialNumber()
         {
-            query = @"SELECT MAX(SlNoAll) AS SlNoAll FROM CustInfo";
+            query = @"SELECT MAX(SlNoAll)+1 AS SlNoAll FROM CustInfo";
             dt = db.ExecuteQuery(query);
             if (dt.Rows.Count > 0)
             {
-                getSlNoAll = (int.Parse(dt.Rows[0]["SlNoAll"].ToString()) + 1).ToString();
+                getSlNoAll = int.Parse(dt.Rows[0]["SlNoAll"].ToString()).ToString();
             }
             else { getSlNoAll = "1"; }
 
@@ -148,6 +150,43 @@ namespace MFIS.Forms.MobileForms
 
             return Translated_Text;
 
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            int logoutStatus = 0;
+            string query = @"select UserID,comName from User_Now where UserId =  '" + getStaffID + "'";
+
+            DataTable dt3 = db.ExecuteQuery(query);
+
+            if (dt3.Rows.Count > 0)
+            {
+                if (dt3.Rows[0]["comName"].ToString() == System.Environment.MachineName)
+                {
+
+                    try
+                    {
+                        string UserInfo = @"delete from User_Now where UserID='" + Session["USERID"] + "'";
+                        logoutStatus = db.ExecuteNonQuery(UserInfo);
+                    }
+                    catch (Exception)
+                    {
+                        //throw new Exception(ex.Message);
+                    }
+
+                    Session.RemoveAll();
+                    Session.Abandon();
+                    //Response.Redirect("~/frmLogin.aspx");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Please try another user')</script>");
+                }
+            }
+            if (logoutStatus > 0)
+            {
+                Response.Redirect("~/Forms/Pages/LoginPage.aspx");
+            }
         }
     }
 }

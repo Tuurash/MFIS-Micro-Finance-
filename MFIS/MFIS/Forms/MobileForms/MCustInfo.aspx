@@ -60,13 +60,14 @@
                     <%-- Name --%>
                     <div class="input-group mb-3">
                         <span class="input-group-text">Name </span>
-                        <asp:TextBox runat="server" type="text" class="form-control" ID="TxtCustName" aria-describedby="basic-addon1" />
+                        <asp:TextBox runat="server" type="text" class="form-control" ID="TxtCustName" aria-describedby="basic-addon1" required />
+                        
                     </div>
 
                     <%--Gender--%>
                     <div class="input-group mb-2">
                         <span class="input-group-text">Gender</span>
-                        <asp:DropDownList ID="ComSex" runat="server" CssClass="form-control">
+                        <asp:DropDownList ID="ComSex" runat="server" CssClass="form-control" required>
                             <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
                             <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
                         </asp:DropDownList>
@@ -74,22 +75,30 @@
                     <%--Account Type--%>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon3">Account Type</span>
-                        <asp:DropDownList ID="ComAccType" runat="server" CssClass="form-control" aria-describedby="basic-addon3">
+                        <asp:DropDownList ID="ComAccType" runat="server" CssClass="form-control" aria-describedby="basic-addon3" required>
                             <asp:ListItem Text="Business Account" Value="IT"></asp:ListItem>
                             <asp:ListItem Text="Joint Account" Value="Finance"></asp:ListItem>
                             <asp:ListItem Text="Single Account" Value="Management"></asp:ListItem>
                             <asp:ListItem Text="Staff Account" Value="Management"></asp:ListItem>
                         </asp:DropDownList>
+
+                        <div class="invalid-tooltip">
+                            Please provide a valid District.
+                        </div>
                     </div>
                     <%--DateOfBirth--%>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon4">Birth Date</span>
-                        <asp:TextBox ID="TxtDOB" runat="server" CssClass="form-control" TextMode="Date" aria-describedby="basic-addon4"></asp:TextBox>
+                        <asp:TextBox ID="TxtDOB" runat="server" CssClass="form-control" TextMode="Date" aria-describedby="basic-addon4" required></asp:TextBox>
                     </div>
                     <%--Phone Number--%>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon5">Phone </span>
-                        <asp:TextBox ID="TxtMobileNo" runat="server" CssClass="form-control" Style="padding: 20px" placeholder="01712xxxxxx" MaxLength="11" aria-describedby="basic-addon5"></asp:TextBox>
+                        <asp:TextBox ID="TxtMobileNo" runat="server" CssClass="form-control" Style="padding: 20px" placeholder="01712xxxxxx" MaxLength="11" aria-describedby="basic-addon5" required></asp:TextBox>
+
+                        <div class="invalid-tooltip">
+                            Please provide a valid Phone Number.
+                        </div>
 
                     </div>
 

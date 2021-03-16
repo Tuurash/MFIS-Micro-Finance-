@@ -212,6 +212,7 @@
     <Content Include="Forms\Scripts\dist\css\bootstrap-datepicker3.css.map" />
     <Content Include="Forms\Scripts\dist\css\bootstrap-datepicker3.standalone.css.map" />
     <Content Include="Forms\Pages\Home.Master" />
+    <Content Include="Forms\DistrictList.json" />
     <None Include="Forms\Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Forms\Scripts\bootstrap\css\bootstrap.css" />
     <Content Include="Forms\Scripts\bootstrap\css\bootstrap.min.css" />

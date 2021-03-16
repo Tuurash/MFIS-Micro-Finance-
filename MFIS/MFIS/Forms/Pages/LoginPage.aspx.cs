@@ -248,7 +248,8 @@ namespace MFIS.Pages
                         Session["USERID"] = txtUserID.Text;
                         Session["EMP_ID"] = "GPAC";
                         Session["USER_NAME"] = row["UserName"].ToString();
-                        Response.Redirect("Dashboard.aspx");
+                        //Response.Redirect("Dashboard.aspx");
+                        Response.Redirect("~/Forms/MobileForms/MCustInfo.aspx");
                     }
                 }
                 else

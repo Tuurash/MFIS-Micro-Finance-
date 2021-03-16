@@ -28,6 +28,7 @@ namespace MFIS.Forms.Accounts
         {
             if (Session["ProjectCode"] != null)
             {
+                //BranchCode
                 txtPrjCode.Text = Session["ProjectCode"].ToString();
 
             }

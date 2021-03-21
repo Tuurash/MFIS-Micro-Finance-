@@ -11,6 +11,8 @@ namespace MFIS.Forms.MobileForms
 {
     public partial class MCustReg : System.Web.UI.Page
     {
+        #region variables
+
         string query = "";
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
@@ -26,7 +28,7 @@ namespace MFIS.Forms.MobileForms
         string getCustAccNo = "";
         DateTime getMaturedDate;
 
-
+        #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,7 +51,6 @@ namespace MFIS.Forms.MobileForms
             getAdDate = DateTime.Now;
         }
 
-
         #region AccountInfo
 
         private void FillDropdownSubdepositCodeNo()
@@ -60,6 +61,12 @@ namespace MFIS.Forms.MobileForms
             ComSub_DepositScheme.DataTextField = "SubDepositCodeNo";
             ComSub_DepositScheme.DataValueField = "SubDepositCodeNo";
             ComSub_DepositScheme.DataBind();
+        }
+
+
+        protected void ComSub_DepositScheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GenerateCustAccountNo();
         }
 
 
@@ -97,6 +104,7 @@ namespace MFIS.Forms.MobileForms
 
         }
 
+
         protected void txtDuration_TextChanged(object sender, EventArgs e)
         {
             getMaturedDateFunc();
@@ -109,14 +117,15 @@ namespace MFIS.Forms.MobileForms
             return getMaturedDate;
         }
 
+
         protected void btnSubmitAccountInfo_Click(object sender, EventArgs e)
         {
             int insertStatus = 0;
             try
             {
 
-                query = @"INSERT into CustReg (SlNo,Pyear,PDate,CustIDNO,CustAccNo,SubDepositCodeNo,DurationOfMonth,MaturedDate,MInterest,InterestDrawStatus,Active_InActive,Active_InActive_Date) 
-                      VALUES ('" + TxtSlNo.Text + "','" + getAdDate.Year + "', '" + getAdDate + "', '" + txtCustIDNO.Text + "', '" + getCustAccNo + "','" + ComSub_DepositScheme.SelectedValue + "', " + txtDuration.Text + ", '" + getMaturedDateFunc() + "'," + TxtMIntr.Text + ",'" + ComInterestDrawStatus.SelectedValue + "','Active', '" + DateTime.Now + "' )";
+                query = @"INSERT into CustReg (SlNo,Pyear,PDate,CustIDNO,CustAccNo,SubDepositCodeNo,DurationOfMonth,MaturedDate,MInterest,InterestDrawStatus,Active_InActive,Active_InActive_Date,MemStatus) 
+                      VALUES ('" + TxtSlNo.Text + "','" + getAdDate.Year + "', '" + getAdDate + "', '" + txtCustIDNO.Text + "', '" + getCustAccNo + "','" + ComSub_DepositScheme.SelectedValue + "', " + txtDuration.Text + ", '" + getMaturedDateFunc() + "'," + TxtMIntr.Text + ",'" + ComInterestDrawStatus.SelectedValue + "','Active', '" + DateTime.Now + "', 'Active' )";
                 insertStatus = db.ExecuteNonQuery(query);
             }
             catch (Exception exc) { throw exc; }
@@ -165,10 +174,7 @@ namespace MFIS.Forms.MobileForms
             }
         }
 
-        protected void ComSub_DepositScheme_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GenerateCustAccountNo();
-        }
+
     }
 
 }

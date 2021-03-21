@@ -1,8 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MCustReg.aspx.cs" Inherits="MFIS.Forms.MobileForms.MCustReg" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MDeposit.aspx.cs" Inherits="MFIS.Forms.MobileForms.MDeposit" %>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>MFIS</title>
     <meta charset="etf-8">
@@ -45,9 +44,10 @@
         </div>
 
         <div class="container">
+            <%--ProgressBar--%>
             <br />
             <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%">Account Info</div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: 99%">Deposit</div>
             </div>
             <br />
 
@@ -55,48 +55,30 @@
 
                 <%-- CustAccNo --%>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Account No </span>
-                    <asp:TextBox runat="server" class="form-control" ID="txtCustAccNo" aria-describedby="basic-addon1" Enabled="false" Text="Select Scheme to Auto-generate"></asp:TextBox>
-                    <%--<asp:Label runat="server" CssClass="form-control" ID="txtCustAccNo"></asp:Label>--%>
+                    <span class="input-group-text">Account No</span>
+                    <asp:Label runat="server" CssClass="form-control" ID="txtCustAccNo"></asp:Label>
                 </div>
 
-                <%--Deposit Scheme/ SubdepositCodeNo --%>
-                <div class="input-group mb-2">
-                    <span class="input-group-text">Deposit Scheme</span>
-                    <asp:DropDownList ID="ComSub_DepositScheme" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ComSub_DepositScheme_SelectedIndexChanged" required>
-                    </asp:DropDownList>
-                </div>
-
-                <%-- Month Duration --%>
+                <%-- Amount --%>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Duration(Months)</span>
-                    <asp:TextBox runat="server" type="text" class="form-control" ID="txtDuration" aria-describedby="basic-addon1" AutoPostBack="true" OnTextChanged="txtDuration_TextChanged" required />
+                    <span class="input-group-text">Amount</span>
+                    <asp:TextBox runat="server" type="text" class="form-control" ID="txtAmount" aria-describedby="basic-addon1" AutoPostBack="true" OnTextChanged="txtAmount_TextChanged" required />
                 </div>
 
-                <%-- Min Interest --%>
+                <%-- Print btn --%>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Interest</span>
-                    <asp:TextBox runat="server" type="text" class="form-control" ID="TxtMIntr" aria-describedby="basic-addon1" required />
-                </div>
-
-                <%--Interest Draw status --%>
-                <div class="input-group mb-2">
-                    <span class="input-group-text">Interest Draw status</span>
-                    <asp:DropDownList ID="ComInterestDrawStatus" runat="server" CssClass="form-control" required>
-                        <asp:ListItem Text="Monthly" Value="Monthly"></asp:ListItem>
-                        <asp:ListItem Text="Quarterly" Value="Quarterly"></asp:ListItem>
-                        <asp:ListItem Text="HalfYearly" Value="HalfYearly"></asp:ListItem>
-                        <asp:ListItem Text="Annually" Value="Annually"></asp:ListItem>
-                        <asp:ListItem Text="Other" Value="Other"></asp:ListItem>
-                    </asp:DropDownList>
+                    <div align="center">
+                        <asp:LinkButton runat="server" ID="btnPrintDepositReciept" CssClass="btn btn-sm btn-light" Text="Print"></asp:LinkButton>
+                    </div>
                 </div>
 
 
                 <%--btn--%>
                 <div class="footer">
-                    <p class="justify-content-center">
-                        <asp:Button ID="btnSubmitAccountInfo" CssClass="btn" Style="background-color: #221181; width: 100%; color: white" runat="server" Text="Save & Continue" OnClick="btnSubmitAccountInfo_Click" />
-                    </p>
+
+                    <asp:LinkButton ID="btnSkip" CssClass="btn" Style="background-color: #221181; width: 100px; color: white" runat="server" Text="Skip" OnClick="btnSkip_Click" />
+                    <asp:Button ID="btnSaveDeposit" CssClass="btn btn-success" Style="width: 70%; color: white" runat="server" Text="Finish" OnClick="btnSaveDeposit_Click" />
+
                 </div>
 
             </div>
@@ -106,6 +88,4 @@
     </form>
 
 </body>
-
-
 </html>

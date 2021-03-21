@@ -1,10 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MCustInfo.aspx.cs" Inherits="MFIS.Forms.MobileForms.MCustInfo" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
 <html lang="en">
 
-<head>
+<head runat="server">
     <title>MFIS</title>
     <meta charset="etf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,18 +32,13 @@
         <asp:ScriptManager runat="server" ID="Script1"></asp:ScriptManager>
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
 
-        <div class="col-12">
-            <table>
-                <tr>
-                    <td class="col">
-                        <p>
-                            <asp:Label runat="server" ID="lblStaffName"></asp:Label>
-                        </p>
-                    </td>
-                    <td class="col" align="right">
-                        <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click" /></td>
-                </tr>
-            </table>
+
+
+        <div class="form-row">
+            <div class="col-12" align="right">
+                <asp:Label runat="server" ID="lblStaffName"></asp:Label>&nbsp &nbsp &nbsp
+                    <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click" /></td>
+            </div>
         </div>
 
         <div class="text-white" style="background-color: #221181">
@@ -56,8 +52,8 @@
 
         <div class="container">
             <br />
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%; height=50px">Custumer Info</div>
+            <div class="progress" style="height: 35px">
+                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">Custumer Info</div>
             </div>
             <br />
 
@@ -67,14 +63,14 @@
 
                 <%-- Name --%>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">Name </span>
+                    <span class="input-group-text col-3">Name </span>
                     <asp:TextBox runat="server" type="text" class="form-control" ID="TxtCustName" aria-describedby="basic-addon1" required />
 
                 </div>
 
                 <%--Gender--%>
                 <div class="input-group mb-2">
-                    <span class="input-group-text">Gender</span>
+                    <span class="input-group-text col-3">Gender</span>
                     <asp:DropDownList ID="ComSex" runat="server" CssClass="form-control" required>
                         <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
                         <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
@@ -83,11 +79,12 @@
 
                 <%--Account Type--%>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">Account Type</span>
+                    <span class="input-group-text col-3" id="basic-addon3">Ac Type</span>
                     <asp:DropDownList ID="ComAccType" runat="server" CssClass="form-control" aria-describedby="basic-addon3" required>
+                        <asp:ListItem Text="Single Account" Value="Management"></asp:ListItem>
                         <asp:ListItem Text="Business Account" Value="IT"></asp:ListItem>
                         <asp:ListItem Text="Joint Account" Value="Finance"></asp:ListItem>
-                        <asp:ListItem Text="Single Account" Value="Management"></asp:ListItem>
+
                         <asp:ListItem Text="Staff Account" Value="Management"></asp:ListItem>
                     </asp:DropDownList>
 
@@ -97,12 +94,17 @@
                 </div>
                 <%--DateOfBirth--%>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon4">Birth Date</span>
-                    <asp:TextBox ID="TxtDOB" runat="server" CssClass="form-control" TextMode="Date" aria-describedby="basic-addon4" required></asp:TextBox>
+                    <span class="input-group-text col-3" id="basic-addon4">DOB</span>
+                    <asp:TextBox ID="TxtDOB" runat="server" CssClass="form-control" aria-describedby="basic-addon4" required></asp:TextBox>
+                    <asp:CalendarExtender ID="txt_from_CalendarExtender" runat="server" Format="MM-dd-yyyy"
+                        SelectedDate='<%# System.DateTime.Now%>'
+                        Enabled="True"
+                        TargetControlID="TxtDOB"
+                        Animated="true"></asp:CalendarExtender>
                 </div>
                 <%--Phone Number--%>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon5">Phone </span>
+                    <span class="input-group-text col-3" id="basic-addon5">Phone </span>
                     <asp:TextBox ID="TxtMobileNo" runat="server" CssClass="form-control" Style="padding: 20px" placeholder="01712xxxxxx" MaxLength="11" aria-describedby="basic-addon5" required></asp:TextBox>
 
                     <div class="invalid-tooltip">
@@ -113,12 +115,12 @@
 
                 <%--NID--%>
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">NID </span>
+                    <span class="input-group-text col-3" id="basic-addon3">NID </span>
                     <asp:TextBox runat="server" type="text" class="form-control" ID="TxtNIDNo" aria-describedby="basic-addon3" />
                 </div>
                 <%--City?District--%>
                 <div class="input-group mb-3">
-                    <span class="input-group-text">District</span>
+                    <span class="input-group-text col-3">District</span>
                     <asp:DropDownList ID="TxtCityDistrict" runat="server" CssClass="form-control" aria-describedby="basic-addon3">
                         <asp:ListItem Text="Business Account" Value="IT"></asp:ListItem>
                         <asp:ListItem Text="Joint Account" Value="Finance"></asp:ListItem>

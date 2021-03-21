@@ -32,8 +32,12 @@
         <div class="col-12">
             <table>
                 <tr>
-                    <td class="col"><p><asp:Label runat="server" ID="lblStaffName"></asp:Label></p></td>
-                    <td class="col" align="right"><asp:Button ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click" /></td>
+                    <td class="col">
+                        <p>
+                            <asp:Label runat="server" ID="lblStaffName"></asp:Label></p>
+                    </td>
+                    <td class="col" align="right">
+                        <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click" /></td>
                 </tr>
             </table>
         </div>

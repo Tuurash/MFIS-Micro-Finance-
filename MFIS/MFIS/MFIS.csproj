@@ -92,6 +92,7 @@
     <Content Include="Forms\MobileForms\MCustReg.aspx" />
     <Content Include="Forms\MobileForms\MDeposit.aspx" />
     <Content Include="Forms\Pages\Dashboard.aspx" />
+    <Content Include="Forms\Scripts\plugins\notify.min.js" />
     <Content Include="packages.config" />
     <Content Include="Forms\Accounts\DistrictList.json" />
     <Content Include="Forms\Pages\LoginPage.aspx" />

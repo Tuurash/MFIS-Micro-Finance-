@@ -18,6 +18,50 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
+    <%--Notification--%>
+    <link rel="stylesheet" href="https://unpkg.com/izitoast/dist/css/iziToast.min.css">
+    <script src="https://unpkg.com/izitoast/dist/js/iziToast.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        function notify(Amount) {
+
+            var Credit = Amount
+            iziToast.success({
+                title: 'Successfully',
+                position: 'topCenter',
+                message: 'Inserted Deposit: ' + Credit + '\n',
+            });
+        }
+    </script>
+
+    <%--Sweet Alert Scripts--%>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.2/dist/sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+
+    <script>
+        function InsertComplete() {
+
+            <%--var username = "<%=Session["UserName"].ToString() %>";--%>
+
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Successful',
+                text: 'Redirecting..',
+                showConfirmButton: false,
+                timer: 1000
+                //footer: '<a href>Why do I have this issue?</a>'
+            }, function () {
+                window.location = "~/Forms/MobileForms/MCustInfo.aspx";
+            });
+
+        }
+
+    </script>
+
     <link rel="stylesheet" href="../Scripts/footer.css" />
 
 </head>
@@ -27,6 +71,7 @@
     <form runat="server">
         <asp:ScriptManager runat="server" ID="Script1"></asp:ScriptManager>
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
+
 
         <div align="right">
 
@@ -62,13 +107,14 @@
                 <%-- Amount --%>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Amount</span>
-                    <asp:TextBox runat="server" type="text" class="form-control" ID="txtAmount" aria-describedby="basic-addon1" AutoPostBack="true" OnTextChanged="txtAmount_TextChanged" required />
+                    <asp:TextBox runat="server" type="text" class="form-control" ID="txtSAamount" aria-describedby="basic-addon1" required />
                 </div>
 
                 <%-- Print btn --%>
                 <div class="input-group mb-3">
                     <div align="center">
-                        <asp:LinkButton runat="server" ID="btnPrintDepositReciept" CssClass="btn btn-sm btn-light" Text="Print"></asp:LinkButton>
+                        <asp:Button runat="server" ID="btnSaveDeposit" CssClass="btn btn-sm btn-success" Text="Submit" OnClick="btnSaveDeposit_Click" />
+                        <asp:LinkButton runat="server" ID="btnPrintDepositReciept" CssClass="btn btn-sm btn-light" Text="Print" OnClick="btnPrintDepositReciept_Click"></asp:LinkButton>
                     </div>
                 </div>
 
@@ -76,14 +122,16 @@
                 <%--btn--%>
                 <div class="footer">
 
-                    <asp:LinkButton ID="btnSkip" CssClass="btn" Style="background-color: #221181; width: 100px; color: white" runat="server" Text="Skip" OnClick="btnSkip_Click" />
-                    <asp:Button ID="btnSaveDeposit" CssClass="btn btn-success" Style="width: 70%; color: white" runat="server" Text="Finish" OnClick="btnSaveDeposit_Click" />
+                    <asp:LinkButton ID="btnSkip" CssClass="btn" Style="background-color: #221181; width: 100px; color: white" runat="server" Text="Next" OnClick="btnSkip_Click" />
+
 
                 </div>
 
             </div>
 
         </div>
+
+
 
     </form>
 

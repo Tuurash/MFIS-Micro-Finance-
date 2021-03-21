@@ -37,6 +37,10 @@ namespace MFIS.Forms.MobileForms
                 getBranchCode = Session["ProjectCode"].ToString();
                 getStaffID = Session["USERID"].ToString();
             }
+            else
+            {
+                Response.Redirect("~/Forms/Pages/LoginPage.aspx");
+            }
 
             if (Request.QueryString["CustIDNo"] != "")
             {
@@ -131,7 +135,7 @@ namespace MFIS.Forms.MobileForms
             catch (Exception exc) { throw exc; }
             if (insertStatus > 0)
             {
-
+                Response.Redirect("~/Forms/MobileForms/MCustReg.aspx?CustIDNo=" + getCustIDNo + "&CustAccNo=" + getCustAccNo);
             }
         }
 

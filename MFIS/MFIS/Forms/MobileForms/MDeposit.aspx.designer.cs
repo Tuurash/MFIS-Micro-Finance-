@@ -58,13 +58,22 @@ namespace MFIS.Forms.MobileForms {
         protected global::System.Web.UI.WebControls.Label txtCustAccNo;
         
         /// <summary>
-        /// txtAmount control.
+        /// txtSAamount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAmount;
+        protected global::System.Web.UI.WebControls.TextBox txtSAamount;
+        
+        /// <summary>
+        /// btnSaveDeposit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSaveDeposit;
         
         /// <summary>
         /// btnPrintDepositReciept control.
@@ -83,14 +92,5 @@ namespace MFIS.Forms.MobileForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnSkip;
-        
-        /// <summary>
-        /// btnSaveDeposit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSaveDeposit;
     }
 }

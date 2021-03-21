@@ -23,27 +23,74 @@ namespace MFIS.Forms.MobileForms
         string getStaffID = "";
         string getSlNoAll = "";
         string getSlNo = "";
-        DateTime getAdDate;
+        DateTime Time_now;
         string getCustIDNo = "";
         string getAreaCodeForBranch = "";
         string getCustAccNo = "";
         DateTime getMaturedDate;
+        string getVoucherNo = "";
 
         #endregion
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["ProjectCode"] != null && Session["USERID"] != null)
+            {   //BranchCode
+                getBranchCode = Session["ProjectCode"].ToString();
+                getStaffID = Session["USERID"].ToString();
+            }
+            else
+            {
+                Response.Redirect("~/Forms/Pages/LoginPage.aspx");
+            }
 
+            if (Request.QueryString["CustIDNo"] != "" && Request.QueryString["CustAccNo"] != "")
+            {
+                getCustIDNo = Request.QueryString["CustIDNo"];
+                getCustAccNo = Request.QueryString["CustAccNo"];
+
+                GenerateVoucherNo();
+            }
+
+            Time_now = DateTime.Now.Date;
+        }
+
+        private void GenerateVoucherNo()
+        {
+            string GeneratedVoucher = getCustIDNo + '-' + DateTime.Now.ToString("yyyy-MM-dd-HHmmss-ffff");
+            getVoucherNo = GeneratedVoucher;
         }
 
         protected void btnSkip_Click(object sender, EventArgs e)
         {
-
+            ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "InsertComplete()", true);
         }
 
         protected void btnSaveDeposit_Click(object sender, EventArgs e)
         {
+            SavingsInsert();
+        }
+
+        private void SavingsInsert()
+        {
+            if (txtSAamount.Text != "")
+            {
+                int sInsertStatus = 0;
+
+                //, BranchCode, EntryNo, Dr,Notes,CustAccTrSL,Vou_ChqNo
+                query = @"INSERT into Deposit_DataEntry (PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo)
+                    VALUES ('" + Time_now.Year + "', '" + getCustAccNo + "', '" + Time_now.Date + "', '203001112', " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','1101002' ,'" + getStaffID + "','" + getVoucherNo + "')";
+                try
+                {
+                    sInsertStatus = db.ExecuteNonQuery(query);
+                }
+                catch (Exception) { }
+                if (sInsertStatus > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify(" + txtSAamount.Text + ")", true);
+                }
+
+            }
 
         }
 
@@ -84,9 +131,10 @@ namespace MFIS.Forms.MobileForms
             }
         }
 
-        protected void txtAmount_TextChanged(object sender, EventArgs e)
+        protected void btnPrintDepositReciept_Click(object sender, EventArgs e)
         {
-
+            string getReportName = "LoanDepositReport";
+            Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + getVoucherNo + "&ReportName=" + getReportName);
         }
     }
 }

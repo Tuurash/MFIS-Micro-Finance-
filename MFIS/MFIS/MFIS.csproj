@@ -1830,6 +1830,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoanDepositReport.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Reports\ReportViewer.aspx.cs">
       <DependentUpon>ReportViewer.aspx</DependentUpon>
@@ -1844,10 +1845,11 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\LoanDepositReport.rpt">
+    <Content Include="Reports\LoanDepositReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LoanDepositReport.cs</LastGenOutput>
-    </EmbeddedResource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Forms\Scripts\bower_components\moment\moment.d.ts" />

@@ -120,3 +120,5 @@ D:\Backup_Turash\RND\MFIS\MFIS\bin\CrystalDecisions.ReportAppServer.CommonContro
 D:\Backup_Turash\RND\MFIS\MFIS\bin\stdole.dll
 D:\Backup_Turash\RND\MFIS\MFIS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Backup_Turash\RND\MFIS\MFIS\bin\Newtonsoft.Json.xml
+D:\Backup_Turash\MFIS\MFIS\MFIS\bin\Reports\LoanDepositReport.rpt
+D:\Backup_Turash\MFIS\MFIS\MFIS\bin\Reports\LoanDepositReport.cs

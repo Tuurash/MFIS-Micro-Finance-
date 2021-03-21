@@ -14,7 +14,7 @@ namespace MFIS.Pages
         string connectionString;
         public DBConnector()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["MFIS"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["DBName"].ConnectionString;
         }
 
         public SqlConnection Connection()

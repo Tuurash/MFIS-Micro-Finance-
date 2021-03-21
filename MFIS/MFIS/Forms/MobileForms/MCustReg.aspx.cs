@@ -34,6 +34,7 @@ namespace MFIS.Forms.MobileForms
         {
             if (Session["ProjectCode"] != null && Session["USERID"] != null)
             {   //BranchCode
+                lblStaffName.Text = Session["StaffName"].ToString();
                 getBranchCode = Session["ProjectCode"].ToString();
                 getStaffID = Session["USERID"].ToString();
             }
@@ -135,7 +136,7 @@ namespace MFIS.Forms.MobileForms
             catch (Exception exc) { throw exc; }
             if (insertStatus > 0)
             {
-                Response.Redirect("~/Forms/MobileForms/MCustReg.aspx?CustIDNo=" + getCustIDNo + "&CustAccNo=" + getCustAccNo);
+                Response.Redirect("~/Forms/MobileForms/MDeposit.aspx?CustIDNo=" + getCustIDNo + "&CustAccNo=" + getCustAccNo);
             }
         }
 

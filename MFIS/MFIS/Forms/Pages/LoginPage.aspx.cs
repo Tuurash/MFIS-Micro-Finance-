@@ -235,6 +235,8 @@ namespace MFIS.Pages
                     Session["ProjectCode"] = row["PrjCode"].ToString();
                     Session["EMP_ID"] = "GPAC";
 
+                    Session["StaffName"] = UserName;
+
                     string query1 = @"select UserID,comName from User_Now where UserId =  '" + txtUserID.Text + "'";
                     DataTable dt1 = db.ExecuteQuery(query1);
                     if (dt1.Rows.Count > 0)

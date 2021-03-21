@@ -35,6 +35,8 @@ namespace MFIS.Forms.MobileForms
         {
             if (Session["ProjectCode"] != null && Session["USERID"] != null)
             {   //BranchCode
+                lblStaffName.Text = Session["StaffName"].ToString();
+
                 getBranchCode = Session["ProjectCode"].ToString();
                 getStaffID = Session["USERID"].ToString();
                 GenerateSerialNumberByBranch();

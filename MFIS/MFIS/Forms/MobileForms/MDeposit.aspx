@@ -68,15 +68,24 @@
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
     <form runat="server">
+
         <asp:ScriptManager runat="server" ID="Script1"></asp:ScriptManager>
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
 
-
-        <div align="right">
-
-            <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click" />
-
+        <div class="col-12">
+            <table>
+                <tr>
+                    <td class="col">
+                        <p>
+                            <asp:Label runat="server" ID="lblStaffName"></asp:Label>
+                        </p>
+                    </td>
+                    <td class="col" align="right">
+                        <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click" /></td>
+                </tr>
+            </table>
         </div>
 
         <div class="text-white" style="background-color: #221181">
@@ -97,7 +106,6 @@
             <br />
 
             <div>
-
                 <%-- CustAccNo --%>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Account No</span>
@@ -113,11 +121,10 @@
                 <%-- Print btn --%>
                 <div class="input-group mb-3">
                     <div align="center">
-                        <asp:Button runat="server" ID="btnSaveDeposit" CssClass="btn btn-sm btn-success" Text="Submit" OnClick="btnSaveDeposit_Click" />
+                        <asp:Button runat="server" ID="btnSaveDeposit" CssClass="btn btn-sm btn-success" Text="Deposit" OnClick="btnSaveDeposit_Click" />
                         <asp:LinkButton runat="server" ID="btnPrintDepositReciept" CssClass="btn btn-sm btn-light" Text="Print" OnClick="btnPrintDepositReciept_Click"></asp:LinkButton>
                     </div>
                 </div>
-
 
                 <%--btn--%>
                 <div class="footer">
@@ -130,8 +137,6 @@
             </div>
 
         </div>
-
-
 
     </form>
 

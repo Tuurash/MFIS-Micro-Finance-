@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MCustInfo.aspx.cs" Inherits="MFIS.Forms.MobileForms.MCustInfo" %>
 
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <title>MFIS</title>
     <meta charset="etf-8">
@@ -21,16 +23,26 @@
     <link rel="stylesheet" href="../Scripts/footer.css" />
 
 </head>
+
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
     <form runat="server">
         <asp:ScriptManager runat="server" ID="Script1"></asp:ScriptManager>
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
 
-        <div align="right">
-
-            <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click" />
-
+        <div class="col-12">
+            <table>
+                <tr>
+                    <td class="col">
+                        <p>
+                            <asp:Label runat="server" ID="lblStaffName"></asp:Label>
+                        </p>
+                    </td>
+                    <td class="col" align="right">
+                        <asp:Button ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click" /></td>
+                </tr>
+            </table>
         </div>
 
         <div class="text-white" style="background-color: #221181">
@@ -45,7 +57,7 @@
         <div class="container">
             <br />
             <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;height=50px">Custumer Info</div>
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%; height=50px">Custumer Info</div>
             </div>
             <br />
 
@@ -134,4 +146,5 @@
     </form>
 
 </body>
+
 </html>

@@ -29,10 +29,13 @@
         <asp:ScriptManager runat="server" ID="Script1"></asp:ScriptManager>
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
 
-        <div align="right">
-
-            <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click" />
-
+        <div class="col-12">
+            <table>
+                <tr>
+                    <td class="col"><p><asp:Label runat="server" ID="lblStaffName"></asp:Label></p></td>
+                    <td class="col" align="right"><asp:Button ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click" /></td>
+                </tr>
+            </table>
         </div>
 
         <div class="text-white" style="background-color: #221181">

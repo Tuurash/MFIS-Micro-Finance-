@@ -36,6 +36,7 @@ namespace MFIS.Forms.MobileForms
         {
             if (Session["ProjectCode"] != null && Session["USERID"] != null)
             {   //BranchCode
+                lblStaffName.Text = Session["StaffName"].ToString();
                 getBranchCode = Session["ProjectCode"].ToString();
                 getStaffID = Session["USERID"].ToString();
             }
@@ -47,7 +48,9 @@ namespace MFIS.Forms.MobileForms
             if (Request.QueryString["CustIDNo"] != "" && Request.QueryString["CustAccNo"] != "")
             {
                 getCustIDNo = Request.QueryString["CustIDNo"];
+                txtCustIDNO.Text = getCustIDNo;
                 getCustAccNo = Request.QueryString["CustAccNo"];
+                txtCustAccNo.Text = getCustAccNo;
 
                 GenerateVoucherNo();
             }

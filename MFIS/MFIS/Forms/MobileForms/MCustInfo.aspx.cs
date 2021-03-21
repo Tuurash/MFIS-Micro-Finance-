@@ -28,6 +28,8 @@ namespace MFIS.Forms.MobileForms
         DateTime getAdDate;
         string getCustIDNo = "";
         string getAreaCodeForBranch = "";
+        string getCustAccNo = "";
+        DateTime getMaturedDate;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,7 +38,6 @@ namespace MFIS.Forms.MobileForms
                 getBranchCode = Session["ProjectCode"].ToString();
                 getStaffID = Session["USERID"].ToString();
                 GenerateSerialNumberByBranch();
-                GenerateCustIDNo();
                 GenerateSerialNumber();
                 GetAreaCode();
             }
@@ -44,6 +45,7 @@ namespace MFIS.Forms.MobileForms
 
             if (!IsPostBack)
             {
+                try { GenerateCustIDNo(); } catch (Exception) { }
                 FillDistrictCity();
             }
             getAdDate = DateTime.Now;
@@ -61,7 +63,7 @@ namespace MFIS.Forms.MobileForms
 
         private void GenerateCustIDNo()
         {
-            getCustIDNo = getBranchCode + "-" + int.Parse(getSlNo).ToString("D6"); ;
+            getCustIDNo = getBranchCode + "-" + int.Parse(getSlNo).ToString("D6");
             txtCustIDNO.Text = getCustIDNo;
         }
 
@@ -108,21 +110,40 @@ namespace MFIS.Forms.MobileForms
             TxtCityDistrict.DataBind();
         }
 
+        //CustInfo
         protected void btnSubmitCustInfo_Click(object sender, EventArgs e)
+        {
+            InsertCustInfo();
+        }
+
+        private void InsertCustInfo()
         {
             int insertStatus = 0;
             if (txtCustIDNO.Text != "")
             {
                 query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,BranchCode,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,DateOfBirth,CityDistrict,Mobile,NIDNo,AccName_Bangla) 
-                      VALUES (" + getSlNoAll + "," + getSlNo + ", '" + getAdDate + "','" + getBranchCode + "'," + getAreaCodeForBranch + ", '" + getCustIDNo + "', '" + ComAccType.SelectedValue + "', '" + TxtCustName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "','" + TxtDOB.Text + "','" + TxtCityDistrict.SelectedValue + "','" + TxtMobileNo.Text + "','" + TxtNIDNo.Text.Trim() + "','" + Translate(TxtCustName.Text) + "')";
+                      VALUES (" + getSlNoAll + "," + getSlNo + ", '" + getAdDate + "','" + getBranchCode + "'," + getAreaCodeForBranch + ", '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtCustName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "','" + TxtDOB.Text + "','" + TxtCityDistrict.SelectedValue + "','" + TxtMobileNo.Text + "','" + TxtNIDNo.Text.Trim() + "','" + Translate(TxtCustName.Text) + "')";
 
 
             }
             try { insertStatus = db.ExecuteNonQuery(query); }
             catch (Exception exc) { throw exc; }
-            if (insertStatus != 0) { }
+            if (insertStatus != 0)
+            {
+                getCustIDNo = txtCustIDNO.Text;
+                ShowCustInfoScuccessMsg();
+                Response.Redirect("~/Forms/MobileForms/MCustReg.aspx?CustIDNo=" + getCustIDNo);
+            }
         }
 
+        private void ShowCustInfoScuccessMsg()
+        {
+            lblCustinfoStatus.Text = "Success! Proceed To Accounts.";
+            lblCustinfoStatus.Visible = true;
+        }
+
+
+        #region Services
 
         private string Translate(string input)
         {
@@ -188,5 +209,10 @@ namespace MFIS.Forms.MobileForms
                 Response.Redirect("~/Forms/Pages/LoginPage.aspx");
             }
         }
+
+
+        #endregion
+
+
     }
 }

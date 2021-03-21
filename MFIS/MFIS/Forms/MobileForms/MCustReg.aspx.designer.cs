@@ -10,7 +10,7 @@
 namespace MFIS.Forms.MobileForms {
     
     
-    public partial class MCustInfo {
+    public partial class MCustReg {
         
         /// <summary>
         /// Script1 control.
@@ -37,7 +37,7 @@ namespace MFIS.Forms.MobileForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogout;
+        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
         
         /// <summary>
         /// txtCustIDNO control.
@@ -49,84 +49,57 @@ namespace MFIS.Forms.MobileForms {
         protected global::System.Web.UI.WebControls.Label txtCustIDNO;
         
         /// <summary>
-        /// TxtCustName control.
+        /// txtCustAccNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCustName;
+        protected global::System.Web.UI.WebControls.TextBox txtCustAccNo;
         
         /// <summary>
-        /// ComSex control.
+        /// ComSub_DepositScheme control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ComSex;
+        protected global::System.Web.UI.WebControls.DropDownList ComSub_DepositScheme;
         
         /// <summary>
-        /// ComAccType control.
+        /// txtDuration control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ComAccType;
+        protected global::System.Web.UI.WebControls.TextBox txtDuration;
         
         /// <summary>
-        /// TxtDOB control.
+        /// TxtMIntr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtDOB;
+        protected global::System.Web.UI.WebControls.TextBox TxtMIntr;
         
         /// <summary>
-        /// TxtMobileNo control.
+        /// ComInterestDrawStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtMobileNo;
+        protected global::System.Web.UI.WebControls.DropDownList ComInterestDrawStatus;
         
         /// <summary>
-        /// TxtNIDNo control.
+        /// btnSubmitAccountInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtNIDNo;
-        
-        /// <summary>
-        /// TxtCityDistrict control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList TxtCityDistrict;
-        
-        /// <summary>
-        /// lblCustinfoStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCustinfoStatus;
-        
-        /// <summary>
-        /// btnSubmitCustInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSubmitCustInfo;
+        protected global::System.Web.UI.WebControls.Button btnSubmitAccountInfo;
     }
 }

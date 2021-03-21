@@ -47,7 +47,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="col-sm-12 col-md-6 col-lg-6" align="center">
                         <img src="../Scripts/System/images/icon/Login.png" height="70" width="220" />
                         <br />
                         <%--Detail Segment Start--%>

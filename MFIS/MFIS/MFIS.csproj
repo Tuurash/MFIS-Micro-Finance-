@@ -89,6 +89,7 @@
     <Content Include="Forms\LoanDeposit\frmDepositGrid.aspx" />
     <Content Include="Forms\LoanDeposit\frmMSavingsLoan.aspx" />
     <Content Include="Forms\MobileForms\MCustInfo.aspx" />
+    <Content Include="Forms\MobileForms\MCustReg.aspx" />
     <Content Include="Forms\Pages\Dashboard.aspx" />
     <Content Include="packages.config" />
     <Content Include="Forms\Accounts\DistrictList.json" />
@@ -1757,6 +1758,13 @@
     </Compile>
     <Compile Include="Forms\MobileForms\MCustInfo.aspx.designer.cs">
       <DependentUpon>MCustInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MCustReg.aspx.cs">
+      <DependentUpon>MCustReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MCustReg.aspx.designer.cs">
+      <DependentUpon>MCustReg.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Models\device.cs" />
     <Compile Include="Forms\Models\DeviceInfoRoot.cs" />

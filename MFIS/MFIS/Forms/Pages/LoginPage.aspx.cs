@@ -244,7 +244,7 @@ namespace MFIS.Pages
                     }
                     else
                     {
-                        //  chk_current_user();
+                        chk_current_user();
                         Session["USERID"] = txtUserID.Text;
                         Session["EMP_ID"] = "GPAC";
                         Session["USER_NAME"] = row["UserName"].ToString();
@@ -276,7 +276,7 @@ namespace MFIS.Pages
             else
             {
                 usersaver();
-                GNIS_server_save();
+                //GNIS_server_save();
             }
 
         }
@@ -284,7 +284,7 @@ namespace MFIS.Pages
         private void GNIS_server_save()
         {
             string UserInfo = @"INSERT Into User_Login_Information (User_ID, User_Name, MobileNo, ComputerName, IP_Address, MAK_Address, LoginDateTime, Product_ID)
-                                VALUES ('" + Session["USERID"].ToString() + "','" + UserName.ToString() + "' , '" + Mobile + "' ,'" + Session["hostName"].ToString() + "','" + Session["IPAddress"].ToString() + "' ,'" + Session["MACAddress"].ToString() + "' ,'" + DateTime.Now + "', '" + Session["ProductCode"].ToString() + "' ) ";
+                                VALUES ('" + txtUserID.Text + "','" + UserName.ToString() + "' , '" + Mobile + "' ,'" + Session["hostName"].ToString() + "','" + Session["IPAddress"].ToString() + "' ,'" + Session["MACAddress"].ToString() + "' ,'" + DateTime.Now + "', '" + Session["ProductCode"].ToString() + "' ) ";
 
             try
             {

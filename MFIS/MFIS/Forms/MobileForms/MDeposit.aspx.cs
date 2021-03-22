@@ -80,9 +80,10 @@ namespace MFIS.Forms.MobileForms
             {
                 int sInsertStatus = 0;
 
+                lblAddedVoucher.Text = getVoucherNo;
                 //, BranchCode, EntryNo, Dr,Notes,CustAccTrSL,Vou_ChqNo
                 query = @"INSERT into Deposit_DataEntry (PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo)
-                    VALUES ('" + Time_now.Year + "', '" + getCustAccNo + "', '" + Time_now.Date + "', '203001112', " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','1101002' ,'" + getStaffID + "','" + getVoucherNo + "')";
+                    VALUES ('" + Time_now.Year + "', '" + getCustAccNo + "', '" + Time_now.Date + "', '203001112', " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','1101002' ,'" + getStaffID + "','" + lblAddedVoucher.Text + "')";
                 try
                 {
                     sInsertStatus = db.ExecuteNonQuery(query);
@@ -137,7 +138,13 @@ namespace MFIS.Forms.MobileForms
         protected void btnPrintDepositReciept_Click(object sender, EventArgs e)
         {
             string getReportName = "LoanDepositReport";
-            Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + getVoucherNo + "&ReportName=" + getReportName);
+            Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text + "&ReportName=" + getReportName);
+        }
+
+        protected void linkbtn_PrintHtml_Click(object sender, EventArgs e)
+        {
+            string getReportName = "LoanDepositReport_HTML";
+            Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text + "&ReportName=" + getReportName);
         }
     }
 }

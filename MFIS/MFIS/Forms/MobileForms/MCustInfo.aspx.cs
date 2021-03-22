@@ -106,7 +106,8 @@ namespace MFIS.Forms.MobileForms
             List<Datum> ob = new List<Datum>();
             ob = JsonConvert.DeserializeObject<List<Datum>>(json);
             ob = ob.ToList();
-            TxtCityDistrict.DataSource = ob;
+            var finalList = ob.OrderBy(x => x.name).ToList();
+            TxtCityDistrict.DataSource = finalList;
             TxtCityDistrict.DataTextField = "name";
             TxtCityDistrict.DataValueField = "name";
             TxtCityDistrict.DataBind();

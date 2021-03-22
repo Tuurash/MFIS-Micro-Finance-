@@ -29,7 +29,7 @@ namespace MFIS.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetDeviceInfo();
+
             byte[] KEY_128 = { 42, 1, 52, 67, 231, 13, 94, 101, 123, 6, 0, 12, 32, 91, 4, 111, 31, 70, 21, 141, 123, 142, 234, 82, 95, 129, 187, 162, 12, 55, 98, 23 };
             byte[] IV_128 = { 234, 12, 52, 44, 214, 222, 200, 109, 2, 98, 45, 76, 88, 53, 23, 78 };
             RijndaelManaged symmetricKey = new RijndaelManaged();
@@ -94,6 +94,12 @@ namespace MFIS.Pages
         {
             device obj_device = new device();
             var DataObj = new List<DeviceInfoRoot>();
+            string Info = "";
+            string Ismobile = "";
+            string os = "";
+            string brand = "";
+            string brandCode = "";
+            string name = "";
 
             try
             {
@@ -103,18 +109,24 @@ namespace MFIS.Pages
 
                 foreach (var data in DataObj)
                 {
-                    string os = data.os.name;
-                    string mobile = data.device.is_mobile_device.ToString();
-                    string brand = data.device.brand;
-                    string brandCode = data.device.brand_code;
+                    os = data.os.name;
+                    Ismobile = data.device.is_mobile_device.ToString();
+                    brand = data.device.brand;
+                    brandCode = data.device.brand_code;
+                    name = data.device.name;
                 }
             }
-            catch (Exception)
+            catch (Exception) { }
+
+            try
             {
+                Info = name + os + brand + brandCode;
+                string query = @"INSERT INTO MAK_Address (MAK_Addr,ComputerName,PCStatus,IsMobile,Info)
+                                     VALUES ('" + GetIP() + "','" + os + "','Active','" + Ismobile + "','" + Info + "')";
 
+                db.ExecuteNonQuery(query);
             }
-
-
+            catch (Exception) { }
         }
 
         private void MAC_Address()
@@ -147,19 +159,29 @@ namespace MFIS.Pages
             return null;
         }
 
-        private void UserPC_IP()
-        {
-            try
-            {
-                hostName = Dns.GetHostName();
-                Session["hostName"] = hostName;
-                IPAddress = Dns.GetHostByName(hostName).AddressList[0].ToString();
-                Session["IPAddress"] = IPAddress;
-            }
-            catch
-            { }
+        //private void UserPC_IP()
+        //{
+        //    try
+        //    {
+        //        hostName = Dns.GetHostName();
+        //        Session["hostName"] = hostName;
+        //        IPAddress = Dns.GetHostByName(hostName).AddressList[0].ToString();
+        //        Session["IPAddress"] = IPAddress;
+        //    }
+        //    catch
+        //    { }
 
+        //}
+
+        private string GetIP()
+        {
+            string strHostName = "";
+            strHostName = System.Net.Dns.GetHostName();
+            IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(strHostName);
+            IPAddress[] addr = ipEntry.AddressList;
+            return addr[addr.Length - 1].ToString();
         }
+
 
         private void User_license_Status()
         {
@@ -246,6 +268,8 @@ namespace MFIS.Pages
                     }
                     else
                     {
+                        //Gets Device Information
+                        GetDeviceInfo();
                         chk_current_user();
                         Session["USERID"] = txtUserID.Text;
                         Session["EMP_ID"] = "GPAC";

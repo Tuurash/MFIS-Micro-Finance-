@@ -32,6 +32,10 @@ namespace MFIS.Forms.MobileForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                FillDropdownSubdepositCodeNo();
+            }
             if (Session["ProjectCode"] != null && Session["USERID"] != null)
             {   //BranchCode
                 lblStaffName.Text = Session["StaffName"].ToString();
@@ -49,10 +53,7 @@ namespace MFIS.Forms.MobileForms
                 txtCustIDNO.Text = getCustIDNo;
                 GenerateCustAccountNo();
             }
-            if (!IsPostBack)
-            {
-                FillDropdownSubdepositCodeNo();
-            }
+
             getAdDate = DateTime.Now;
         }
 
@@ -60,18 +61,25 @@ namespace MFIS.Forms.MobileForms
 
         private void FillDropdownSubdepositCodeNo()
         {
-            query = @"select *,SubDepositCodeNo from Deposit_SubScheme ";
+            query = @"select SubDepositCodeNo from Deposit_SubScheme ";
             dt = db.ExecuteQuery(query);
             ComSub_DepositScheme.DataSource = dt;
             ComSub_DepositScheme.DataTextField = "SubDepositCodeNo";
             ComSub_DepositScheme.DataValueField = "SubDepositCodeNo";
             ComSub_DepositScheme.DataBind();
+            //ComSub_DepositScheme.Items.Insert(0, "select");
         }
 
 
         protected void ComSub_DepositScheme_SelectedIndexChanged(object sender, EventArgs e)
         {
             GenerateCustAccountNo();
+            query = @"select * from Deposit_SubScheme where SubDepositCodeNo='" + ComSub_DepositScheme.SelectedValue + "' ";
+            try { dt = db.ExecuteQuery(query); } catch (Exception) { }
+            if (dt.Rows.Count > 0)
+            {
+                TxtMIntr.Text = dt.Rows[0]["Interest_Monthly"].ToString();
+            }
         }
 
 

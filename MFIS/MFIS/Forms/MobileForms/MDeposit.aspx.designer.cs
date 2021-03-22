@@ -40,13 +40,31 @@ namespace MFIS.Forms.MobileForms {
         protected global::System.Web.UI.WebControls.Label lblStaffName;
         
         /// <summary>
+        /// lblAddedVoucher control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAddedVoucher;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// btnLogout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogout;
+        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
         
         /// <summary>
         /// txtCustIDNO control.
@@ -92,6 +110,15 @@ namespace MFIS.Forms.MobileForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnPrintDepositReciept;
+        
+        /// <summary>
+        /// linkbtn_PrintHtml control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkbtn_PrintHtml;
         
         /// <summary>
         /// btnSkip control.

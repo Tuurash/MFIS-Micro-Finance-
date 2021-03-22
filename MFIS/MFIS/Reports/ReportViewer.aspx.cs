@@ -5,6 +5,7 @@ using MFIS.Pages;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -63,6 +64,27 @@ namespace MFIS.Reports
                     crystalReport.SetDataSource(dt);
                     CrystalReportViewer.ReportSource = crystalReport;
                     crystalReport.ExportToHttpResponse(ExportFormatType.PortableDocFormat, HttpContext.Current.Response, false, "Diposit&loanReport");
+                }
+            }
+
+            else if (getReportName == "LoanDepositReport_HTML")
+            {
+                query = @"Exec SelectLastLoanDepositHistory @VoucherNo='" + getVoucherNo + "', @CustID='" + getCustomerID + "'";
+                try
+                {
+                    dt = db.ExecuteQuery(query);
+                }
+                catch (Exception exc)
+                {
+
+                    throw exc;
+                }
+                if (dt.Rows.Count > 0)
+                {
+                    crystalReport.Load(Server.MapPath("LoanDepositReport.rpt"));
+                    crystalReport.SetDataSource(dt);
+                    CrystalReportViewer.ReportSource = crystalReport;
+                    crystalReport.ExportToHttpResponse(ExportFormatType.Excel, Response, true, "EmployeeInformation");
                 }
             }
         }

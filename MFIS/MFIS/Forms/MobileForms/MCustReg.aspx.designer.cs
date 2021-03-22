@@ -46,7 +46,7 @@ namespace MFIS.Forms.MobileForms {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogout;
+        protected global::System.Web.UI.WebControls.LinkButton btnLogout;
         
         /// <summary>
         /// txtCustIDNO control.
@@ -67,6 +67,15 @@ namespace MFIS.Forms.MobileForms {
         protected global::System.Web.UI.WebControls.TextBox txtCustAccNo;
         
         /// <summary>
+        /// TxtMIntr control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TxtMIntr;
+        
+        /// <summary>
         /// ComSub_DepositScheme control.
         /// </summary>
         /// <remarks>
@@ -83,15 +92,6 @@ namespace MFIS.Forms.MobileForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDuration;
-        
-        /// <summary>
-        /// TxtMIntr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtMIntr;
         
         /// <summary>
         /// ComInterestDrawStatus control.

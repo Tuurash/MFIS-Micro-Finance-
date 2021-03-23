@@ -145,7 +145,8 @@ namespace MFIS.Forms.MobileForms
         protected void linkbtn_PrintHtml_Click(object sender, EventArgs e)
         {
             string getReportName = "LoanDepositReport_HTML";
-            Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text + "&ReportName=" + getReportName);
+            //Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text + "&ReportName=" + getReportName);
+            Response.Redirect("~/Forms/MobileForms/DepositRptPage.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text + "&ReportName=" + getReportName);
         }
     }
 }

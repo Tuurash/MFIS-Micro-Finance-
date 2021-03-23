@@ -83,6 +83,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\demo.css" />
     <Content Include="css\fakeLoader.min.css" />
+    <Content Include="Forms\MobileForms\DepositRptPage.aspx" />
     <Content Include="Forms\MobileForms\MCustInfo.aspx" />
     <Content Include="Forms\MobileForms\MCustReg.aspx" />
     <Content Include="Forms\MobileForms\MDeposit.aspx" />
@@ -1709,6 +1710,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\MobileForms\DepositRptPage.aspx.cs">
+      <DependentUpon>DepositRptPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\MobileForms\DepositRptPage.aspx.designer.cs">
+      <DependentUpon>DepositRptPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MobileForms\MCustInfo.aspx.cs">
       <DependentUpon>MCustInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

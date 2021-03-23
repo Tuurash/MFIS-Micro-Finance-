@@ -81,10 +81,12 @@ namespace MFIS.Reports
                 }
                 if (dt.Rows.Count > 0)
                 {
-                    crystalReport.Load(Server.MapPath("LoanDepositReport.rpt"));
+                    crystalReport.Load(Server.MapPath("DepoReport.rpt"));
                     //crystalReport.SetDatabaseLogon("sa", "sa*1209");
+
                     crystalReport.SetDataSource(dt);
                     CrystalReportViewer.ReportSource = crystalReport;
+
                     crystalReport.ExportToHttpResponse(ExportFormatType.PortableDocFormat, HttpContext.Current.Response, false, "Diposit&loanReport");
                 }
             }
@@ -103,16 +105,17 @@ namespace MFIS.Reports
                 }
                 if (dt.Rows.Count > 0)
                 {
-                    crystalReport.Load(Server.MapPath("LoanDepositReport.rpt"));
+                    crystalReport.Load(Server.MapPath("DepoReport.rpt"));
                     //crystalReport.SetDatabaseLogon("sa", "sa*1209");
+
                     crystalReport.SetDataSource(dt);
                     CrystalReportViewer.ReportSource = crystalReport;
+
 
                     try
                     {
                         crystalReport.ExportToStream(ExportFormatType.HTML40);
-                        //crystalReport.SetDatabaseLogon("sa", "sa*1209");
-                        //crystalReport.PrintOptions.PrinterName = "RONGTA RPP300 Series Printer";
+
                         crystalReport.PrintToPrinter(1, true, 0, 0);
                     }
                     catch (Exception) { }

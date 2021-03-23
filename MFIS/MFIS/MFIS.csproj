@@ -1783,6 +1783,12 @@
     <Compile Include="Forms\Scripts\System\include\config\connection\db_class.cs" />
     <Compile Include="Forms\Scripts\System\Report_class.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\DepoReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepoReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\LastPaymentLD_Dateset.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1820,6 +1826,12 @@
   <ItemGroup>
     <Folder Include="Forms\Scripts\System\images\deafult\" />
     <Folder Include="Forms\Scripts\System\library\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\DepoReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DepoReport.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

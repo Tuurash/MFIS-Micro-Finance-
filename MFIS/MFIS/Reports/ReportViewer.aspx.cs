@@ -40,8 +40,29 @@ namespace MFIS.Reports
             {
                 getReportName = Request.QueryString["ReportName"];
             }
-
+            EstablishConnection();
             ShowReport();
+        }
+
+        private void EstablishConnection()
+        {
+            ConnectionInfo myConnectionInfo = new ConnectionInfo();
+
+            myConnectionInfo.ServerName = "localhost";
+            myConnectionInfo.DatabaseName = "MFiS-4";
+            myConnectionInfo.UserID = "sa";
+            myConnectionInfo.Password = "sa*1209";
+            setDBLOGONforREPORT(myConnectionInfo);
+        }
+
+        private void setDBLOGONforREPORT(ConnectionInfo myConnectionInfo)
+        {
+            TableLogOnInfos mytableloginfos = new TableLogOnInfos();
+            mytableloginfos = CrystalReportViewer.LogOnInfo;
+            foreach (TableLogOnInfo myTableLogOnInfo in mytableloginfos)
+            {
+                myTableLogOnInfo.ConnectionInfo = myConnectionInfo;
+            }
         }
 
         private void ShowReport()
@@ -61,7 +82,7 @@ namespace MFIS.Reports
                 if (dt.Rows.Count > 0)
                 {
                     crystalReport.Load(Server.MapPath("LoanDepositReport.rpt"));
-                    crystalReport.SetDatabaseLogon("sa", "sa*1209");
+                    //crystalReport.SetDatabaseLogon("sa", "sa*1209");
                     crystalReport.SetDataSource(dt);
                     CrystalReportViewer.ReportSource = crystalReport;
                     crystalReport.ExportToHttpResponse(ExportFormatType.PortableDocFormat, HttpContext.Current.Response, false, "Diposit&loanReport");
@@ -83,7 +104,7 @@ namespace MFIS.Reports
                 if (dt.Rows.Count > 0)
                 {
                     crystalReport.Load(Server.MapPath("LoanDepositReport.rpt"));
-                    crystalReport.SetDatabaseLogon("sa", "sa*1209");
+                    //crystalReport.SetDatabaseLogon("sa", "sa*1209");
                     crystalReport.SetDataSource(dt);
                     CrystalReportViewer.ReportSource = crystalReport;
 
@@ -91,7 +112,7 @@ namespace MFIS.Reports
                     {
                         crystalReport.ExportToStream(ExportFormatType.HTML40);
                         //crystalReport.SetDatabaseLogon("sa", "sa*1209");
-                        crystalReport.PrintOptions.PrinterName = "RONGTA RPP300 Series Printer";
+                        //crystalReport.PrintOptions.PrinterName = "RONGTA RPP300 Series Printer";
                         crystalReport.PrintToPrinter(1, true, 0, 0);
                     }
                     catch (Exception) { }

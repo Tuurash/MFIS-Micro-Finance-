@@ -117,16 +117,16 @@
                 <div class="input-group mb-3">
                     <div align="center">
                         <asp:Button runat="server" ID="btnSaveDeposit" CssClass="btn btn-sm btn-success" Text="Deposit" OnClick="btnSaveDeposit_Click" />
-                        <asp:LinkButton runat="server" ID="btnPrintDepositReciept" CssClass="btn btn-sm btn-light" Text="Print" OnClick="btnPrintDepositReciept_Click"></asp:LinkButton>
-                        <asp:LinkButton runat="server" ID="linkbtn_PrintHtml" CssClass="btn btn-sm btn-light" Text="Print Html" OnClick="linkbtn_PrintHtml_Click"></asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="btnPrintDepositReciept" CssClass="btn btn-sm btn-light" Text="View Report" OnClick="btnPrintDepositReciept_Click"></asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="linkbtn_PrintHtml" CssClass="btn btn-sm btn-light" Text="Print" OnClick="linkbtn_PrintHtml_Click"></asp:LinkButton>
                     </div>
                 </div>
 
                 <%--btn--%>
                 <div class="footer">
-
-                    <asp:LinkButton ID="btnSkip" CssClass="btn" Style="background-color: #221181; width: 100px; color: white" runat="server" Text="Next" OnClick="btnSkip_Click" />
-
+                    <p class="justify-content-center">
+                        <asp:LinkButton ID="btnSkip" CssClass="btn" Style="background-color: #221181; width: 100%; color: white" runat="server" Text="Save & Continue" OnClick="btnSkip_Click" />
+                    </p>
 
                 </div>
 

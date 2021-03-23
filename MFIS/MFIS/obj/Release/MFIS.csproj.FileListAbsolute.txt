@@ -39,3 +39,4 @@ D:\Backup_Turash\MFIS\MFIS\MFIS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPl
 D:\Backup_Turash\MFIS\MFIS\MFIS\bin\Newtonsoft.Json.xml
 D:\Backup_Turash\MFIS\MFIS\MFIS\obj\Release\MFIS.dll
 D:\Backup_Turash\MFIS\MFIS\MFIS\obj\Release\MFIS.pdb
+D:\Backup_Turash\MFIS\MFIS\MFIS\obj\Release\MFIS.csprojResolveAssemblyReference.cache

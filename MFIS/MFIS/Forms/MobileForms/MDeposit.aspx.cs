@@ -66,7 +66,8 @@ namespace MFIS.Forms.MobileForms
 
         protected void btnSkip_Click(object sender, EventArgs e)
         {
-            ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "InsertComplete()", true);
+            if (!IsPostBack)
+            { ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "InsertComplete()", true); }
         }
 
         protected void btnSaveDeposit_Click(object sender, EventArgs e)
@@ -91,7 +92,8 @@ namespace MFIS.Forms.MobileForms
                 catch (Exception) { }
                 if (sInsertStatus > 0)
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify(" + txtSAamount.Text + ")", true);
+                    if (!IsPostBack)
+                    { ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify(" + txtSAamount.Text + ")", true); }
                 }
 
             }

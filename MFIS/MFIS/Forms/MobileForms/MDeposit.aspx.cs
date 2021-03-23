@@ -92,8 +92,7 @@ namespace MFIS.Forms.MobileForms
                 catch (Exception) { }
                 if (sInsertStatus > 0)
                 {
-                    if (!IsPostBack)
-                    { ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify(" + txtSAamount.Text + ")", true); }
+                    ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify(" + txtSAamount.Text + ")", true);
                 }
 
             }

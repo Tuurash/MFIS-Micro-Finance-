@@ -64,7 +64,7 @@ namespace MFIS.Reports
                     crystalReport.SetDatabaseLogon("sa", "sa*1209");
                     crystalReport.SetDataSource(dt);
                     CrystalReportViewer.ReportSource = crystalReport;
-                    crystalReport.ExportToHttpResponse(ExportFormatType.EditableRTF, HttpContext.Current.Response, false, "Diposit&loanReport");
+                    crystalReport.ExportToHttpResponse(ExportFormatType.PortableDocFormat, HttpContext.Current.Response, false, "Diposit&loanReport");
                 }
             }
 

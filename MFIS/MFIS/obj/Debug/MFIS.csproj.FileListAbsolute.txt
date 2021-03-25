@@ -92,8 +92,6 @@ D:\Backup_Turash\MFIS\MFIS\MFIS\bin\roslyn\System.Reflection.Metadata.dll
 D:\Backup_Turash\MFIS\MFIS\MFIS\bin\roslyn\vbc.exe
 D:\Backup_Turash\MFIS\MFIS\MFIS\bin\roslyn\VBCSCompiler.exe
 D:\Backup_Turash\MFIS\MFIS\MFIS\bin\roslyn\VBCSCompiler.exe.config
-D:\Backup_Turash\MFIS\MFIS\MFIS\bin\Reports\LoanDepositReport.rpt
-D:\Backup_Turash\MFIS\MFIS\MFIS\bin\Reports\LoanDepositReport.cs
 D:\Backup_Turash\MFIS\MFIS\MFIS\bin\MFIS.dll.config
 D:\Backup_Turash\MFIS\MFIS\MFIS\bin\MFIS.dll
 D:\Backup_Turash\MFIS\MFIS\MFIS\bin\MFIS.pdb
@@ -122,3 +120,4 @@ D:\Backup_Turash\MFIS\MFIS\MFIS\bin\Newtonsoft.Json.xml
 D:\Backup_Turash\MFIS\MFIS\MFIS\obj\Debug\MFIS.dll
 D:\Backup_Turash\MFIS\MFIS\MFIS\obj\Debug\MFIS.pdb
 D:\Backup_Turash\MFIS\MFIS\MFIS\obj\Debug\MFIS.csprojResolveAssemblyReference.cache
+D:\Backup_Turash\MFIS\MFIS\MFIS\bin\Microsoft.ReportViewer.WebForms.dll

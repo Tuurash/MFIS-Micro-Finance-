@@ -1,7 +1,9 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using CrystalDecisions.Web;
 using MFIS.Forms;
 using MFIS.Pages;
+using Microsoft.Reporting.WebForms;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -41,7 +43,9 @@ namespace MFIS.Reports
                 getReportName = Request.QueryString["ReportName"];
             }
             EstablishConnection();
+
             ShowReport();
+
         }
 
         private void EstablishConnection()
@@ -67,6 +71,8 @@ namespace MFIS.Reports
 
         private void ShowReport()
         {
+            EstablishConnection();
+
             if (getReportName == "LoanDepositReport")
             {
                 query = @"Exec SelectLastLoanDepositHistory @VoucherNo='" + getVoucherNo + "', @CustID='" + getCustomerID + "'";
@@ -81,17 +87,43 @@ namespace MFIS.Reports
                 }
                 if (dt.Rows.Count > 0)
                 {
-                    crystalReport.Load(Server.MapPath("DepoReport.rpt"));
-                    //crystalReport.SetDatabaseLogon("sa", "sa*1209");
-
+                    ReportDocument crystalReport = new ReportDocument();
+                    string reportPath = Server.MapPath("DepoReport.rpt");
+                    crystalReport.Load(reportPath);
                     crystalReport.SetDataSource(dt);
-                    CrystalReportViewer.ReportSource = crystalReport;
+                    crystalReport.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Diposit&loanReport");
 
-                    crystalReport.ExportToHttpResponse(ExportFormatType.PortableDocFormat, HttpContext.Current.Response, false, "Diposit&loanReport");
+
+
                 }
             }
 
             else if (getReportName == "LoanDepositReport_HTML")
+            {
+
+
+                query = @"Exec SelectLastLoanDepositHistory @VoucherNo='" + getVoucherNo + "', @CustID='" + getCustomerID + "'";
+                try
+                {
+                    dt = db.ExecuteQuery(query);
+                }
+                catch (Exception exc)
+                {
+
+                    throw exc;
+                }
+                if (dt.Rows.Count > 0)
+                {
+                    EstablishConnection();
+                    crystalReport.Load(Server.MapPath("DepoReport.rpt"));
+                    crystalReport.SetDataSource(dt);
+                    CrystalReportViewer.ReportSource = crystalReport;
+                }
+            }
+
+            //Print Direct
+
+            else if (getReportName == "DepoRpt")
             {
                 query = @"Exec SelectLastLoanDepositHistory @VoucherNo='" + getVoucherNo + "', @CustID='" + getCustomerID + "'";
                 try
@@ -105,22 +137,44 @@ namespace MFIS.Reports
                 }
                 if (dt.Rows.Count > 0)
                 {
+                    EstablishConnection();
                     crystalReport.Load(Server.MapPath("DepoReport.rpt"));
-                    //crystalReport.SetDatabaseLogon("sa", "sa*1209");
-
                     crystalReport.SetDataSource(dt);
                     CrystalReportViewer.ReportSource = crystalReport;
 
-
-                    try
-                    {
-                        crystalReport.ExportToStream(ExportFormatType.HTML40);
-
-                        crystalReport.PrintToPrinter(1, true, 0, 0);
-                    }
-                    catch (Exception) { }
+                    crystalReport.PrintToPrinter(1, false, 0, 0);
                 }
             }
+
+            else if (getReportName == "LoanDepoRpt_RDLC")
+            {
+
+                query = @"Exec SelectLastLoanDepositHistory @VoucherNo='" + getVoucherNo + "', @CustID='" + getCustomerID + "'";
+                try
+                {
+                    dt = db.ExecuteQuery(query);
+                }
+                catch (Exception exc)
+                {
+
+                    throw exc;
+                }
+                if (dt.Rows.Count > 0)
+                {
+
+                    //ReportViewer1.ProcessingMode = ProcessingMode.Local;
+                    //ReportViewer1.LocalReport.ReportPath = Server.MapPath("DepoReportRDLC.rdlc");
+
+                    //ReportDataSource datasource = new ReportDataSource("DataSet1", dt);
+                    //ReportViewer1.LocalReport.DataSources.Clear();
+                    //ReportViewer1.LocalReport.DataSources.Add(datasource);
+                    //ReportViewer1.ShowPrintButton = true;
+                }
+
+            }
+
         }
+
+
     }
 }

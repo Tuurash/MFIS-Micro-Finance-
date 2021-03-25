@@ -121,6 +121,15 @@ namespace MFIS.Forms.MobileForms {
         protected global::System.Web.UI.WebControls.LinkButton linkbtn_PrintHtml;
         
         /// <summary>
+        /// linkbtnPrintNow control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton linkbtnPrintNow;
+        
+        /// <summary>
         /// btnSkip control.
         /// </summary>
         /// <remarks>

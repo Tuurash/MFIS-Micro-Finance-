@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>MFIS</title>
     <meta charset="etf-8">
@@ -23,7 +24,6 @@
     <script src="https://unpkg.com/izitoast/dist/js/iziToast.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
-
         function notify(Amount) {
 
             var Credit = Amount
@@ -62,7 +62,7 @@
 
     </script>
 
-    <link rel="stylesheet" href="../Scripts/footer.css" />
+    <link rel="stylesheet" href="footer.css" />
 
 </head>
 
@@ -75,6 +75,22 @@
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
         <asp:Label runat="server" ID="lblStaffName" Visible="false"></asp:Label>
         <asp:Label runat="server" ID="lblAddedVoucher" Visible="false"></asp:Label>
+
+        <script type="text/javascript">
+            function Report() {
+                $.ajax({
+                    type: "POST",
+                    url: "default.aspx/DayBook",
+                    data: "{Project: '" + $('#cboProjectName').val() + "',datestart: '" + $('#txtStartDate').val() + "',dateend: '" + $('#txtEndDate').val() + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        window.location.href = "../../../Home/admin/ReportPreview/ReportViewer.aspx";
+                    }
+                });
+            }
+        </script>
+
 
         <div class="form-row">
             <div class="col-12" align="right">
@@ -91,14 +107,14 @@
                 </p>
             </div>
         </div>
-
-        <div class="container">
-            <%--ProgressBar--%>
-            <br />
-            <div class="progress" style="height: 35px">
+        <%--ProgressBar--%>
+        <div class="progress" style="height: 30px">
                 <div class="progress-bar bg-success" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: 99%">Deposit</div>
             </div>
-            <br />
+
+        <div class="container">
+            
+           <br />
 
             <div>
                 <%-- CustAccNo --%>
@@ -117,8 +133,10 @@
                 <div class="input-group mb-3">
                     <div align="center">
                         <asp:Button runat="server" ID="btnSaveDeposit" CssClass="btn btn-sm btn-success" Text="Deposit" OnClick="btnSaveDeposit_Click" />
-                        <asp:LinkButton runat="server" ID="btnPrintDepositReciept" CssClass="btn btn-sm btn-light" Text="View Report" OnClick="btnPrintDepositReciept_Click"></asp:LinkButton>
-                        <asp:LinkButton runat="server" ID="linkbtn_PrintHtml" CssClass="btn btn-sm btn-light" Text="Print" OnClick="linkbtn_PrintHtml_Click"></asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="btnPrintDepositReciept" CssClass="btn btn-sm btn-light" Text="Get Report" OnClick="btnPrintDepositReciept_Click"></asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="linkbtn_PrintHtml" CssClass="btn btn-sm btn-light" Text="View Report" OnClick="linkbtn_PrintHtml_Click"></asp:LinkButton>
+                        <asp:LinkButton runat="server" ID="linkbtnPrintNow" CssClass="btn btn-sm btn-light" Text="Print" OnClick="linkbtnPrintNow_Click"></asp:LinkButton>
+                        <%--<input type="button" id="btnPrint" value="Print" onclick="Print()" />--%>
                     </div>
                 </div>
 
@@ -132,6 +150,21 @@
 
             </div>
 
+            <%--<script type="text/javascript">
+                function Print() {
+                    var dvReport = document.getElementById("dvReport");
+                    var frame1 = dvReport.getElementsByTagName("iframe")[0];
+                    if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
+                        frame1.name = frame1.id;
+                        window.frames[frame1.id].focus();
+                        window.frames[frame1.id].print();
+                    }
+                    else {
+                        var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
+                        frameDoc.print();
+                    }
+                }
+            </script>--%>
         </div>
 
     </form>

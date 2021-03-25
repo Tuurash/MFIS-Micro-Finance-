@@ -148,5 +148,17 @@ namespace MFIS.Forms.MobileForms
             Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text + "&ReportName=" + getReportName);
             //Response.Redirect("~/Forms/MobileForms/DepositRptPage.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text + "&ReportName=" + getReportName);
         }
+
+        protected void linkbtnRDLC_Click(object sender, EventArgs e)
+        {
+            string getReportName = "LoanDepoRpt_RDLC";
+            Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text + "&ReportName=" + getReportName);
+        }
+
+        protected void linkbtnPrintNow_Click(object sender, EventArgs e)
+        {
+            string getReportName = "LoanDepoRpt_RDLC";
+            Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text + "&ReportName=" + getReportName);
+        }
     }
 }

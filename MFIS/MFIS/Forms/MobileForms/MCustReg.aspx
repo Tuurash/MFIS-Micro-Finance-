@@ -19,7 +19,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 
-    <link rel="stylesheet" href="../Scripts/footer.css" />
+    <link rel="stylesheet" href="footer.css" />
 
 </head>
 
@@ -44,12 +44,11 @@
                 </p>
             </div>
         </div>
-
-        <div class="container">
-            <br />
-            <div class="progress" style="height: 30px">
+        <div class="progress" style="height: 30px">
                 <div class="progress-bar bg-success" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%">Account Info</div>
             </div>
+        <div class="container">
+           
             <br />
 
             <div>

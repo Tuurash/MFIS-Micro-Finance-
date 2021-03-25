@@ -42,10 +42,37 @@ namespace MFIS.Reports
             {
                 getReportName = Request.QueryString["ReportName"];
             }
-            EstablishConnection();
+
+
+            if (!IsPostBack)
+            {
+                this.BindReport();
+            }
 
             ShowReport();
 
+        }
+
+        private void BindReport()
+        {
+            EstablishConnection();
+
+            query = @"Exec SelectLastLoanDepositHistory @VoucherNo='" + getVoucherNo + "', @CustID='" + getCustomerID + "'";
+            try
+            {
+                dt = db.ExecuteQuery(query);
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+            if (dt.Rows.Count > 0)
+            {
+                crystalReport.Load(Server.MapPath("DepoReport.rpt"));
+                crystalReport.SetDataSource(dt);
+                CrystalReportViewer1.ReportSource = crystalReport;
+            }
         }
 
         private void EstablishConnection()
@@ -62,7 +89,7 @@ namespace MFIS.Reports
         private void setDBLOGONforREPORT(ConnectionInfo myConnectionInfo)
         {
             TableLogOnInfos mytableloginfos = new TableLogOnInfos();
-            mytableloginfos = CrystalReportViewer.LogOnInfo;
+            mytableloginfos = CrystalReportViewer1.LogOnInfo;
             foreach (TableLogOnInfo myTableLogOnInfo in mytableloginfos)
             {
                 myTableLogOnInfo.ConnectionInfo = myConnectionInfo;
@@ -117,7 +144,7 @@ namespace MFIS.Reports
                     EstablishConnection();
                     crystalReport.Load(Server.MapPath("DepoReport.rpt"));
                     crystalReport.SetDataSource(dt);
-                    CrystalReportViewer.ReportSource = crystalReport;
+                    CrystalReportViewer1.ReportSource = crystalReport;
                 }
             }
 
@@ -140,7 +167,7 @@ namespace MFIS.Reports
                     EstablishConnection();
                     crystalReport.Load(Server.MapPath("DepoReport.rpt"));
                     crystalReport.SetDataSource(dt);
-                    CrystalReportViewer.ReportSource = crystalReport;
+                    CrystalReportViewer1.ReportSource = crystalReport;
 
                     crystalReport.PrintToPrinter(1, false, 0, 0);
                 }

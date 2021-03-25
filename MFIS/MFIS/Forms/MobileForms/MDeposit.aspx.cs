@@ -100,6 +100,8 @@ namespace MFIS.Forms.MobileForms
 
         }
 
+
+
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             int logoutStatus = 0;
@@ -158,30 +160,8 @@ namespace MFIS.Forms.MobileForms
 
         protected void linkbtnPrintNow_Click(object sender, EventArgs e)
         {
-            //string getReportName = "LoanDepoRpt_RDLC";
-            //Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text + "&ReportName=" + getReportName);
 
-            ReportDocument crystalReport = new ReportDocument();
-
-            query = @"Exec SelectLastLoanDepositHistory @VoucherNo='" + lblAddedVoucher.Text + "', @CustID='" + getCustIDNo + "'";
-            try
-            {
-                dt = db.ExecuteQuery(query);
-            }
-            catch (Exception exc)
-            {
-
-                throw exc;
-            }
-            if (dt.Rows.Count > 0)
-            {
-                //EstablishConnection();
-                crystalReport.Load(Server.MapPath("../../Reports/DepoReport.rpt"));
-                crystalReport.SetDataSource(dt);
-                //CrystalReportViewer.ReportSource = crystalReport;
-
-                crystalReport.PrintToPrinter(1, false, 0, 0);
-            }
+            Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text);
         }
     }
 }

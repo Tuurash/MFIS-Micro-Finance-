@@ -146,7 +146,7 @@ namespace MFIS.Reports
                 }
             }
 
-            else if (getReportName == "LoanDepoRpt_RDLC")
+            else if (getReportName == "LoanD epoRpt_RDLC")
             {
 
                 query = @"Exec SelectLastLoanDepositHistory @VoucherNo='" + getVoucherNo + "', @CustID='" + getCustomerID + "'";

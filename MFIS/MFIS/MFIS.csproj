@@ -81,6 +81,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Forms\MobileForms\footer.css" />
     <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl.cab" />
     <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_cs.cab" />
     <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_da.cab" />

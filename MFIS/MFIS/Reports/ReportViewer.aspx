@@ -23,7 +23,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <CR:CrystalReportViewer  ID="CrystalReportViewer" runat="server" AutoDataBind="true" EnableDatabaseLogonPrompt="False" HasRefreshButton="True" BestFitPage="True" DisplayToolbar="False" HasToggleGroupTreeButton="False" Height="50px" ToolPanelView="ParameterPanel" ToolPanelWidth="0px" Width="350px" />
+                        <CR:CrystalReportViewer  ID="CrystalReportViewer" runat="server" AutoDataBind="true" EnableDatabaseLogonPrompt="False" HasRefreshButton="True" BestFitPage="True" HasToggleGroupTreeButton="False" Height="50px" ToolPanelView="ParameterPanel" ToolPanelWidth="0px" Width="350px" />
                     </div>
                 </div>
             </div>

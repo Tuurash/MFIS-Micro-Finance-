@@ -109,12 +109,12 @@
         </div>
         <%--ProgressBar--%>
         <div class="progress" style="height: 30px">
-                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: 99%">Deposit</div>
-            </div>
+            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: 99%">Deposit</div>
+        </div>
 
         <div class="container">
-            
-           <br />
+
+            <br />
 
             <div>
                 <%-- CustAccNo --%>
@@ -136,7 +136,6 @@
                         <asp:LinkButton runat="server" ID="btnPrintDepositReciept" CssClass="btn btn-sm btn-light" Text="Get Report" OnClick="btnPrintDepositReciept_Click"></asp:LinkButton>
                         <asp:LinkButton runat="server" ID="linkbtn_PrintHtml" CssClass="btn btn-sm btn-light" Text="View Report" OnClick="linkbtn_PrintHtml_Click"></asp:LinkButton>
                         <asp:LinkButton runat="server" ID="linkbtnPrintNow" CssClass="btn btn-sm btn-light" Text="Print" OnClick="linkbtnPrintNow_Click"></asp:LinkButton>
-                        <%--<input type="button" id="btnPrint" value="Print" onclick="Print()" />--%>
                     </div>
                 </div>
 
@@ -150,21 +149,13 @@
 
             </div>
 
-            <%--<script type="text/javascript">
-                function Print() {
-                    var dvReport = document.getElementById("dvReport");
-                    var frame1 = dvReport.getElementsByTagName("iframe")[0];
-                    if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
-                        frame1.name = frame1.id;
-                        window.frames[frame1.id].focus();
-                        window.frames[frame1.id].print();
-                    }
-                    else {
-                        var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
-                        frameDoc.print();
-                    }
-                }
-            </script>--%>
+
+
+
+
+
+
+
         </div>
 
     </form>

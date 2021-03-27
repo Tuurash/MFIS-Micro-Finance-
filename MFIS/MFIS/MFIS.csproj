@@ -81,7 +81,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Forms\LoanDeposit\frmMSavingsLoan.aspx" />
     <Content Include="Forms\MobileForms\footer.css" />
+    <Content Include="Forms\MobileForms\MDashboard.aspx" />
+    <Content Include="Forms\MobileForms\MSavingsLoan.aspx" />
     <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl.cab" />
     <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_cs.cab" />
     <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_da.cab" />
@@ -2278,6 +2281,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\LoanDeposit\frmMSavingsLoan.aspx.cs">
+      <DependentUpon>frmMSavingsLoan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\LoanDeposit\frmMSavingsLoan.aspx.designer.cs">
+      <DependentUpon>frmMSavingsLoan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MobileForms\DepositRptPage.aspx.cs">
       <DependentUpon>DepositRptPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2299,12 +2309,26 @@
     <Compile Include="Forms\MobileForms\MCustReg.aspx.designer.cs">
       <DependentUpon>MCustReg.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MobileForms\MDashboard.aspx.cs">
+      <DependentUpon>MDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MDashboard.aspx.designer.cs">
+      <DependentUpon>MDashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MobileForms\MDeposit.aspx.cs">
       <DependentUpon>MDeposit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Forms\MobileForms\MDeposit.aspx.designer.cs">
       <DependentUpon>MDeposit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MSavingsLoan.aspx.cs">
+      <DependentUpon>MSavingsLoan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MSavingsLoan.aspx.designer.cs">
+      <DependentUpon>MSavingsLoan.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\Models\device.cs" />
     <Compile Include="Forms\Models\DeviceInfoRoot.cs" />

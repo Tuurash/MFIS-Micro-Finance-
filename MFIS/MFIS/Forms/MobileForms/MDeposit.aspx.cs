@@ -100,8 +100,6 @@ namespace MFIS.Forms.MobileForms
 
         }
 
-
-
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             int logoutStatus = 0;
@@ -163,5 +161,6 @@ namespace MFIS.Forms.MobileForms
 
             Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text);
         }
+
     }
 }

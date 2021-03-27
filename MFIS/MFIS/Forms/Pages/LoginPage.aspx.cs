@@ -303,11 +303,11 @@ namespace MFIS.Pages
                         //Response.Redirect("Dashboard.aspx");
                         if (Utils.fBrowserIsMobile())
                         {
-                            Response.Redirect("~/Forms/MobileForms/MCustInfo.aspx");
+                            Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
                         }
                         else
                         {
-                            Response.Redirect("~/Forms/MobileForms/MCustInfo.aspx");
+                            Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
                         }
                     }
                 }

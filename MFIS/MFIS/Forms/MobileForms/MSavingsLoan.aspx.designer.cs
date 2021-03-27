@@ -40,22 +40,49 @@ namespace MFIS.Forms.MobileForms {
         protected global::System.Web.UI.WebControls.LinkButton btnLogout;
         
         /// <summary>
-        /// txtCustIDNO control.
+        /// txtIdNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtCustIDNO;
+        protected global::System.Web.UI.WebControls.TextBox txtIdNo;
         
         /// <summary>
-        /// TxtCustName control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCustName;
+        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        
+        /// <summary>
+        /// txtDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtDate;
+        
+        /// <summary>
+        /// lblVoucherNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVoucherNo;
+        
+        /// <summary>
+        /// txtCustomerName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCustomerName;
         
         /// <summary>
         /// DropdownLAno control.
@@ -67,13 +94,13 @@ namespace MFIS.Forms.MobileForms {
         protected global::System.Web.UI.WebControls.DropDownList DropdownLAno;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtLAAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtLAAmount;
         
         /// <summary>
         /// DropdownSAno control.
@@ -85,12 +112,39 @@ namespace MFIS.Forms.MobileForms {
         protected global::System.Web.UI.WebControls.DropDownList DropdownSAno;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtSAamount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtSAamount;
+        
+        /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// divPrint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPrint;
+        
+        /// <summary>
+        /// CrystalReportViewer1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CrystalDecisions.Web.CrystalReportViewer CrystalReportViewer1;
     }
 }

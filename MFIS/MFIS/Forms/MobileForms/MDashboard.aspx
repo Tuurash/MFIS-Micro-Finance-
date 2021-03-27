@@ -39,9 +39,14 @@
         <br />
 
         <div>
-            <%-- Amount --%>
+            <%-- Nw Account --%>
             <div class="col-12">
-                <asp:Button runat="server" ID="btnNwEntry" CssClass="btn btn-light" Text="New Account" Style="width: 100%; height: 50px;" />
+                <asp:Button runat="server" ID="btnNwEntry" CssClass="btn btn-light" Text="New Account" OnClick="btnNwEntry_Click" Style="width: 100%; height: 50px;" />
+            </div>
+            <br />
+            <%-- Loan/Deposit Entry --%>
+            <div class="col-12">
+                <asp:Button runat="server" ID="btnLS" CssClass="btn btn-light" Text=" Loan/Deposit Entry" OnClick="btnLS_Click" Style="width: 100%; height: 50px;" />
             </div>
         </div>
 

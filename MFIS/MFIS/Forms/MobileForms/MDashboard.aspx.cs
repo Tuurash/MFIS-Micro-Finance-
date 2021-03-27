@@ -31,6 +31,7 @@ namespace MFIS.Forms.MobileForms
             else { Response.Redirect("~/Forms/Pages/LoginPage.aspx"); }
         }
 
+
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             int logoutStatus = 0;
@@ -68,6 +69,17 @@ namespace MFIS.Forms.MobileForms
             }
         }
 
+
+        protected void btnNwEntry_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MCustInfo.aspx");
+        }
+
+
+        protected void btnLS_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MSavingsLoan.aspx");
+        }
 
     }
 }

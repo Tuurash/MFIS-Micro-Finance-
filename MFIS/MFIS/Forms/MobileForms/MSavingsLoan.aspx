@@ -39,10 +39,10 @@
             </div>
         </div>
         <div>
-
+            
             <div class="container">
 
-
+                
                 <br />
 
                 <%--txtDate--%>
@@ -81,39 +81,50 @@
 
                 </div>
                 <br />
+                <div class="col-12" runat="server" id="divPrint" visible="false">
 
+                    <div style="height:60px;width:auto">
+                        <input type="button" id="btnPrint" class="btn btn-light" style="width: 100%; height: 60px" value="Print" onclick="Print()" />
+                        <div id="dvReport" style="color:white; overflow:hidden;display: none;" class="col" >
 
-            </div>
-            <div class="col-12" runat="server" id="divPrint" visible="false">
-                <%--Report--%>
-                <div id="dvReport">
-                    <%--<CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true"
-                        Height="400" Width="600" BestFitPage="False" />--%>
+                        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server"
+                            AutoDataBind="true"
+                            HasToggleGroupTreeButton="false"
+                            HasToggleParameterPanelButton="false"
+                            HasPageNavigationButtons="False"
+                            ShowToggleSidePanelButton="False"
+                            ShowStatusbar="False"
+                            ShowLogo="False"
+                            GroupTreeStyle-ShowLines="False"
+                            DisplayStatusbar="False"
+                            EnableToolTips="False"
+                            Font-Bold="False"
+                            Font-Strikeout="False" ToolPanelView="None" BestFitPage="True" />
 
+                    </div>
+                    </div>
 
-                    <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" Height="400" Width="600" BestFitPage="False" Visible="false" />
+                    <script type="text/javascript">
+                        function Print() {
+                            var dvReport = document.getElementById("dvReport");
+                            var frame1 = dvReport.getElementsByTagName("iframe")[0];
+                            if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
+                                frame1.name = frame1.id;
+                                window.frames[frame1.id].focus();
+                                window.frames[frame1.id].print();
+                            }
+                            else {
+                                var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
+                                frameDoc.print();
+                            }
+                        }
+                    </script>
 
                 </div>
-                <input type="button" id="btnPrint" class="btn btn-light" style="width: 100%; height: 60px" value="Print" onclick="Print()" />
-                <script type="text/javascript">
-                    function Print() {
-                        var dvReport = document.getElementById("dvReport");
-                        var frame1 = dvReport.getElementsByTagName("iframe")[0];
-                        if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
-                            frame1.name = frame1.id;
-                            window.frames[frame1.id].focus();
-                            window.frames[frame1.id].print();
-                        }
-                        else {
-                            var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
-                            frameDoc.print();
-                        }
-                    }
-                </script>
-
 
             </div>
 
+            
 
         </div>
     </form>

@@ -93,12 +93,40 @@ namespace MFIS.Forms.MobileForms
                 catch (Exception) { }
                 if (sInsertStatus > 0)
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify(" + txtSAamount.Text + ")", true);
+                    BindReport();
+
                 }
 
             }
 
         }
+
+
+        private void BindReport()
+        {
+            ReportDocument crystalReport = new ReportDocument();
+
+            query = @"Exec SelectLastLoanDepositHistory @VoucherNo='" + lblAddedVoucher.Text + "', @CustID='" + txtCustIDNO.Text + "'";
+            try
+            {
+                dt = db.ExecuteQuery(query);
+            }
+            catch (Exception exc)
+            {
+
+                throw exc;
+            }
+            if (dt.Rows.Count > 0)
+            {
+                crystalReport.Load(Server.MapPath("~/Reports/DepoReport.rpt"));
+                crystalReport.SetDataSource(dt);
+                CrystalReportViewer1.ReportSource = crystalReport;
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify(" + txtSAamount.Text + ")", true);
+                divPrint.Visible = true;
+            }
+        }
+
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {

@@ -302,7 +302,7 @@ namespace MFIS.Forms.MobileForms
             SavingsInsert();
             BindReport();
 
-            divPrint.Visible = true;
+
         }
 
 
@@ -326,7 +326,7 @@ namespace MFIS.Forms.MobileForms
                 crystalReport.SetDataSource(dt);
                 CrystalReportViewer1.ReportSource = crystalReport;
 
-
+                divPrint.Visible = true;
             }
         }
     }

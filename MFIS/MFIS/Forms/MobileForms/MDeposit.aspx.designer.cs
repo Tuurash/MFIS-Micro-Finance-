@@ -103,31 +103,22 @@ namespace MFIS.Forms.MobileForms {
         protected global::System.Web.UI.WebControls.Button btnSaveDeposit;
         
         /// <summary>
-        /// btnPrintDepositReciept control.
+        /// divPrint control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnPrintDepositReciept;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPrint;
         
         /// <summary>
-        /// linkbtn_PrintHtml control.
+        /// CrystalReportViewer1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkbtn_PrintHtml;
-        
-        /// <summary>
-        /// linkbtnPrintNow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkbtnPrintNow;
+        protected global::CrystalDecisions.Web.CrystalReportViewer CrystalReportViewer1;
         
         /// <summary>
         /// btnSkip control.

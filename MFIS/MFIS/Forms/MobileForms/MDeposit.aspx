@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MDeposit.aspx.cs" Inherits="MFIS.Forms.MobileForms.MDeposit" %>
 
+<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,13 +12,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>--%>
-    <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>--%>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <script src="../../Reports/crystalreportviewers13/js/crviewer/crv.js"></script>
 
 
     <%--Notification--%>
@@ -33,33 +31,6 @@
                 message: 'Inserted Deposit: ' + Credit + '\n',
             });
         }
-    </script>
-
-    <%--Sweet Alert Scripts--%>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.0.2/dist/sweetalert2.all.min.js"></script>
-    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
-
-    <script>
-        function InsertComplete() {
-
-            <%--var username = "<%=Session["UserName"].ToString() %>";--%>
-
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Successful',
-                text: 'Redirecting..',
-                showConfirmButton: false,
-                timer: 1000
-                //footer: '<a href>Why do I have this issue?</a>'
-            }, function () {
-                window.location = "~/Forms/MobileForms/MCustInfo.aspx";
-            });
-
-        }
-
     </script>
 
     <link rel="stylesheet" href="footer.css" />
@@ -129,15 +100,56 @@
                     <asp:TextBox runat="server" type="text" class="form-control" ID="txtSAamount" aria-describedby="basic-addon1" required />
                 </div>
 
-                <%-- Print btn --%>
-                <div class="input-group mb-3">
+                <%-- Submit btn --%>
+                <div class="col-12">
                     <div align="center">
-                        <asp:Button runat="server" ID="btnSaveDeposit" CssClass="btn btn-sm btn-success" Text="Deposit" OnClick="btnSaveDeposit_Click" />
-                        <asp:LinkButton runat="server" ID="btnPrintDepositReciept" CssClass="btn btn-sm btn-light" Text="Get Report" OnClick="btnPrintDepositReciept_Click"></asp:LinkButton>
-                        <asp:LinkButton runat="server" ID="linkbtn_PrintHtml" CssClass="btn btn-sm btn-light" Text="View Report" OnClick="linkbtn_PrintHtml_Click"></asp:LinkButton>
-                        <asp:LinkButton runat="server" ID="linkbtnPrintNow" CssClass="btn btn-sm btn-light" Text="Print" OnClick="linkbtnPrintNow_Click"></asp:LinkButton>
+                        <asp:Button runat="server" ID="btnSaveDeposit" CssClass="btn btn-sm btn-success" style="width:100%;" Text="Deposit" OnClick="btnSaveDeposit_Click" />
+
                     </div>
                 </div>
+
+                <%--Print btn--%>
+                <div class="col-12" runat="server" id="divPrint" visible="false">
+
+                    <div style="height: 60px; width: auto">
+                        <input type="button" id="btnPrint" class="btn btn-light" style="width: 100%; height: 60px" value="Print" onclick="Print()" />
+                        <div id="dvReport" style="color: white; overflow: hidden; display: none;" class="col">
+
+                            <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server"
+                                AutoDataBind="true"
+                                HasToggleGroupTreeButton="false"
+                                HasToggleParameterPanelButton="false"
+                                HasPageNavigationButtons="False"
+                                showtogglesidepanelbutton="False"
+                                showstatusbar="False"
+                                showlogo="False"
+                                GroupTreeStyle-ShowLines="False"
+                                DisplayStatusbar="False"
+                                EnableToolTips="False"
+                                Font-Bold="False"
+                                Font-Strikeout="False" ToolPanelView="None" BestFitPage="True" />
+                        </div>
+
+                    </div>
+
+                    <script type="text/javascript">
+                        function Print() {
+                            var dvReport = document.getElementById("dvReport");
+                            var frame1 = dvReport.getElementsByTagName("iframe")[0];
+                            if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
+                                frame1.name = frame1.id;
+                                window.frames[frame1.id].focus();
+                                window.frames[frame1.id].print();
+                            }
+                            else {
+                                var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
+                                frameDoc.print();
+                            }
+                        }
+                    </script>
+
+                </div>
+
 
                 <%--btn--%>
                 <div class="footer">

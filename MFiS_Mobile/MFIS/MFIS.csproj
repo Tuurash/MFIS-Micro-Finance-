@@ -1,0 +1,1656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{72D70ED4-F289-4C8C-B86B-44836CD218D5}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MFIS</RootNamespace>
+    <AssemblyName>MFIS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web">
+      <HintPath>c:\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Forms\MobileForms\footer.css" />
+    <Content Include="Forms\MobileForms\MDashboard.aspx" />
+    <Content Include="Forms\MobileForms\MSavingsLoan.aspx" />
+    <Content Include="Forms\Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Forms\Scripts\Bootstrap5.css" />
+    <Content Include="Forms\Scripts\iziToastv1.4.0.css" />
+    <Content Include="Index.html" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_cs.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_da.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_de.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_en.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_es.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_fi.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_fr.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_hu.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_it.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_ja.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_ko.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_nb.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_nl.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_pl.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_pt.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_ru.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_sk.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_sv.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_th.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_tr.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_zh_CN.cab" />
+    <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_zh_TW.cab" />
+    <Content Include="Reports\crystalreportviewers13\allInOne.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_cs.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_da.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_de.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_en.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_es.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_fi.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_fr.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_hu.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_it.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_ja.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_ko.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_nb.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_nl.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_pl.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_pt.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_ru.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_sk.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_sv.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_th.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_tr.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_zh_CN.js" />
+    <Content Include="Reports\crystalreportviewers13\allStrings_zh_TW.js" />
+    <Content Include="Reports\crystalreportviewers13\css\cedefault.css" />
+    <Content Include="Reports\crystalreportviewers13\css\default.css" />
+    <Content Include="Reports\crystalreportviewers13\css\exception.css" />
+    <Content Include="Reports\crystalreportviewers13\css\prompting.css" />
+    <Content Include="Reports\crystalreportviewers13\html\calendar.html" />
+    <Content Include="Reports\crystalreportviewers13\html\calendarbottom.html" />
+    <Content Include="Reports\crystalreportviewers13\html\calendartop.html" />
+    <Content Include="Reports\crystalreportviewers13\images\buttonl.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\buttonm.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\buttonr.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortActive100.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortActive150.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortActive200.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortActive250.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortActive300.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortActive350.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortActive400.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortActive50.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortHover100.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortHover150.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortHover200.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortHover250.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortHover300.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortHover350.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortHover400.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortHover50.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortInactive100.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortInactive150.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortInactive200.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortInactive250.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortInactive300.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortInactive400.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\DownArrowSortInactive50.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortActive100.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortActive150.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortActive200.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortActive250.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortActive300.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortActive350.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortActive400.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortActive50.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortHover100.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortHover150.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortHover200.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortHover250.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortHover300.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortHover350.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortHover400.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortHover50.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortInactive100.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortInactive150.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortInactive200.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortInactive250.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortInactive300.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortInactive400.gif" />
+    <Content Include="Reports\crystalreportviewers13\images\isort\UpArrowSortInactive50.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\calendar.js" />
+    <Content Include="Reports\crystalreportviewers13\js\calendar_param.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewerinclude.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\api.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ArgumentNormalizer.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\bobjcallback.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ButtonList.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\Calendar.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\Colors.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\common.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\crv.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\Dialogs.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\dom.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\encoding.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\event.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\GroupTree.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\GroupTreeListener.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\GroupTreeNode.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\html.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ImageSprites.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\allInOne.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\allInOneBG.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\arrow_button_depressed.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\arrow_button_hover.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\breadcrumbSep.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\calendar.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\catalyst.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\clearValues.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\clear_x.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\closePanel.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\delete.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\drill_cursor.cur" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\export.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\filledCircle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\first.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\grouptree_toggle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\hollowCircle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\last.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\leftTriangle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\line.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\logo.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\magnify.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\min.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\next.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\open_parameter_arrow.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\panelHeaderBG.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\panelNavigatorItemHL.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\panelNavigatorItemSelectedBG.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\panel_toggle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\param_datafetching.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\param_dirty.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\param_info.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\param_run.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\param_warning.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\plus.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\prev.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\print.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\refresh.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\rightTriangle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\search.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\separator.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\StackedTab.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\style.css" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\toolbar_background.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\toolbar_buttongroup_background.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\toolbar_buttongroup_left.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\toolbar_buttongroup_right.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\toolbar_button_depressed.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\toolbar_button_hover.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\toolbar_menuarrow_depressed.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\toolbar_menuarrow_hover.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\toolbar_pagenav_buttons.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\toolbar_separator_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\undo.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\up.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\images\WarningPopupTriangle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\initDhtmlLib.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\IOAdapters.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\LeftPanel.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\OptionalParameterUI.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\OptionalParameterValueRow.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\PanelHeader.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\PanelNavigator.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\PanelNavigatorItem.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\Parameter.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ParameterController.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ParameterDialog.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ParameterInfoRow.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ParameterPanel.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ParameterPanelToolbar.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ParameterUI.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ParameterValueRow.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\PromptPage.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\RangeField.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ReportAlbum.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ReportPage.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ReportView.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\Separator.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\SharedWidgetHolder.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\SignalDisposer.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\StackedPanel.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\StackedTab.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\StateManager.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\Statusbar.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_cs.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_da.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_de.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_en.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_es.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_fi.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_fr.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_hu.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_it.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_ja.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_ko.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_nb.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_nl.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_pl.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_pt.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_ru.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_sk.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_sv.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_th.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_tr.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_zh_CN.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\strings_zh_TW.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\TextCombo.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\TextField.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\Toolbar.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ToolPanel.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\Viewer.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ViewerFlexParameterAdapter.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\ViewerListener.js" />
+    <Content Include="Reports\crystalreportviewers13\js\crviewer\WarningPopup.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\bolist.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\calendar.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\dialog.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\dom.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\empty.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\borders.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\help.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\loading.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\lov.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\min.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\plus.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\print.css" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\print_fe.css" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\prompt.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\resizepattern.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\bolist.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\button.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\buttonIcons.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\critical_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\dialogelements.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\dialogframe.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\dialogframeleftright.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\dialogframetopbottom.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\dialogtitle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\down.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\iconsep.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\information_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\left.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\menus.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\node.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\progress.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\resize.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\right.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\scroll_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\sep.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\sep_solid.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\style.css" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\style.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\style_fe.css" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\tabs.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\up.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\wait01.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\wait02.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_coloredline\warning_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\bolist.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\button.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\buttonIcons.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\critical_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\dialogelements.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\dialogframe.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\dialogframeleftright.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\dialogframetopbottom.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\dialogtitle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\down.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\iconsep.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\information_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\left.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\menus.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\node.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\progress.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\resize.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\right.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\scroll_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\sep.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\sep_solid.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\style.css" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\style.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\style_fe.css" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\tabs.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\up.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\wait01.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\wait02.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_corporate\warning_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\bolist.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\button.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\buttonIcons.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\critical_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\dialogelements.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\dialogframe.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\dialogframeleftright.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\dialogframetopbottom.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\dialogtitle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\down.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\iconsep.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\information_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\left.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\menus.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\node.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\progress.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\resize.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\right.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\scroll_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\sep.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\sep_solid.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\style.css" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\style.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\style_fe.css" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\tabs.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\up.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\wait01.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\wait02.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_default\warning_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\background_field.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\background_menusel.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\bolist.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\button.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\buttonIcons.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\critical_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\critical_icon.png" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\dialogelements.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\dialogframe.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\dialogframeleftright.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\dialogframetopbottom.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\dialogtitle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\down.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\hgrab.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\horiz_tabs.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\iconsep.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\information_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\left.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\menuitem_check.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\menus.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\node.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\panemenu.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\panetitle.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\progress.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\resize.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\right.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\scroll_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\sep.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\sep_solid.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\style.css" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\style.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\style_fe.css" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\tabs.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\toolbar_elements.png" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\up.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\vgrab.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\wait01.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\wait02.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\skin_standard\warning_icon.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\swap.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\transp.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\images\tree.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\cs\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\da\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\de\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\en\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\es\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\fi\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\fr\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\hu\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\it\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\ja\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\ko\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\nb\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\nl\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\pl\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\pt\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\ru\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\sk\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\sv\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\th\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\tr\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\zh_CN\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\language\zh_TW\labels.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\lov.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\menu.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\palette.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\prompttree.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\psheet.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\andorwidget.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\basicDialog.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\blockWhileWait.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\bolist.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\borderswidget.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\buttons.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\calendar.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\checktree.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\default.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\dim.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\dim_close.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\dim_o.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\dim_open.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\empty.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\eventsDialog.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\fieldswidget.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\format.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\framezone.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\grabber.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\iconlistpopupwidget.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\iconscrollmenuwidget.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\imgtabs.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\inconwidget.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\infowidget.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\lov.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\measure.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\measure_o.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\menu.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\navigation.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\palettes.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\pane.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\parent_dialog.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\progressBar.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\prompttree.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\qualif.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\scrolltabs.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\simplelist.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\skinIntl.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\tabs.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\textcombowidget.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\tooltipwidget.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\treeicons.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\treeview.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\unv_close.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\unv_o.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\unv_open.gif" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\samples\waitDialog.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\treeview.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\validator\default.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\validator\validator_res.html" />
+    <Content Include="Reports\crystalreportviewers13\js\dhtmllib\waitdialog.js" />
+    <Content Include="Reports\crystalreportviewers13\js\dt_param.js" />
+    <Content Include="Reports\crystalreportviewers13\js\external\date.js" />
+    <Content Include="Reports\crystalreportviewers13\js\FlexParameterBridge.js" />
+    <Content Include="Reports\crystalreportviewers13\js\KeyDownEvent.js" />
+    <Content Include="Reports\crystalreportviewers13\js\log4javascript\log4javascript.js" />
+    <Content Include="Reports\crystalreportviewers13\js\log4javascript\log4javascript_stub.js" />
+    <Content Include="Reports\crystalreportviewers13\js\log4javascript\log4javascript_stub_uncompressed.js" />
+    <Content Include="Reports\crystalreportviewers13\js\log4javascript\log4javascript_uncompressed.js" />
+    <Content Include="Reports\crystalreportviewers13\js\log4javascript\main.css" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\3rdParty.txt" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Async.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Base.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Color.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Controls.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\DateTime.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\DOM.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\DragAndDrop.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Format.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Iter.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\License.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Logging.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\LoggingPane.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\MochiKit.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\MockDOM.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\New.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Signal.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Sortable.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Style.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Test.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\Visual.js" />
+    <Content Include="Reports\crystalreportviewers13\js\MochiKit\__package__.js" />
+    <Content Include="Reports\crystalreportviewers13\js\previewerror.js" />
+    <Content Include="Reports\crystalreportviewers13\js\prompts.js" />
+    <Content Include="Reports\crystalreportviewers13\js\prompts_param.js" />
+    <Content Include="Reports\crystalreportviewers13\js\swfobject\swfobject.js" />
+    <Content Include="Reports\crystalreportviewers13\parameterUIController-compressed.js" />
+    <Content Include="Reports\crystalreportviewers13\processindicator.js" />
+    <Content Include="Reports\crystalreportviewers13\promptengine-compressed.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\css\promptengine2.css" />
+    <Content Include="Reports\crystalreportviewers13\prompting\css\promptengine_default.css" />
+    <Content Include="Reports\crystalreportviewers13\prompting\html\calendar.html" />
+    <Content Include="Reports\crystalreportviewers13\prompting\html\calendarbottom.html" />
+    <Content Include="Reports\crystalreportviewers13\prompting\html\calendartop.html" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\addallfield.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\addallfield_over.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\addfield.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\addfield_over.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\back.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\background_field.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\back_over.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\button.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\button_left_normal.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\button_middle_normal.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\button_right_normal.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\calendar.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\cfilter.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\cfilter_over.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\dialogelements.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\dialogtitle.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\error.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\errormsg.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\filter.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\filter_over.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\forward.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\forward_over.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\info.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\infomsg.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\minus.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\next.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\next_over.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\plus.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\prev.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\prev_over.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\resize.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\transp.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\warning.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\images\warningmsg.gif" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\initDhtmlLib.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_calendar.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_calendar2.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_prompts.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_prompts2.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_cs.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_da.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_de.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_en.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_es.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_fi.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_fr.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_hu.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_it.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_ja.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_ko.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_nb.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_nl.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_pl.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_pt.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_ru.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_sk.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_sv.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_th.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_tr.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_zh_CN.js" />
+    <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_zh_TW.js" />
+    <Content Include="Reports\crystalreportviewers13\urlreporting\activexviewer.js" />
+    <Content Include="Reports\crystalreportviewers13\urlreporting\appletviewer.js" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\demo.css" />
+    <Content Include="css\fakeLoader.min.css" />
+    <Content Include="Forms\MobileForms\MCustInfo.aspx" />
+    <Content Include="Forms\MobileForms\MCustReg.aspx" />
+    <Content Include="Forms\MobileForms\MDeposit.aspx" />
+    <Content Include="js\fakeLoader.min.js" />
+    <Content Include="packages.config" />
+    <Content Include="Forms\Pages\LoginPage.aspx" />
+    <Content Include="Forms\Scripts\bootstrap.min.css" />
+    <Content Include="Forms\Scripts\bootstrap.min.js" />
+    <Content Include="Forms\Scripts\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Forms\Scripts\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Forms\Scripts\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Forms\Scripts\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Forms\Scripts\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Forms\Scripts\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\.bower.json" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\bower.json" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\daterangepicker.scss" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\example\browserify\README.md" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\package.json" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\README.md" />
+    <Content Include="Forms\Scripts\bower_components\fastclick\.bower.json" />
+    <Content Include="Forms\Scripts\bower_components\fastclick\bower.json" />
+    <Content Include="Forms\Scripts\bower_components\fastclick\LICENSE" />
+    <Content Include="Forms\Scripts\bower_components\fastclick\README.md" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\.bower.json" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\.npmignore" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\bower.json" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\animated.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\core.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\fixed-width.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\font-awesome.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\icons.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\larger.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\list.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\mixins.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\path.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\screen-reader.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\stacked.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\less\variables.less" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_animated.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_core.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_icons.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_larger.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_list.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_mixins.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_path.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_stacked.scss" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\scss\_variables.scss" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\.bower.json" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\bower.json" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\knob.jquery.json" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\LICENSE" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\package.json" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\README.md" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\.bower.json" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\bower.json" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\package.json" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\README.md" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\.bower.json" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\bower.json" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\Makefile" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\README.md" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\sparkline.jquery.json" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\.bower.json" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\build.sh" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\converter\converter.py" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\converter\simplifier.py" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\jvectormap.jquery.json" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\README.md" />
+    <Content Include="Forms\Scripts\bower_components\moment\.bower.json" />
+    <Content Include="Forms\Scripts\bower_components\moment\bower.json" />
+    <Content Include="Forms\Scripts\bower_components\moment\CHANGELOG.md" />
+    <Content Include="Forms\Scripts\bower_components\moment\LICENSE" />
+    <Content Include="Forms\Scripts\bower_components\moment\package-lock.json" />
+    <Content Include="Forms\Scripts\bower_components\moment\README.md" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\.bower.json" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\.travis.yml" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\bower.json" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\bower.travis.json" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\less\morris.core.less" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\lib\morris.area.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\lib\morris.bar.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\lib\morris.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\lib\morris.donut.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\lib\morris.grid.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\lib\morris.hover.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\lib\morris.line.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\package.json" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\README.md" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\area\area_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\bar\bar_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\bar\colours.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\commas_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\donut\donut_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\grid\auto_grid_lines_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\grid\set_data_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\grid\y_label_format_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\hover_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\label_series_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\line\line_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\pad_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\lib\parse_time_spec.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\support\placeholder.coffee" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\viz\run.sh" />
+    <Content Include="Forms\Scripts\bower_components\raphael\.bower.json" />
+    <Content Include="Forms\Scripts\bower_components\raphael\bower.json" />
+    <Content Include="Forms\Scripts\bower_components\raphael\yarn.lock" />
+    <Content Include="Forms\DistrictList.json" />
+    <Content Include="Forms\Scripts\bootstrap\css\bootstrap.css" />
+    <Content Include="Forms\Scripts\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Forms\Scripts\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Forms\Scripts\bootstrap\js\bootstrap.js" />
+    <Content Include="Forms\Scripts\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Forms\Scripts\bootstrap\js\npm.js" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\demo.html" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\drp.png" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\example\amd\index.html" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\example\amd\main.js" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\example\amd\require.js" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\example\browserify\bundle.js" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\example\browserify\index.html" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\example\browserify\main.js" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\package.js" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\website\index.html" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\website\website.css" />
+    <Content Include="Forms\Scripts\bower_components\bootstrap-daterangepicker\website\website.js" />
+    <Content Include="Forms\Scripts\bower_components\fastclick\lib\fastclick.js" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\css\font-awesome.css" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Forms\Scripts\bower_components\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\dist\jquery.knob.min.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\excanvas.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\index.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\js\jquery.knob.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-knob\secretplan.jpg" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\allow-page-scroll.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\chaining.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\disable-fade-out.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\dynamic-content.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\height-width.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\index.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\libs\prettify\prettify.css" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\libs\prettify\prettify.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\mouse-wheel.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\multiple-elements.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\navigation.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\nested.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\programmatic-scrolling.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\rail.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\scroll-events.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\scrollbar.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\start-position.html" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\examples\style.css" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\jquery.slimscroll.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\Changelog.txt" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\dist\jquery.sparkline.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\dist\jquery.sparkline.min.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\minheader.txt" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\base.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\chart-bar.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\chart-box.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\chart-bullet.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\chart-discrete.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\chart-line.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\chart-pie.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\chart-tristate.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\defaults.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\footer.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\header.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\interact.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\rangemap.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\simpledraw.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\utils.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\vcanvas-base.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\vcanvas-canvas.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\src\vcanvas-vml.js" />
+    <Content Include="Forms\Scripts\bower_components\jquery-sparkline\version.txt" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\jquery-jvectormap.css" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\jquery-jvectormap.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\jquery-mousewheel.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\abstract-canvas-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\abstract-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\abstract-shape-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\color-scale.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\data-series.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\jvectormap.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\numeric-scale.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\ordinal-scale.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\proj.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\simple-scale.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\svg-canvas-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\svg-circle-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\svg-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\svg-group-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\svg-path-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\svg-shape-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\vector-canvas.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\vml-canvas-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\vml-circle-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\vml-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\vml-group-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\vml-path-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\vml-shape-element.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\lib\world-map.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\assets\jquery-1.8.2.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\assets\jquery-jvectormap-map.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\assets\jquery-jvectormap-us-aea-en.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\assets\jquery-jvectormap-us-lcc-en.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\assets\jquery-jvectormap-us-merc-en.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\assets\jquery-jvectormap-us-mill-en.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\assets\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\build.html" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\custom.html" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\index.html" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\markers.html" />
+    <Content Include="Forms\Scripts\bower_components\jvectormap\tests\reverse-projection.html" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\af.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ar-dz.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ar-kw.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ar-ly.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ar-ma.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ar-sa.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ar-tn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ar.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\az.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\be.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\bg.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\bm.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\bn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\bo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\br.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\bs.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ca.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\cs.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\cv.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\cy.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\da.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\de-at.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\de-ch.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\de.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\dv.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\el.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\en-au.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\en-ca.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\en-gb.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\en-ie.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\en-il.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\en-nz.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\en-SG.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\eo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\es-do.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\es-us.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\es.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\et.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\eu.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\fa.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\fi.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\fo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\fr-ca.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\fr-ch.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\fr.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\fy.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ga.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\gd.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\gl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\gom-latn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\gu.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\he.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\hi.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\hr.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\hu.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\hy-am.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\id.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\is.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\it-ch.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\it.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ja.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\jv.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ka.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\kk.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\km.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\kn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ko.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ku.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ky.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\lb.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\lo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\lt.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\lv.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\me.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\mi.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\mk.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ml.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\mn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\mr.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ms-my.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ms.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\mt.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\my.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\nb.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ne.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\nl-be.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\nl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\nn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\pa-in.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\pl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\pt-br.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\pt.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ro.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ru.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\sd.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\se.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\si.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\sk.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\sl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\sq.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\sr-cyrl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\sr.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ss.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\sv.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\sw.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ta.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\te.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\tet.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\tg.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\th.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\tl-ph.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\tlh.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\tr.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\tzl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\tzm-latn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\tzm.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ug-cn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\uk.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\ur.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\uz-latn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\uz.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\vi.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\x-pseudo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\yo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\zh-cn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\zh-hk.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\locale\zh-tw.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\min\locales.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\min\locales.min.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\min\moment-with-locales.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\min\moment-with-locales.min.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\min\moment.min.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\moment.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\check-overflow.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\date-from-array.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\from-anything.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\from-array.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\from-object.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\from-string-and-array.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\from-string-and-format.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\from-string.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\local.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\parsing-flags.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\utc.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\create\valid.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\abs.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\add-subtract.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\as.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\bubble.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\clone.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\constructor.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\create.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\duration.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\get.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\humanize.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\iso-string.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\prototype.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\duration\valid.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\format\format.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\base-config.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\calendar.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\constructor.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\en.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\formats.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\invalid.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\lists.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\locale.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\locales.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\ordinal.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\pre-post-format.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\prototype.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\relative.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\locale\set.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\add-subtract.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\calendar.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\clone.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\compare.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\constructor.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\creation-data.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\diff.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\format.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\from.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\get-set.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\locale.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\min-max.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\moment.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\now.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\prototype.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\start-end-of.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\to-type.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\to.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\moment\valid.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\parse\regex.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\parse\token.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\aliases.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\constants.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\day-of-month.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\day-of-week.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\day-of-year.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\hour.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\millisecond.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\minute.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\month.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\offset.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\priorities.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\quarter.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\second.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\timestamp.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\timezone.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\units.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\week-calendar-utils.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\week-year.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\week.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\units\year.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\abs-ceil.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\abs-floor.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\abs-round.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\compare-arrays.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\defaults.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\deprecate.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\extend.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\has-own-prop.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\hooks.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\index-of.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\is-array.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\is-date.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\is-function.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\is-number.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\is-object-empty.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\is-object.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\is-undefined.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\keys.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\map.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\mod.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\some.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\to-int.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\lib\utils\zero-fill.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\af.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ar-dz.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ar-kw.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ar-ly.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ar-ma.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ar-sa.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ar-tn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ar.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\az.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\be.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\bg.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\bm.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\bn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\bo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\br.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\bs.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ca.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\cs.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\cv.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\cy.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\da.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\de-at.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\de-ch.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\de.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\dv.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\el.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\en-au.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\en-ca.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\en-gb.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\en-ie.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\en-il.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\en-nz.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\en-SG.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\eo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\es-do.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\es-us.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\es.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\et.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\eu.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\fa.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\fi.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\fo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\fr-ca.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\fr-ch.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\fr.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\fy.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ga.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\gd.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\gl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\gom-latn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\gu.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\he.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\hi.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\hr.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\hu.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\hy-am.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\id.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\is.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\it-ch.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\it.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ja.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\jv.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ka.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\kk.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\km.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\kn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ko.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ku.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ky.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\lb.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\lo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\lt.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\lv.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\me.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\mi.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\mk.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ml.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\mn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\mr.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ms-my.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ms.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\mt.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\my.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\nb.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ne.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\nl-be.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\nl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\nn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\pa-in.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\pl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\pt-br.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\pt.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ro.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ru.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\sd.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\se.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\si.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\sk.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\sl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\sq.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\sr-cyrl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\sr.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ss.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\sv.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\sw.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ta.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\te.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\tet.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\tg.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\th.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\tl-ph.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\tlh.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\tr.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\tzl.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\tzm-latn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\tzm.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ug-cn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\uk.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\ur.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\uz-latn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\uz.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\vi.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\x-pseudo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\yo.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\zh-cn.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\zh-hk.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\locale\zh-tw.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\src\moment.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\templates\default.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\templates\locale-header.js" />
+    <Content Include="Forms\Scripts\bower_components\moment\templates\test-header.js" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\area-as-line.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\area.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\bar-colors.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\bar-no-axes.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\bar.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\days.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\decimal-custom-hover.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\diagonal-xlabels-bar.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\diagonal-xlabels.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\donut-colors.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\donut-formatter.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\donut.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\dst.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\events.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\goals.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\lib\example.css" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\lib\example.js" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\months-no-smooth.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\negative.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\no-grid.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\non-continuous.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\non-date.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\quarters.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\resize.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\stacked_bars.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\timestamps.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\updating.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\weeks.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\years.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\examples\_template.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\Gruntfile.js" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\morris.css" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\morris.js" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\morris.min.js" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\specs.html" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\viz\examples.js" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\viz\exemplary\area0.png" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\viz\exemplary\bar0.png" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\viz\exemplary\line0.png" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\viz\exemplary\stacked_bar0.png" />
+    <Content Include="Forms\Scripts\bower_components\morris.js\spec\viz\visual_specs.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\dev\banner.txt" />
+    <Content Include="Forms\Scripts\bower_components\raphael\dev\raphael.amd.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\dev\raphael.core.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\dev\raphael.svg.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\dev\raphael.vml.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\dev\test\svg\dom.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\dev\test\vml\dom.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\license.txt" />
+    <Content Include="Forms\Scripts\bower_components\raphael\raphael.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\raphael.min.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\raphael.no-deps.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\raphael.no-deps.min.js" />
+    <Content Include="Forms\Scripts\bower_components\raphael\webpack.config.js" />
+    <Content Include="Forms\Scripts\dist\css\AdminLTE.css" />
+    <Content Include="Forms\Scripts\dist\css\AdminLTE.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-black-light.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-black-light.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-black.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-black.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-blue-light.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-blue-light.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-blue.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-blue.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-green-light.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-green-light.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-green.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-green.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-purple-light.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-purple-light.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-purple.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-purple.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-red-light.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-red-light.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-red.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-red.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-yellow-light.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-yellow-light.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-yellow.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\skin-yellow.min.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\_all-skins.css" />
+    <Content Include="Forms\Scripts\dist\css\skins\_all-skins.min.css" />
+    <Content Include="Forms\Scripts\dist\font\font-awesome.min.css" />
+    <Content Include="Forms\Scripts\dist\icon\ionicons.min.css" />
+    <Content Include="Forms\Scripts\dist\img\avatar.png" />
+    <Content Include="Forms\Scripts\dist\img\avatar04.png" />
+    <Content Include="Forms\Scripts\dist\img\avatar2.png" />
+    <Content Include="Forms\Scripts\dist\img\avatar3.png" />
+    <Content Include="Forms\Scripts\dist\img\avatar5.png" />
+    <Content Include="Forms\Scripts\dist\img\backward.jpg" />
+    <Content Include="Forms\Scripts\dist\img\backward.png" />
+    <Content Include="Forms\Scripts\dist\img\boxed-bg.jpg" />
+    <Content Include="Forms\Scripts\dist\img\boxed-bg.png" />
+    <Content Include="Forms\Scripts\dist\img\close.png" />
+    <Content Include="Forms\Scripts\dist\img\credit\american-express.png" />
+    <Content Include="Forms\Scripts\dist\img\credit\cirrus.png" />
+    <Content Include="Forms\Scripts\dist\img\credit\mastercard.png" />
+    <Content Include="Forms\Scripts\dist\img\credit\mestro.png" />
+    <Content Include="Forms\Scripts\dist\img\credit\paypal.png" />
+    <Content Include="Forms\Scripts\dist\img\credit\paypal2.png" />
+    <Content Include="Forms\Scripts\dist\img\credit\visa.png" />
+    <Content Include="Forms\Scripts\dist\img\default-50x50.gif" />
+    <Content Include="Forms\Scripts\dist\img\icons.png" />
+    <Content Include="Forms\Scripts\dist\img\photo1.png" />
+    <Content Include="Forms\Scripts\dist\img\photo2.png" />
+    <Content Include="Forms\Scripts\dist\img\photo3.jpg" />
+    <Content Include="Forms\Scripts\dist\img\photo4.jpg" />
+    <Content Include="Forms\Scripts\dist\img\user1-128x128.jpg" />
+    <Content Include="Forms\Scripts\dist\img\user2-160x160.jpg" />
+    <Content Include="Forms\Scripts\dist\img\user3-128x128.jpg" />
+    <Content Include="Forms\Scripts\dist\img\user4-128x128.jpg" />
+    <Content Include="Forms\Scripts\dist\img\user5-128x128.jpg" />
+    <Content Include="Forms\Scripts\dist\img\user6-128x128.jpg" />
+    <Content Include="Forms\Scripts\dist\img\user7-128x128.jpg" />
+    <Content Include="Forms\Scripts\dist\img\user8-128x128.jpg" />
+    <Content Include="Forms\Scripts\dist\js\adminlte.js" />
+    <Content Include="Forms\Scripts\dist\js\adminlte.min.js" />
+    <Content Include="Forms\Scripts\dist\js\app.js" />
+    <Content Include="Forms\Scripts\dist\js\app.min.js" />
+    <Content Include="Forms\Scripts\dist\js\bootstrap-datepicker.js" />
+    <Content Include="Forms\Scripts\dist\js\bootstrap-datepicker.min.js" />
+    <Content Include="Forms\Scripts\dist\js\demo.js" />
+    <Content Include="Forms\Scripts\dist\js\pages\dashboard.js" />
+    <Content Include="Forms\Scripts\dist\js\pages\dashboard2.js" />
+    <Content Include="Forms\Scripts\plugins\iCheck\all.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\aero%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\aero.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\aero.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\blue%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\blue.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\blue.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\flat%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\flat.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\flat.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\green%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\green.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\green.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\grey%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\grey.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\grey.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\orange%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\orange.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\orange.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\pink%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\pink.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\pink.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\purple%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\purple.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\purple.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\red%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\red.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\red.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\yellow%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\yellow.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\yellow.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\flat\_all.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\futurico\futurico%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\futurico\futurico.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\futurico\futurico.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\icheck.js" />
+    <Content Include="Forms\Scripts\plugins\iCheck\icheck.min.js" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\aero.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\blue.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\green.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\grey.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\line%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\line.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\line.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\orange.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\pink.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\purple.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\red.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\yellow.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\line\_all.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\aero%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\aero.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\aero.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\blue%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\blue.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\blue.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\green%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\green.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\green.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\grey%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\grey.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\grey.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\minimal%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\minimal.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\minimal.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\orange%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\orange.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\orange.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\pink%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\pink.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\pink.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\purple%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\purple.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\purple.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\red%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\red.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\red.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\yellow%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\yellow.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\yellow.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\minimal\_all.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\polaris\polaris%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\polaris\polaris.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\polaris\polaris.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\aero%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\aero.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\aero.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\blue%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\blue.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\blue.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\green%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\green.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\green.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\grey%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\grey.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\grey.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\orange%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\orange.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\orange.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\pink%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\pink.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\pink.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\purple%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\purple.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\purple.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\red%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\red.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\red.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\square%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\square.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\square.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\yellow%402x.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\yellow.css" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\yellow.png" />
+    <Content Include="Forms\Scripts\plugins\iCheck\square\_all.css" />
+    <Content Include="Forms\Scripts\plugins\jQuery\core.js" />
+    <Content Include="Forms\Scripts\plugins\jQuery\jquery-2.2.3.min.js" />
+    <Content Include="Forms\Scripts\plugins\jQuery\jquery.js" />
+    <Content Include="Forms\Scripts\plugins\jQuery\jquery.min.js" />
+    <Content Include="Forms\Scripts\plugins\jQuery\jquery.slim.js" />
+    <Content Include="Forms\Scripts\plugins\jQuery\jquery.slim.min.js" />
+    <Content Include="Forms\Scripts\System\images\icon\GPAC.jpg" />
+    <Content Include="Forms\Scripts\System\images\icon\Login.png" />
+    <Content Include="Forms\Scripts\System\images\icon\report-icon.png" />
+    <Content Include="Forms\Scripts\System\images\logo\CompanyLogo.png" />
+    <Content Include="Forms\Scripts\System\images\logo\CompanyLogo1.png" />
+    <Content Include="Forms\Scripts\plugins\jQuery\jquery.min.map" />
+    <Content Include="Forms\Scripts\plugins\jQuery\jquery.slim.min.map" />
+    <Content Include="Forms\Scripts\iziToastv1.4.0.js" />
+    <None Include="Properties\PublishProfiles\folder.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\ReportViewer.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\MobileForms\MCustInfo.aspx.cs">
+      <DependentUpon>MCustInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MCustInfo.aspx.designer.cs">
+      <DependentUpon>MCustInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MCustReg.aspx.cs">
+      <DependentUpon>MCustReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MCustReg.aspx.designer.cs">
+      <DependentUpon>MCustReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MDashboard.aspx.cs">
+      <DependentUpon>MDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MDashboard.aspx.designer.cs">
+      <DependentUpon>MDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MDeposit.aspx.cs">
+      <DependentUpon>MDeposit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MDeposit.aspx.designer.cs">
+      <DependentUpon>MDeposit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MSavingsLoan.aspx.cs">
+      <DependentUpon>MSavingsLoan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\MobileForms\MSavingsLoan.aspx.designer.cs">
+      <DependentUpon>MSavingsLoan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Models\device.cs" />
+    <Compile Include="Forms\Models\DeviceInfoRoot.cs" />
+    <Compile Include="Forms\Models\DistrictModel.cs" />
+    <Compile Include="Forms\Models\os.cs" />
+    <Compile Include="Forms\Pages\DBConnector.cs" />
+    <Compile Include="Forms\Pages\LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\Pages\LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Pages\Translator.cs" />
+    <Compile Include="Forms\Scripts\System\DataManager.cs" />
+    <Compile Include="Forms\Scripts\System\Report_class.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\DepoReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepoReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewer.aspx.cs">
+      <DependentUpon>ReportViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewer.aspx.designer.cs">
+      <DependentUpon>ReportViewer.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Forms\Scripts\bower_components\moment\moment.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Scripts\System\images\deafult\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\DepoReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DepoReport.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54162</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54162/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

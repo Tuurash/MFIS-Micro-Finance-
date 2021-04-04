@@ -19,7 +19,7 @@ namespace MFIS.Forms.MobileForms
 
         string getBranchCode = "";
         string getStaffID = "";
-        string getSubDepositCode = "";
+        string getLedgerCode = "";
         string getAccSubSubCode = "";
         DateTime Time_now;
         double Balance, TotalPaid = 0;
@@ -30,13 +30,13 @@ namespace MFIS.Forms.MobileForms
             Time_now = DateTime.Now.Date;
             txtDate.Text = Time_now.ToString();
 
-            if (Session["ProjectCode"] != null && Session["USERID"] != null && Session["SubDepositCode"] != null)
+            if (Session["ProjectCode"] != null && Session["USERID"] != null)
             {   //BranchCode
                 lblStaffName.Text = Session["StaffName"].ToString();
 
                 getBranchCode = Session["ProjectCode"].ToString();
                 getStaffID = Session["USERID"].ToString();
-                getSubDepositCode = Session["SubDepositCode"].ToString();
+
 
             }
             else { Response.Redirect("~/Forms/Pages/LoginPage.aspx"); }
@@ -85,11 +85,6 @@ namespace MFIS.Forms.MobileForms
             }
         }
 
-        protected void DropdownLAno_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             FillCustomerInfo();
@@ -107,10 +102,17 @@ namespace MFIS.Forms.MobileForms
 
         private void FillCustomerInfo()
         {
-            FillLoanInfo();
+            DropdownLAno.Visible = true;
+            divLAsearch.Visible = false;
+
+            DropdownSAno.Visible = true;
+            divSASearch.Visible = false;
+
             FindCustomer();
+            FillLoanInfo();
             FillSavingsInfo();
         }
+
 
         private void FindCustomer()
         {
@@ -136,9 +138,8 @@ namespace MFIS.Forms.MobileForms
             DropdownLAno.DataValueField = "LoanNo";
             DropdownLAno.DataBind();
             DropdownLAno.Items.Insert(0, "select");
+            DropdownLAno.Items.Insert(1, "Other");
         }
-
-
 
         private void LoanInsert()
         {
@@ -147,11 +148,9 @@ namespace MFIS.Forms.MobileForms
                 int insertStatus = 0;
 
                 //LedgerCode=1101002
-                //Acc Sub subcode=103001
-                LoadAccSubSubCode();
                 //EntryNo, Notes, Profit, CustAccTrSL,Dr, Profit,  [Excluded]
                 query = @"INSERT into Loan_DataEntry (PYear, PDate, LoanNo, Account_Sub_SubCode, Cr,TransactionType, TransactionStatus, LedgerCode, AddDate,StaffID,VoucherNo,BranchCode,UserId)
-                        VALUES ('" + Time_now.Year + "', '" + Time_now.Date + "','" + DropdownLAno.SelectedValue + "', '" + getAccSubSubCode + "', " + txtLAAmount.Text + ", 'Reciept', 'Cr', 1101002, '" + DateTime.Now + "','" + getStaffID + "','" + lblVoucherNo.Text + "', '" + getBranchCode + "', '" + getStaffID + "' )";
+                        VALUES ('" + Time_now.Year + "', '" + Time_now.Date + "','" + DropdownLAno.SelectedValue + "', '103001', " + txtLAAmount.Text + ", 'Reciept', 'Cr', " + getLedgerCode + " , '" + DateTime.Now + "','" + getStaffID + "','" + lblVoucherNo.Text + "', '" + getBranchCode + "', '" + getStaffID + "' )";
                 try
                 {
                     insertStatus = db.ExecuteNonQuery(query);
@@ -171,7 +170,10 @@ namespace MFIS.Forms.MobileForms
 
         private void LoadAccSubSubCode()
         {
-            query = "select * from Deposit_SubScheme where SubDepositCodeNo='" + getSubDepositCode + "'";
+            query = @"select Distinct SubDepositCodeNo, Account_Sub_SubCode from Deposit_SubScheme 
+                      where SubDepositCodeNo=(select SubDepositCodeNo from CustReg where CustAccNo='" + DropdownSAno.SelectedValue + "' and Active_InActive='Active')";
+
+
             try { dt = db.ExecuteQuery(query); } catch (Exception exc) { throw exc; }
             if (dt.Rows.Count > 0)
             {
@@ -233,7 +235,8 @@ namespace MFIS.Forms.MobileForms
 
         private void FillSavingsInfo()
         {
-            query = @"select * from CustReg where CustIDNO='" + txtIdNo.Text + "'";
+            query = @"select * from CustReg where CustIDNO='" + txtIdNo.Text + "' and Active_InActive='Active'";
+            //query = @"select * from CustReg where CustIDNO='" + txtIdNo.Text + "'";
             try
             {
                 dt = db.ExecuteQuery(query);
@@ -250,6 +253,7 @@ namespace MFIS.Forms.MobileForms
                 DropdownSAno.DataValueField = "CustAccNo";
                 DropdownSAno.DataBind();
                 DropdownSAno.Items.Insert(0, "select");
+                DropdownSAno.Items.Insert(1, "Other");
             }
         }
 
@@ -272,7 +276,13 @@ namespace MFIS.Forms.MobileForms
 
         protected void DropdownSAno_SelectedIndexChanged1(object sender, EventArgs e)
         {
+            if (DropdownSAno.SelectedValue == "Other")
+            {
+                divSASearch.Visible = true;
+                DropdownLAno.Visible = false;
+            }
             FillSAStatusInfo();
+            LoadAccSubSubCode();
         }
 
         private void SavingsInsert()
@@ -283,7 +293,7 @@ namespace MFIS.Forms.MobileForms
 
                 //, , EntryNo, Dr,Notes,CustAccTrSL
                 query = @"INSERT into Deposit_DataEntry (PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo,BranchCode)
-                    VALUES ('" + Time_now.Year + "', '" + DropdownSAno.SelectedValue + "', '" + Time_now.Date + "', '203001112', " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','1101002' ,'1241','" + lblVoucherNo.Text + "','" + getBranchCode + "')";
+                    VALUES ('" + Time_now.Year + "', '" + DropdownSAno.SelectedValue + "', '" + Time_now.Date + "', '" + getAccSubSubCode + "', " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','" + getLedgerCode + "' ,'1241','" + lblVoucherNo.Text + "','" + getBranchCode + "')";
                 try
                 {
                     sInsertStatus = db.ExecuteNonQuery(query);
@@ -303,11 +313,59 @@ namespace MFIS.Forms.MobileForms
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            LoadLeadgerCode();
             LoanInsert();
             SavingsInsert();
             BindReport();
 
 
+        }
+
+        private void LoadLeadgerCode()
+        {
+            query = @"select * from Acc_Sub_SubHead where Acc_Name='" + RadioPaymnetMethod.SelectedValue + "'";
+            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { throw exc; }
+            if (dt.Rows.Count > 0)
+            {
+                getLedgerCode = dt.Rows[0]["Account_Sub_SubCode"].ToString();
+            }
+            else { getLedgerCode = "1101002"; }
+        }
+
+
+
+        protected void DropdownLAno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropdownLAno.SelectedValue == "Other")
+            {
+                divLAsearch.Visible = true;
+                DropdownLAno.Visible = false;
+            }
+        }
+
+        protected void btnLASearch_Click(object sender, EventArgs e)
+        {
+
+            query = @"select * from Loan_Application where LoanNo='" + txtLANo.Text + "'";
+            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { }
+            if (dt.Rows.Count > 0)
+            {
+                txtIdNo.Text = dt.Rows[0]["CustIDNO"].ToString();
+                FillCustomerInfo();
+            }
+            else { }
+        }
+
+        protected void btnSearchSA_Click(object sender, EventArgs e)
+        {
+            query = @"select * from CustReg where CustAccNo = '" + txtSANo.Text + "'";
+            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { }
+            if (dt.Rows.Count > 0)
+            {
+                txtIdNo.Text = dt.Rows[0]["CustIDNO"].ToString();
+                FillCustomerInfo();
+            }
+            else { }
         }
 
         private void BindReport()
@@ -336,5 +394,6 @@ namespace MFIS.Forms.MobileForms
                 txtIdNo.Text = "";
             }
         }
+
     }
 }

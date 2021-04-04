@@ -19,27 +19,28 @@ namespace MFIS.Forms.MobileForms
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
 
-        int AutoGenSlNo = 0;
         string getBranchCode = "";
         string getStaffID = "";
-        string getSlNoAll = "";
-        string getSlNo = "";
+
         DateTime Time_now;
         string getCustIDNo = "";
-        string getAreaCodeForBranch = "";
+        string getAccSubSubCode = "";
         string getCustAccNo = "";
-        DateTime getMaturedDate;
+
         string getVoucherNo = "";
+        string getSubDepositCode = "";
+        string getLedgerCode = "";
 
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["ProjectCode"] != null && Session["USERID"] != null)
+            if (Session["ProjectCode"] != null && Session["USERID"] != null && Session["SubDepositCode"] != null && Session["SubDepositCode"].ToString() != "")
             {   //BranchCode
                 lblStaffName.Text = Session["StaffName"].ToString();
                 getBranchCode = Session["ProjectCode"].ToString();
                 getStaffID = Session["USERID"].ToString();
+                getSubDepositCode = Session["SubDepositCode"].ToString();
             }
             else
             {
@@ -67,13 +68,35 @@ namespace MFIS.Forms.MobileForms
 
         protected void btnSkip_Click(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            { Response.Redirect("~/Forms/MobileForms/MDashboard.aspx"); }
+            Session["SubDepositCode"] = "";
+
+            Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
         }
 
         protected void btnSaveDeposit_Click(object sender, EventArgs e)
         {
             SavingsInsert();
+        }
+
+        private void LoadAccSubSubCode()
+        {
+            query = "select * from Deposit_SubScheme where SubDepositCodeNo='" + getSubDepositCode + "'";
+            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { throw exc; }
+            if (dt.Rows.Count > 0)
+            {
+                getAccSubSubCode = dt.Rows[0]["Account_Sub_SubCode"].ToString();
+            }
+        }
+
+        private void LoadLeadgerCode()
+        {
+            query = @"select * from Acc_Sub_SubHead where Acc_Name='" + RadioPaymnetMethod.SelectedValue + "'";
+            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { throw exc; }
+            if (dt.Rows.Count > 0)
+            {
+                getLedgerCode = dt.Rows[0]["Account_Sub_SubCode"].ToString();
+            }
+            else { getLedgerCode = "1101002"; }
         }
 
         private void SavingsInsert()
@@ -82,10 +105,12 @@ namespace MFIS.Forms.MobileForms
             {
                 int sInsertStatus = 0;
 
+                LoadAccSubSubCode();
+                LoadLeadgerCode();
                 lblAddedVoucher.Text = getVoucherNo;
-                //, BranchCode, EntryNo, Dr,Notes,CustAccTrSL,Vou_ChqNo
+                //BranchCode, EntryNo, Dr,Notes,CustAccTrSL,Vou_ChqNo
                 query = @"INSERT into Deposit_DataEntry (PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo)
-                    VALUES ('" + Time_now.Year + "', '" + getCustAccNo + "', '" + Time_now.Date + "', '203001112', " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','1101002' ,'" + getStaffID + "','" + lblAddedVoucher.Text + "')";
+                    VALUES ('" + Time_now.Year + "', '" + getCustAccNo + "', '" + Time_now.Date + "', '" + getAccSubSubCode + "', " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','" + getLedgerCode + "' ,'" + getStaffID + "','" + lblAddedVoucher.Text + "')";
                 try
                 {
                     sInsertStatus = db.ExecuteNonQuery(query);
@@ -100,7 +125,6 @@ namespace MFIS.Forms.MobileForms
             }
 
         }
-
 
         private void BindReport()
         {

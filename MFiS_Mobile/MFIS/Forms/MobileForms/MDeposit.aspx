@@ -98,6 +98,39 @@
                     <asp:TextBox runat="server" type="text" class="form-control" ID="txtSAamount" aria-describedby="basic-addon1" required />
                 </div>
 
+                <%--Payment Option--%>
+                <div class="col-12">
+                    <style>
+                        .radioButtonList input[type="radio"] {
+                            width: auto;
+                            float: left;
+                        }
+
+                        .radioButtonList label {
+                            width: auto;
+                            display: inline;
+                            float: left;
+                            font-size: 1rem;
+                            color: #0367B2 !important;
+                            font-style: italic;
+                            padding: 2px;
+                        }
+                    </style>
+                    <%--Payment Option--%>
+                    <div class="input-group mb-3">
+
+                        <asp:RadioButtonList runat="server" BorderStyle="None" ClientIDMode="static" AutoPostBack="false"
+                            RepeatDirection="Horizontal" RepeatLayout="Table" TextAlign="right" ID="RadioPaymnetMethod" CssClass="radioButtonList">
+
+                            <asp:ListItem Text="Online Payment" Value="OnlinePayment" />
+                            <asp:ListItem Text="Cash" Selected="True" Value="Cash" />
+
+                        </asp:RadioButtonList>
+
+                    </div>
+
+                </div>
+
                 <%-- Submit btn --%>
                 <div class="col-12">
                     <div align="center">
@@ -128,36 +161,39 @@
                                 Font-Strikeout="False" ToolPanelView="None" BestFitPage="True" />
                         </div>
 
+                        <script type="text/javascript">
+                            function Print() {
+                                var dvReport = document.getElementById("dvReport");
+                                var frame1 = dvReport.getElementsByTagName("iframe")[0];
+                                if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
+                                    frame1.name = frame1.id;
+                                    window.frames[frame1.id].focus();
+                                    window.frames[frame1.id].print();
+
+                                    Hide();
+                                }
+                                else {
+                                    var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
+                                    frameDoc.print();
+
+                                    Hide();
+                                }
+                            }
+
+                            function Hide() {
+                                var x = document.getElementById("divPrint");
+                                if (x.style.display === "none") {
+                                    x.style.display = "block";
+                                } else {
+                                    x.style.display = "none";
+                                }
+                            }
+
+                        </script>
+
                     </div>
 
-                    <script type="text/javascript">
-                        function Print() {
-                            var dvReport = document.getElementById("dvReport");
-                            var frame1 = dvReport.getElementsByTagName("iframe")[0];
-                            if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
-                                frame1.name = frame1.id;
-                                window.frames[frame1.id].focus();
-                                window.frames[frame1.id].print();
 
-                                Hide();
-                            }
-                            else {
-                                var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
-                                frameDoc.print();
-
-                                Hide();
-                            }
-                        }
-
-                        function Hide() {
-                            var x = document.getElementById("divPrint");
-                            if (x.style.display === "none") {
-                                x.style.display = "block";
-                            } else {
-                                x.style.display = "none";
-                            }
-
-                    </script>
 
                 </div>
 

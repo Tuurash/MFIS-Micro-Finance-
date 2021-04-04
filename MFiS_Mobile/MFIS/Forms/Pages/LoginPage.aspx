@@ -12,6 +12,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <!-- Bootstrap 3.3.6 -->
 
+
     <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
     <!-- Font Google -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -31,11 +32,13 @@
             alert("Sorry!!! This feature isn't available right now");
         }
     </script>
+
 </head>
 
 <body class="hold-transition login-page">
 
     <form id="form1" runat="server">
+
 
         <div class="login-box">
 
@@ -76,7 +79,7 @@
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         </div>
 
-                        <div class="form-group has-feedback" style="margin-top:6px;">
+                        <div class="form-group has-feedback" style="margin-top: 6px;">
 
                             <asp:TextBox ID="txtPassword" runat="server" class="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
@@ -84,9 +87,9 @@
 
 
                         <div class="form-group" align="right">
-                            <p style="margin-top:6px;">
-                            <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="login" OnClick="btn_login_Click" />
-                            <asp:Button ID="btnLogOut" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="logout" OnClick="btnLogOut_Click" />
+                            <p style="margin-top: 6px;">
+                                <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="login" OnClick="btn_login_Click" />
+                                <asp:Button ID="btnLogOut" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="logout" OnClick="btnLogOut_Click" />
                             </p>
                         </div>
                         <div class="footer" align="right">

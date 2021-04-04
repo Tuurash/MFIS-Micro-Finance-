@@ -78,7 +78,7 @@ namespace MFIS.Forms.MobileForms
 
         protected void btnLS_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MSavingsLoan.aspx");
+            Response.Redirect("~/Forms/MobileForms/MSavingsLoan.aspx");
         }
 
     }

@@ -144,6 +144,7 @@ namespace MFIS.Forms.MobileForms
             catch (Exception exc) { throw exc; }
             if (insertStatus > 0)
             {
+                Session["SubDepositCode"] = ComSub_DepositScheme.SelectedValue;
                 Response.Redirect("~/Forms/MobileForms/MDeposit.aspx?CustIDNo=" + getCustIDNo + "&CustAccNo=" + getCustAccNo);
             }
         }

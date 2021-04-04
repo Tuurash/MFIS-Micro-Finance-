@@ -19,7 +19,8 @@ namespace MFIS.Forms.MobileForms
 
         string getBranchCode = "";
         string getStaffID = "";
-
+        string getSubDepositCode = "";
+        string getAccSubSubCode = "";
         DateTime Time_now;
         double Balance, TotalPaid = 0;
 
@@ -29,12 +30,13 @@ namespace MFIS.Forms.MobileForms
             Time_now = DateTime.Now.Date;
             txtDate.Text = Time_now.ToString();
 
-            if (Session["ProjectCode"] != null && Session["USERID"] != null)
+            if (Session["ProjectCode"] != null && Session["USERID"] != null && Session["SubDepositCode"] != null)
             {   //BranchCode
                 lblStaffName.Text = Session["StaffName"].ToString();
 
                 getBranchCode = Session["ProjectCode"].ToString();
                 getStaffID = Session["USERID"].ToString();
+                getSubDepositCode = Session["SubDepositCode"].ToString();
 
             }
             else { Response.Redirect("~/Forms/Pages/LoginPage.aspx"); }
@@ -146,9 +148,10 @@ namespace MFIS.Forms.MobileForms
 
                 //LedgerCode=1101002
                 //Acc Sub subcode=103001
-                //EntryNo, Notes, Profit, CustAccTrSL,Dr, Profit, UserId [Excluded]
-                query = @"INSERT into Loan_DataEntry (PYear, PDate, LoanNo, Account_Sub_SubCode, Cr,TransactionType, TransactionStatus, LedgerCode, AddDate,StaffID,VoucherNo,BranchCode)
-                        VALUES ('" + Time_now.Year + "', '" + Time_now.Date + "','" + DropdownLAno.SelectedValue + "', 103001, " + txtLAAmount.Text + ", 'Reciept', 'Cr', 1101002, '" + DateTime.Now + "','" + getStaffID + "','" + lblVoucherNo.Text + "', '" + getBranchCode + "' )";
+                LoadAccSubSubCode();
+                //EntryNo, Notes, Profit, CustAccTrSL,Dr, Profit,  [Excluded]
+                query = @"INSERT into Loan_DataEntry (PYear, PDate, LoanNo, Account_Sub_SubCode, Cr,TransactionType, TransactionStatus, LedgerCode, AddDate,StaffID,VoucherNo,BranchCode,UserId)
+                        VALUES ('" + Time_now.Year + "', '" + Time_now.Date + "','" + DropdownLAno.SelectedValue + "', '" + getAccSubSubCode + "', " + txtLAAmount.Text + ", 'Reciept', 'Cr', 1101002, '" + DateTime.Now + "','" + getStaffID + "','" + lblVoucherNo.Text + "', '" + getBranchCode + "', '" + getStaffID + "' )";
                 try
                 {
                     insertStatus = db.ExecuteNonQuery(query);
@@ -166,13 +169,23 @@ namespace MFIS.Forms.MobileForms
             }
         }
 
+        private void LoadAccSubSubCode()
+        {
+            query = "select * from Deposit_SubScheme where SubDepositCodeNo='" + getSubDepositCode + "'";
+            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { throw exc; }
+            if (dt.Rows.Count > 0)
+            {
+                getAccSubSubCode = dt.Rows[0]["Account_Sub_SubCode"].ToString();
+            }
+        }
+
         private void InsertLoanSchedule()
         {
             int ScheduleStatus = 0;
 
-            //EntryNo,UserId [Excluded]
-            query = @"INSERT into LoanSchedule (PDate, LoanNo, Receipt_amt, VoucherNo,TransactionType,StaffID) 
-                    VALUES ('" + Time_now.Date + "', '" + DropdownLAno.SelectedValue + "', " + txtLAAmount.Text + ", '" + lblVoucherNo.Text + "','Reciept','" + txtIdNo.Text + "' )";
+            //EntryNo, [Excluded]
+            query = @"INSERT into LoanSchedule (PDate, LoanNo, Receipt_amt, VoucherNo,TransactionType,StaffID,UserId) 
+                    VALUES ('" + Time_now.Date + "', '" + DropdownLAno.SelectedValue + "', " + txtLAAmount.Text + ", '" + lblVoucherNo.Text + "','Reciept','" + getStaffID + "','" + getStaffID + "' )";
             try { ScheduleStatus = db.ExecuteNonQuery(query); } catch (Exception exc) { throw exc; }
 
         }

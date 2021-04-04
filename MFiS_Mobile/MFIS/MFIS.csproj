@@ -95,7 +95,6 @@
     <Content Include="Forms\Scripts\bootstrap.bundle.min.js" />
     <Content Include="Forms\Scripts\Bootstrap5.css" />
     <Content Include="Forms\Scripts\iziToastv1.4.0.css" />
-    <Content Include="Index.html" />
     <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl.cab" />
     <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_cs.cab" />
     <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl_res_da.cab" />

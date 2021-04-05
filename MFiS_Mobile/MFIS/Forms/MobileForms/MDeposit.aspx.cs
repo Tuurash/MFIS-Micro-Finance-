@@ -27,6 +27,7 @@ namespace MFIS.Forms.MobileForms
         string getCustIDNo = "";
         string getAccSubSubCode = "";
         string getCustAccNo = "";
+        string getCustMobileNo = "";
 
         string getVoucherNo = "";
         string getSubDepositCode = "";
@@ -44,6 +45,7 @@ namespace MFIS.Forms.MobileForms
                 getBranchCode = Session["ProjectCode"].ToString();
                 getStaffID = Session["USERID"].ToString();
                 getSubDepositCode = Session["SubDepositCode"].ToString();
+                getCustMobileNo = Session["CustMobileNo"].ToString();
             }
             else
             {
@@ -122,6 +124,14 @@ namespace MFIS.Forms.MobileForms
                 if (sInsertStatus > 0)
                 {
                     Sms_Manager sms = new Sms_Manager();
+                    try
+                    {
+                        string msg = "Dear Sir, " + txtSAamount.Text + " Taka has been debited to your account on " + DateTime.Now.Date + " Your ID No " + txtCustIDNO.Text + " Thanks, Safety MCL.";
+                        sms.SendSMS(getCustMobileNo, msg);
+                    }
+                    catch (Exception) { }
+
+
                     BindReport();
                 }
 

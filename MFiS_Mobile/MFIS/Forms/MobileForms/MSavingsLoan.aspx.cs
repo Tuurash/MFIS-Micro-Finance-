@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using MFIS.Pages;
+using MFIS.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,7 +24,7 @@ namespace MFIS.Forms.MobileForms
         string getAccSubSubCode = "";
         DateTime Time_now;
         double Balance, TotalPaid = 0;
-
+        string getCustMobileNo = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -113,13 +114,13 @@ namespace MFIS.Forms.MobileForms
             FillSavingsInfo();
         }
 
-
         private void FindCustomer()
         {
             query = @"select * from CustInfo where CustIDNO = '" + txtIdNo.Text + "'";
             dt = db.ExecuteQuery(query);
             if (dt.Rows.Count > 0)
             {
+                getCustMobileNo = dt.Rows[0]["Mobile"].ToString();
                 GenerateVoucherNo();
 
                 txtCustomerName.Text = dt.Rows[0]["CustName"].ToString();
@@ -160,6 +161,16 @@ namespace MFIS.Forms.MobileForms
                 {
                     InsertLoanSchedule();
                     CheckPaymentStatus();
+
+                    //SMS
+                    Sms_Manager sms = new Sms_Manager();
+                    try
+                    {
+                        string msg = "Dear Sir, Successfully recieved amount: " + txtLAAmount.Text + "  on " + DateTime.Now.Date + " Your ID No " + txtIdNo.Text + " Thanks, Safety MCL.";
+                        sms.SendSMS(getCustMobileNo, msg);
+                    }
+                    catch (Exception) { }
+
 
                     DropdownLAno.SelectedItem.Text = "select";
                     txtLAAmount.Text = "";
@@ -301,6 +312,15 @@ namespace MFIS.Forms.MobileForms
                 catch (Exception) { }
                 if (sInsertStatus > 0)
                 {
+                    Sms_Manager sms = new Sms_Manager();
+                    try
+                    {
+                        string msg = "Dear Sir, Successfully recieved amount: " + txtSAamount.Text + "  on " + DateTime.Now.Date + " Your ID No " + txtIdNo.Text + " Thanks, Safety MCL.";
+                        sms.SendSMS(getCustMobileNo, msg);
+                    }
+                    catch (Exception) { }
+
+
                     DropdownSAno.SelectedItem.Text = "select";
                     txtSAamount.Text = "";
                 }
@@ -317,8 +337,6 @@ namespace MFIS.Forms.MobileForms
             LoanInsert();
             SavingsInsert();
             BindReport();
-
-
         }
 
         private void LoadLeadgerCode()

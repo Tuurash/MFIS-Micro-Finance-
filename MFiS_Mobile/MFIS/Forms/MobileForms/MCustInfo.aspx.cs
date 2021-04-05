@@ -131,6 +131,7 @@ namespace MFIS.Forms.MobileForms
             catch (Exception exc) { throw exc; }
             if (insertStatus != 0)
             {
+                Session["CustMobileNo"] = TxtMobileNo.Text;
                 Sms_Manager sms = new Sms_Manager();
                 try
                 {

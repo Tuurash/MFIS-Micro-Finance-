@@ -127,7 +127,7 @@ namespace MFIS.Forms.MobileForms
                     Sms_Manager sms = new Sms_Manager();
                     try
                     {
-                        string msg = "Dear Sir, " + txtSAamount.Text + " Taka has been debited to your account on " + DateTime.Now.Date + " Your ID No " + txtCustIDNO.Text + " Thanks, Safety MCL.";
+                        string msg = "Dear Sir,Successfully debited amount: " + txtSAamount.Text + " to your account on " + DateTime.Now.Date + " Your ID No " + txtCustIDNO.Text + " Thanks, Safety MCL.";
                         sms.SendSMS(getCustMobileNo, msg);
                     }
                     catch (Exception) { }

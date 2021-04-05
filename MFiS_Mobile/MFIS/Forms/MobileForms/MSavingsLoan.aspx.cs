@@ -162,8 +162,12 @@ namespace MFIS.Forms.MobileForms
                     Sms_Manager sms = new Sms_Manager();
                     try
                     {
+                        query = @"select LoanNo,SUM(Cr) as SumAmount,COUNT(Cr) as EntryCount from Deposit_DataEntry where LoanNo='" + DropdownLAno.SelectedValue + "' group by LoanNo";
+                        dt = db.ExecuteQuery(query);
+                        string Balance = dt.Rows[0]["SumAmount"].ToString();
+
                         getCustMobileNo = Session["CustMobileNo"].ToString();
-                        string msg = "Dear Sir, Successfully recieved amount: " + txtLAAmount.Text + "  on " + DateTime.Now.Date + " Your ID No " + txtIdNo.Text + " Thanks, Safety MCL.";
+                        string msg = "Dear Sir, A/C: '" + DropdownLAno.SelectedValue + "' cash recieved by BDT:" + txtSAamount.Text + " on " + DateTime.Now + " & Balance:" + Balance + " Thanks, Safety MCL.";
                         sms.SendSMS(getCustMobileNo, msg);
                     }
                     catch (Exception) { }
@@ -310,8 +314,12 @@ namespace MFIS.Forms.MobileForms
                     try
                     {
                         getCustMobileNo = Session["CustMobileNo"].ToString();
-                        string msg = "Dear Sir, Successfully recieved amount: " + txtSAamount.Text + "  on " + DateTime.Now.Date + " Your ID No " + txtIdNo.Text + " Thanks, Safety MCL.";
+                        query = @"select CustAccNo,SUM(Cr) as SumAmount,COUNT(Cr) as EntryCount from Deposit_DataEntry where CustAccNo='" + DropdownSAno.SelectedValue + "' group by CustAccNo";
+                        dt = db.ExecuteQuery(query);
+                        string Balance = dt.Rows[0]["SumAmount"].ToString();
+                        string msg = "Dear Sir, A/C:" + DropdownSAno.SelectedValue + " cash recieved by BDT:" + txtSAamount.Text + " on " + DateTime.Now + "  Balance:" + Balance + " Thanks, Safety MCL.";
                         sms.SendSMS(getCustMobileNo, msg);
+
                     }
                     catch (Exception) { }
 
@@ -328,10 +336,25 @@ namespace MFIS.Forms.MobileForms
             LoadLeadgerCode();
             LoanInsert();
             SavingsInsert();
+
             BindReport();
 
+            ClearAllTextBox();
+
+
+        }
+
+        private void ClearAllTextBox()
+        {
             Session["CustMobileNo"] = null;
-            Response.Redirect("~/Forms/MobileForms/MSavingsLoan.aspx");
+            //Response.Redirect("~/Forms/MobileForms/MSavingsLoan.aspx");
+            txtIdNo.Text = "";
+            DropdownLAno.SelectedIndex = 0;
+            DropdownSAno.SelectedIndex = 0;
+            txtSAamount.Text = "";
+            txtSANo.Text = "";
+            txtLAAmount.Text = "";
+            txtLANo.Text = "";
         }
 
         private void LoadLeadgerCode()
@@ -403,7 +426,7 @@ namespace MFIS.Forms.MobileForms
 
                 divPrint.Visible = true;
 
-                ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify()", true);
+                //ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify()", true);
                 txtIdNo.Text = "";
             }
         }

@@ -120,16 +120,23 @@ namespace MFIS.Forms.MobileForms
                 catch (Exception) { }
                 if (sInsertStatus > 0)
                 {
+                    BindReport();
+
                     Sms_Manager sms = new Sms_Manager();
+
                     try
                     {
-                        string msg = "Dear Sir,Successfully debited amount: " + txtSAamount.Text + " to your account on " + DateTime.Now.Date + " Your ID No " + txtCustIDNO.Text + " Thanks, Safety MCL.";
+                        query = @"select CustAccNo,SUM(Cr) as SumAmount,COUNT(Cr) as EntryCount from Deposit_DataEntry where CustAccNo='" + getCustAccNo + "' group by CustAccNo";
+
+                        dt = db.ExecuteQuery(query);
+
+                        string Balance = dt.Rows[0]["SumAmount"].ToString();
+
+                        string msg = "Dear Sir, A/C: '" + getCustAccNo + "' cash recieved by BDT:" + txtSAamount.Text + " on " + DateTime.Now + " & Balance:" + Balance + " Thanks, Safety MCL.";
                         sms.SendSMS(getCustMobileNo, msg);
                     }
                     catch (Exception) { }
 
-
-                    BindReport();
                 }
 
             }

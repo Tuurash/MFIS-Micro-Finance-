@@ -110,9 +110,6 @@ namespace MFIS.Reports
                     crystalReport.Load(reportPath);
                     crystalReport.SetDataSource(dt);
                     crystalReport.ExportToHttpResponse(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Diposit&loanReport");
-
-
-
                 }
             }
 

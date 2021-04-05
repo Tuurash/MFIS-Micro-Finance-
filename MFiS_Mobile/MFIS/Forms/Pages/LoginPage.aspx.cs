@@ -301,6 +301,10 @@ namespace MFIS.Pages
                         Session["EMP_ID"] = "GPAC";
                         Session["USER_NAME"] = row["UserName"].ToString();
                         //Response.Redirect("Dashboard.aspx");
+
+
+
+
                         if (Utils.fBrowserIsMobile())
                         {
                             Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");

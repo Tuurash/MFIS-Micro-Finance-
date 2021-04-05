@@ -64,7 +64,7 @@
                 <%-- Name --%>
                 <div class="input-group mb-3">
                     <span class="input-group-text col-3">Name </span>
-                    <asp:TextBox runat="server" type="text" class="form-control" Style="text-transform: capitalize;" ID="txtCustomerName" aria-describedby="basic-addon1" />
+                    <asp:TextBox runat="server" type="text" class="form-control" Enabled="false" Style="text-transform: capitalize;" ID="txtCustomerName" aria-describedby="basic-addon1" />
                 </div>
 
                 <%-- L/A(loan Account): --%>
@@ -186,6 +186,8 @@
                             } else {
                                 x.style.display = "none";
                             }
+
+                            window.location.href = "MSavingsLoan.aspx";
                         }
 
                     </script>

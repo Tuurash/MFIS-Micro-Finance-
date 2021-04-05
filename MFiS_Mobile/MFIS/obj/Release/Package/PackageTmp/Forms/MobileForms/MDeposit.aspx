@@ -9,17 +9,15 @@
     <title>MFIS</title>
     <meta charset="etf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
-
-
-        <script src="../../Reports/crystalreportviewers13/js/crviewer/crv.js"></script>
+    <!-- Bootstrap5 CSS -->
+    <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
+    <script src="../../Reports/crystalreportviewers13/js/crviewer/crv.js"></script>
 
 
     <%--Notification--%>
-    <link rel="stylesheet" href="https://unpkg.com/izitoast/dist/css/iziToast.min.css">
-    <script src="https://unpkg.com/izitoast/dist/js/iziToast.min.js" type="text/javascript"></script>
+    <link href="../Scripts/iziToastv1.4.0.css" rel="stylesheet" />
+    <script src="../Scripts/iziToastv1.4.0.js"></script>
+
 
     <script type="text/javascript">
         function notify(Amount) {
@@ -38,8 +36,8 @@
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-
+    <%--Bootstrap5min.js--%>
+    <script src="../Scripts/bootstrap.min.js"></script>
     <form runat="server">
 
         <asp:ScriptManager runat="server" ID="Script1"></asp:ScriptManager>
@@ -80,7 +78,7 @@
         </div>
         <%--ProgressBar--%>
         <div class="progress" style="height: 30px">
-            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: 99%">Deposit</div>
+            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" style="width: 99%">Deposit</div>
         </div>
 
         <div class="container">
@@ -100,14 +98,47 @@
                     <asp:TextBox runat="server" type="text" class="form-control" ID="txtSAamount" aria-describedby="basic-addon1" required />
                 </div>
 
+                <%--Payment Option--%>
+                <div class="col-12">
+                    <style>
+                        .radioButtonList input[type="radio"] {
+                            width: auto;
+                            float: left;
+                        }
+
+                        .radioButtonList label {
+                            width: auto;
+                            display: inline;
+                            float: left;
+                            font-size: 1rem;
+                            color: #0367B2 !important;
+                            font-style: italic;
+                            padding: 2px;
+                        }
+                    </style>
+                    <%--Payment Option--%>
+                    <div class="input-group mb-3">
+
+                        <asp:RadioButtonList runat="server" BorderStyle="None" ClientIDMode="static" AutoPostBack="false"
+                            RepeatDirection="Horizontal" RepeatLayout="Table" TextAlign="right" ID="RadioPaymnetMethod" CssClass="radioButtonList">
+
+                            <asp:ListItem Text="Online Payment" Value="OnlinePayment" />
+                            <asp:ListItem Text="Cash" Selected="True" Value="Cash" />
+
+                        </asp:RadioButtonList>
+
+                    </div>
+
+                </div>
+
                 <%-- Submit btn --%>
                 <div class="col-12">
                     <div align="center">
-                        <asp:Button runat="server" ID="btnSaveDeposit" CssClass="btn btn-sm btn-success" style="width:100%;" Text="Deposit" OnClick="btnSaveDeposit_Click" />
+                        <asp:Button runat="server" ID="btnSaveDeposit" CssClass="btn btn-sm btn-success" Style="width: 100%;" Text="Deposit" OnClick="btnSaveDeposit_Click" />
 
                     </div>
                 </div>
-
+                <br />
                 <%--Print btn--%>
                 <div class="col-12" runat="server" id="divPrint" visible="false">
 
@@ -130,23 +161,39 @@
                                 Font-Strikeout="False" ToolPanelView="None" BestFitPage="True" />
                         </div>
 
+                        <script type="text/javascript">
+                            function Print() {
+                                var dvReport = document.getElementById("dvReport");
+                                var frame1 = dvReport.getElementsByTagName("iframe")[0];
+                                if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
+                                    frame1.name = frame1.id;
+                                    window.frames[frame1.id].focus();
+                                    window.frames[frame1.id].print();
+
+                                    Hide();
+                                }
+                                else {
+                                    var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
+                                    frameDoc.print();
+
+                                    Hide();
+                                }
+                            }
+
+                            function Hide() {
+                                var x = document.getElementById("divPrint");
+                                if (x.style.display === "none") {
+                                    x.style.display = "block";
+                                } else {
+                                    x.style.display = "none";
+                                }
+                            }
+
+                        </script>
+
                     </div>
 
-                    <script type="text/javascript">
-                        function Print() {
-                            var dvReport = document.getElementById("dvReport");
-                            var frame1 = dvReport.getElementsByTagName("iframe")[0];
-                            if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
-                                frame1.name = frame1.id;
-                                window.frames[frame1.id].focus();
-                                window.frames[frame1.id].print();
-                            }
-                            else {
-                                var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
-                                frameDoc.print();
-                            }
-                        }
-                    </script>
+
 
                 </div>
 
@@ -154,7 +201,7 @@
                 <%--btn--%>
                 <div class="footer">
                     <p class="justify-content-center">
-                        <asp:LinkButton ID="btnSkip" CssClass="btn" Style="background-color: #221181; width: 100%; color: white" runat="server" Text="Save & Continue" OnClick="btnSkip_Click" />
+                        <asp:LinkButton ID="btnSkip" CssClass="btn" Style="background-color: #221181; width: 100%; color: white" runat="server" Text="FINISH" OnClick="btnSkip_Click" />
                     </p>
 
                 </div>

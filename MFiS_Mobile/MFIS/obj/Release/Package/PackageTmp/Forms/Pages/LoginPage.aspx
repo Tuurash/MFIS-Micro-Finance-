@@ -11,9 +11,12 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="../Scripts/bootstrap.min.css" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+
+    <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
+    <!-- Font Google -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" />
     <!-- Theme style -->
@@ -26,15 +29,16 @@
 
     <script>
         function goto_forget_password() {
-            //window.open("../../../home/admin/forgot_password/", "_self");
             alert("Sorry!!! This feature isn't available right now");
         }
     </script>
+
 </head>
 
 <body class="hold-transition login-page">
 
     <form id="form1" runat="server">
+
 
         <div class="login-box">
 
@@ -75,18 +79,20 @@
                             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         </div>
 
-                        <div class="form-group has-feedback">
+                        <div class="form-group has-feedback" style="margin-top: 6px;">
 
                             <asp:TextBox ID="txtPassword" runat="server" class="form-control" placeholder="Password" TextMode="Password"></asp:TextBox>
                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         </div>
 
 
-                        <div class="form-group">
-                            <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-sm btn-block" Text="login" OnClick="btn_login_Click" />
-                            <asp:Button ID="btnLogOut" runat="server" class="btn btn-primary btn-sm btn-block" Text="logout" OnClick="btnLogOut_Click" />
+                        <div class="form-group" align="right">
+                            <p style="margin-top: 6px;">
+                                <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="login" OnClick="btn_login_Click" />
+                                <asp:Button ID="btnLogOut" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="logout" OnClick="btnLogOut_Click" />
+                            </p>
                         </div>
-                        <div class="footer">
+                        <div class="footer" align="right">
                             <a href="#" onclick="goto_forget_password()">I forgot my password</a><br>
                         </div>
                         <br />

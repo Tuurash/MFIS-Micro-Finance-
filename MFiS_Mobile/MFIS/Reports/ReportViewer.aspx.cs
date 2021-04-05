@@ -1,17 +1,8 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
-using CrystalDecisions.Web;
-using MFIS.Forms;
-using MFIS.Pages;
-using Microsoft.Reporting.WebForms;
+using MFIS.Services;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace MFIS.Reports
 {

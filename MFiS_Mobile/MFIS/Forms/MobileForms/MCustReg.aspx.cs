@@ -1,11 +1,7 @@
-﻿using MFIS.Pages;
+﻿using MFIS.Services;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
 
 namespace MFIS.Forms.MobileForms
 {

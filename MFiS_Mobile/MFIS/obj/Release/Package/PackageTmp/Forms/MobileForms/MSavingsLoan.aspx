@@ -10,11 +10,25 @@
     <meta charset="etf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <%-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>--%>
-
-
+    <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
     <script src="../../Reports/crystalreportviewers13/js/crviewer/crv.js"></script>
+
+    <%--Notification--%>
+    <link href="../Scripts/iziToastv1.4.0.css" rel="stylesheet" />
+    <script src="../Scripts/iziToastv1.4.0.js"></script>
+
+
+    <script type="text/javascript">
+        function notify() {
+
+            var Credit = Amount
+            iziToast.success({
+                title: 'Submission Successful',
+                position: 'topCenter',
+                message: 'Print Available',
+            });
+        }
+    </script>
 
 </head>
 
@@ -39,10 +53,9 @@
             </div>
         </div>
         <div>
-            
+
             <div class="container">
 
-                
                 <br />
 
                 <%--txtDate--%>
@@ -53,10 +66,17 @@
                     <span class="input-group-text col-3">Name </span>
                     <asp:TextBox runat="server" type="text" class="form-control" Style="text-transform: capitalize;" ID="txtCustomerName" aria-describedby="basic-addon1" />
                 </div>
+
                 <%-- L/A(loan Account): --%>
                 <div class="input-group mb-3">
                     <span class="input-group-text col-3">L/A: </span>
-                    <asp:DropDownList runat="server" ID="DropdownLAno" AutoPostBack="true" OnSelectedIndexChanged="DropdownLAno_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="DropdownLAno" Visible="false" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="DropdownLAno_SelectedIndexChanged"></asp:DropDownList>
+
+                    <div id="divLAsearch" runat="server">
+                        <asp:TextBox runat="server" ID="txtLANo" CssClass="form-control"></asp:TextBox>
+                        <asp:Button ID="btnLASearch" runat="server" CssClass="btn btn-sm btn-light" OnClick="btnLASearch_Click" Text="Check" />
+                    </div>
+
                 </div>
                 <%-- Amount --%>
                 <div class="input-group mb-3">
@@ -67,7 +87,11 @@
                 <%-- S/A(loan Account): --%>
                 <div class="input-group mb-3">
                     <span class="input-group-text col-3">S/A: </span>
-                    <asp:DropDownList runat="server" ID="DropdownSAno" AutoPostBack="true" OnSelectedIndexChanged="DropdownSAno_SelectedIndexChanged1" CssClass="form-control"></asp:DropDownList>
+                    <asp:DropDownList runat="server" Visible="false" ID="DropdownSAno" AutoPostBack="true" OnSelectedIndexChanged="DropdownSAno_SelectedIndexChanged1" CssClass="form-control"></asp:DropDownList>
+                    <div id="divSASearch" runat="server">
+                        <asp:TextBox runat="server" ID="txtSANo" CssClass="form-control"></asp:TextBox>
+                        <asp:Button ID="btnSearchSA" runat="server" CssClass="btn btn-sm btn-light" OnClick="btnSearchSA_Click" Text="Check" />
+                    </div>
                 </div>
                 <%-- Amount --%>
                 <div class="input-group mb-3">
@@ -76,57 +100,102 @@
                 </div>
 
                 <div class="col-12">
+                    <style>
+                        .radioButtonList input[type="radio"] {
+                            width: auto;
+                            float: left;
+                        }
+
+                        .radioButtonList label {
+                            width: auto;
+                            display: inline;
+                            float: left;
+                            font-size: 1rem;
+                            color: #0367B2 !important;
+                            font-style: italic;
+                            padding: 2px;
+                        }
+                    </style>
+                    <%--Payment Option--%>
+                    <div class="input-group mb-3">
+
+                        <asp:RadioButtonList runat="server" BorderStyle="None" ClientIDMode="static" RepeatDirection="Horizontal" RepeatLayout="Table"
+                            TextAlign="right" ID="RadioPaymnetMethod" CssClass="radioButtonList">
+
+                            <asp:ListItem Text="Online Payment" Value="OnlinePayment" />
+                            <asp:ListItem Text="Cash" Selected="True" Value="Cash" />
+
+                        </asp:RadioButtonList>
+
+                    </div>
 
                     <asp:Button runat="server" ID="btnSubmit" CssClass="btn btn-light" Style="width: 100%;" Text="Submit" OnClick="btnSubmit_Click" />
 
                 </div>
                 <br />
+
                 <div class="col-12" runat="server" id="divPrint" visible="false">
 
-                    <div style="height:60px;width:auto">
+                    <div style="height: 60px; width: auto">
                         <input type="button" id="btnPrint" class="btn btn-light" style="width: 100%; height: 60px" value="Print" onclick="Print()" />
-                        <div id="dvReport" style="color:white; overflow:hidden;display: none;" class="col" >
+                        <div id="dvReport" style="color: white; overflow: hidden; display: none;" class="col">
 
-                        <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server"
-                            AutoDataBind="true"
-                            HasToggleGroupTreeButton="false"
-                            HasToggleParameterPanelButton="false"
-                            HasPageNavigationButtons="False"
-                            ShowToggleSidePanelButton="False"
-                            ShowStatusbar="False"
-                            ShowLogo="False"
-                            GroupTreeStyle-ShowLines="False"
-                            DisplayStatusbar="False"
-                            EnableToolTips="False"
-                            Font-Bold="False"
-                            Font-Strikeout="False" ToolPanelView="None" BestFitPage="True" />
+                            <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server"
+                                AutoDataBind="true"
+                                HasToggleGroupTreeButton="false"
+                                HasToggleParameterPanelButton="false"
+                                HasPageNavigationButtons="False"
+                                ShowToggleSidePanelButton="False"
+                                ShowStatusbar="False"
+                                ShowLogo="False"
+                                GroupTreeStyle-ShowLines="False"
+                                DisplayStatusbar="False"
+                                EnableToolTips="False"
+                                Font-Bold="False"
+                                Font-Strikeout="False" ToolPanelView="None" BestFitPage="True" />
 
-                    </div>
+                        </div>
                     </div>
 
                     <script type="text/javascript">
+
                         function Print() {
+
                             var dvReport = document.getElementById("dvReport");
                             var frame1 = dvReport.getElementsByTagName("iframe")[0];
                             if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
+
                                 frame1.name = frame1.id;
                                 window.frames[frame1.id].focus();
                                 window.frames[frame1.id].print();
+
+                                Hide();
                             }
                             else {
                                 var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
                                 frameDoc.print();
+
+                                Hide();
                             }
                         }
+
+                        function Hide() {
+                            var x = document.getElementById("divPrint");
+                            if (x.style.display === "none") {
+                                x.style.display = "block";
+                            } else {
+                                x.style.display = "none";
+                            }
+                        }
+
                     </script>
 
                 </div>
 
             </div>
 
-            
-
         </div>
     </form>
 </body>
+
 </html>

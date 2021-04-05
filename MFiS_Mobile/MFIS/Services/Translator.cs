@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 
-namespace MFIS.Forms.Pages
+namespace MFIS.Services
 {
     public class Translator
     {

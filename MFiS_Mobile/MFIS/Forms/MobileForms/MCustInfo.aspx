@@ -25,7 +25,6 @@
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
 
 
-
         <div class="form-row">
             <div class="col-12" align="right">
                 <asp:Label runat="server" ID="lblStaffName"></asp:Label>&nbsp &nbsp &nbsp
@@ -52,8 +51,6 @@
 
 
             <div>
-
-
 
                 <%-- Name --%>
                 <div class="input-group mb-3">

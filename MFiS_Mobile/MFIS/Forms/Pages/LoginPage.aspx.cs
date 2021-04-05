@@ -1,22 +1,22 @@
 ﻿using MFIS.Models;
-using MFIS.Pages;
+
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
+
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+
 
 namespace MFIS.Pages
 {
+
     public partial class LoginPage : System.Web.UI.Page
     {
         DBConnector db = new DBConnector();
@@ -415,4 +415,5 @@ namespace MFIS.Pages
         #endregion
 
     }
+
 }

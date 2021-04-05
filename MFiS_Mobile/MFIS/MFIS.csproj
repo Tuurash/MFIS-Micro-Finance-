@@ -660,13 +660,9 @@
     <Content Include="Reports\crystalreportviewers13\prompting\js\promptengine_strings_zh_TW.js" />
     <Content Include="Reports\crystalreportviewers13\urlreporting\activexviewer.js" />
     <Content Include="Reports\crystalreportviewers13\urlreporting\appletviewer.js" />
-    <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\demo.css" />
-    <Content Include="css\fakeLoader.min.css" />
     <Content Include="Forms\MobileForms\MCustInfo.aspx" />
     <Content Include="Forms\MobileForms\MCustReg.aspx" />
     <Content Include="Forms\MobileForms\MDeposit.aspx" />
-    <Content Include="js\fakeLoader.min.js" />
     <Content Include="packages.config" />
     <Content Include="Forms\Pages\LoginPage.aspx" />
     <Content Include="Forms\Scripts\bootstrap.min.css" />
@@ -1572,7 +1568,7 @@
     <Compile Include="Forms\Models\DeviceInfoRoot.cs" />
     <Compile Include="Forms\Models\DistrictModel.cs" />
     <Compile Include="Forms\Models\os.cs" />
-    <Compile Include="Forms\Pages\DBConnector.cs" />
+    <Compile Include="Services\DBConnector.cs" />
     <Compile Include="Forms\Pages\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1580,7 +1576,7 @@
     <Compile Include="Forms\Pages\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Pages\Translator.cs" />
+    <Compile Include="Services\Translator.cs" />
     <Compile Include="Forms\Scripts\System\DataManager.cs" />
     <Compile Include="Forms\Scripts\System\Report_class.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

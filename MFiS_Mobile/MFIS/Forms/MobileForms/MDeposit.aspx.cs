@@ -73,7 +73,8 @@ namespace MFIS.Forms.MobileForms
 
         protected void btnSkip_Click(object sender, EventArgs e)
         {
-            Session["SubDepositCode"] = "";
+            Session["SubDepositCode"] = null;
+            Session["CustMobileNo"] = null;
 
             Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
         }

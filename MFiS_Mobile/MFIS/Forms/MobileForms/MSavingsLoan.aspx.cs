@@ -120,7 +120,7 @@ namespace MFIS.Forms.MobileForms
             dt = db.ExecuteQuery(query);
             if (dt.Rows.Count > 0)
             {
-                getCustMobileNo = dt.Rows[0]["Mobile"].ToString();
+                Session["CustMobileNo"] = dt.Rows[0]["Mobile"].ToString();
                 GenerateVoucherNo();
 
                 txtCustomerName.Text = dt.Rows[0]["CustName"].ToString();
@@ -166,14 +166,12 @@ namespace MFIS.Forms.MobileForms
                     Sms_Manager sms = new Sms_Manager();
                     try
                     {
+                        getCustMobileNo = Session["CustMobileNo"].ToString();
                         string msg = "Dear Sir, Successfully recieved amount: " + txtLAAmount.Text + "  on " + DateTime.Now.Date + " Your ID No " + txtIdNo.Text + " Thanks, Safety MCL.";
                         sms.SendSMS(getCustMobileNo, msg);
                     }
                     catch (Exception) { }
 
-
-                    DropdownLAno.SelectedItem.Text = "select";
-                    txtLAAmount.Text = "";
                 }
                 else { }
             }
@@ -315,14 +313,12 @@ namespace MFIS.Forms.MobileForms
                     Sms_Manager sms = new Sms_Manager();
                     try
                     {
+                        getCustMobileNo = Session["CustMobileNo"].ToString();
                         string msg = "Dear Sir, Successfully recieved amount: " + txtSAamount.Text + "  on " + DateTime.Now.Date + " Your ID No " + txtIdNo.Text + " Thanks, Safety MCL.";
                         sms.SendSMS(getCustMobileNo, msg);
                     }
                     catch (Exception) { }
 
-
-                    DropdownSAno.SelectedItem.Text = "select";
-                    txtSAamount.Text = "";
                 }
 
             }
@@ -337,6 +333,9 @@ namespace MFIS.Forms.MobileForms
             LoanInsert();
             SavingsInsert();
             BindReport();
+
+            Session["CustMobileNo"] = null;
+            Response.Redirect("~/Forms/MobileForms/MSavingsLoan.aspx");
         }
 
         private void LoadLeadgerCode()

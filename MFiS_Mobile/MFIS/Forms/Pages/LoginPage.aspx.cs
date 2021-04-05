@@ -294,24 +294,27 @@ namespace MFIS.Pages
                     }
                     else
                     {
-                        //Gets Device Information
-                        GetDeviceInfo();
-                        chk_current_user();
-                        Session["USERID"] = txtUserID.Text;
-                        Session["EMP_ID"] = "GPAC";
-                        Session["USER_NAME"] = row["UserName"].ToString();
-                        //Response.Redirect("Dashboard.aspx");
+                        query = @"select * from Area_StaffWise where StaffID='" + txtUserID.Text + "' and Status='Active'";
+                        dt = db.ExecuteQuery(query);
 
-
-
-
-                        if (Utils.fBrowserIsMobile())
+                        if (dt.Rows.Count > 0)
                         {
-                            Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
-                        }
-                        else
-                        {
-                            Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
+                            //Gets Device Information
+                            GetDeviceInfo();
+                            chk_current_user();
+                            Session["USERID"] = txtUserID.Text;
+                            Session["EMP_ID"] = "GPAC";
+                            Session["USER_NAME"] = row["UserName"].ToString();
+                            //Response.Redirect("Dashboard.aspx");
+
+                            if (Utils.fBrowserIsMobile())
+                            {
+                                Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
+                            }
+                            else
+                            {
+                                Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
+                            }
                         }
                     }
                 }

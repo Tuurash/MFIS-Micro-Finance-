@@ -1524,7 +1524,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Reports\ReportViewer.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1587,13 +1586,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DepoReport.rpt</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\ReportViewer.aspx.cs">
-      <DependentUpon>ReportViewer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reports\ReportViewer.aspx.designer.cs">
-      <DependentUpon>ReportViewer.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

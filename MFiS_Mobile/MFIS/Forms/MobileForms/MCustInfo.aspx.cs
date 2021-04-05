@@ -131,6 +131,13 @@ namespace MFIS.Forms.MobileForms
             catch (Exception exc) { throw exc; }
             if (insertStatus != 0)
             {
+                Sms_Manager sms = new Sms_Manager();
+                try
+                {
+                    string msg = "Dear Sir, An Account has been opened for you on " + DateTime.Now.Date + " Your ID No " + txtCustIDNO.Text + " Thanks, Safety MCL.";
+                    sms.SendSMS(TxtMobileNo.Text, msg);
+                }
+                catch (Exception) { }
                 getCustIDNo = txtCustIDNO.Text;
                 ShowCustInfoScuccessMsg();
                 Response.Redirect("~/Forms/MobileForms/MCustReg.aspx?CustIDNo=" + getCustIDNo);

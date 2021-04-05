@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using MFIS.Pages;
+using MFIS.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -30,6 +31,8 @@ namespace MFIS.Forms.MobileForms
         string getVoucherNo = "";
         string getSubDepositCode = "";
         string getLedgerCode = "";
+
+
 
         #endregion
 
@@ -118,12 +121,11 @@ namespace MFIS.Forms.MobileForms
                 catch (Exception) { }
                 if (sInsertStatus > 0)
                 {
+                    Sms_Manager sms = new Sms_Manager();
                     BindReport();
-
                 }
 
             }
-
         }
 
         private void BindReport()

@@ -1576,6 +1576,7 @@
     <Compile Include="Forms\Pages\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Services\Sms_Manager.cs" />
     <Compile Include="Services\Translator.cs" />
     <Compile Include="Forms\Scripts\System\DataManager.cs" />
     <Compile Include="Forms\Scripts\System\Report_class.cs" />

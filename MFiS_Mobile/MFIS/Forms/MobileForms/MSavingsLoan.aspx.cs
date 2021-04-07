@@ -404,6 +404,11 @@ namespace MFIS.Forms.MobileForms
             else { }
         }
 
+        protected void btnDashboard_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
+        }
+
         private void BindReport()
         {
             ReportDocument crystalReport = new ReportDocument();

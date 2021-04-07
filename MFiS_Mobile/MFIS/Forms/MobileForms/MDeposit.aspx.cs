@@ -69,9 +69,6 @@ namespace MFIS.Forms.MobileForms
 
         protected void btnSkip_Click(object sender, EventArgs e)
         {
-            Session["SubDepositCode"] = null;
-            Session["CustMobileNo"] = null;
-
             Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
         }
 
@@ -217,5 +214,9 @@ namespace MFIS.Forms.MobileForms
             Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text);
         }
 
+        protected void btnDashboard_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
+        }
     }
 }

@@ -7,6 +7,8 @@ namespace MFIS.Forms.MobileForms
 {
     public partial class MDashboard : System.Web.UI.Page
     {
+
+
         string query = "";
         DBConnector db = new DBConnector();
         DataTable dt = new DataTable();
@@ -16,6 +18,9 @@ namespace MFIS.Forms.MobileForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["SubDepositCode"] = null;
+            Session["CustMobileNo"] = null;
+
             if (Session["ProjectCode"] != null && Session["USERID"] != null)
             {   //BranchCode
                 lblStaffName.Text = Session["StaffName"].ToString();

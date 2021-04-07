@@ -220,8 +220,12 @@ namespace MFIS.Forms.MobileForms
         }
 
 
+
         #endregion
 
-
+        protected void btnDashboard_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
+        }
     }
 }

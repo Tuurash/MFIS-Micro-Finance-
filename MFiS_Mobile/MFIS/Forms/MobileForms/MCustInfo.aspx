@@ -14,7 +14,7 @@
     <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
     <link rel="stylesheet" href="footer.css" />
 
-     <%--Loading Animation attempt--%>
+    <%--Loading Animation attempt--%>
     <style>
         #spinner {
             position: fixed;
@@ -40,9 +40,9 @@
 
     <script src="../Scripts/bootstrap.min.js"></script>
 
-     <!-- Preloader -->
-        <div id="spinner">
-        </div>
+    <!-- Preloader -->
+    <div id="spinner">
+    </div>
 
     <form runat="server">
         <asp:ScriptManager runat="server" ID="Script1"></asp:ScriptManager>
@@ -50,9 +50,10 @@
 
 
         <div class="form-row">
-            <div class="col-12" align="right">
-                <asp:Label runat="server" ID="lblStaffName"></asp:Label>&nbsp &nbsp &nbsp
-                    <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click"></asp:LinkButton>
+            <div class="col-12 d-flex justify-content-between">
+                <asp:LinkButton ID="btnDashboard" runat="server" CssClass="btn btn-sm btn-light" Text="Dashboard" OnClick="btnDashboard_Click"></asp:LinkButton>
+                <asp:Label runat="server" ID="lblStaffName" CssClass="btn btn-sm btn-light"></asp:Label>
+                <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click"></asp:LinkButton>
             </div>
         </div>
 

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="footer.css" />
 
 
-     <%--Loading Animation attempt--%>
+    <%--Loading Animation attempt--%>
     <style>
         #spinner {
             position: fixed;
@@ -43,15 +43,16 @@
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
 
 
-         <!-- Preloader -->
+        <!-- Preloader -->
         <div id="spinner">
         </div>
 
 
         <div class="form-row">
-            <div class="col-12" align="right">
-                <asp:Label runat="server" ID="lblStaffName"></asp:Label>&nbsp &nbsp &nbsp
-                    <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click"></asp:LinkButton>
+            <div class="col-12 d-flex justify-content-between">
+                <asp:LinkButton ID="btnDashboard" runat="server" CssClass="btn btn-sm btn-light" Text="Dashboard" OnClick="btnDashboard_Click"></asp:LinkButton>
+                <asp:Label runat="server" ID="lblStaffName" CssClass="btn btn-sm btn-light"></asp:Label>
+                <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click"></asp:LinkButton>
             </div>
         </div>
 

@@ -10,9 +10,13 @@
     <title>GPAC Software</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
+
+    <%--Jquery--%>
+    <script src="../Scripts/dist/jquery1.11.js"></script>
+
+
+
     <!-- Bootstrap 3.3.6 -->
-
-
     <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
     <!-- Font Google -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -33,11 +37,36 @@
         }
     </script>
 
+
+    <%--Loading Animation attempt--%>
+    <style>
+        #spinner {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            /*Change your loading image here*/
+            background: url(../Scripts/dist/img/Loading-unscreen.gif) 50% 50% no-repeat #ede9df;
+        }
+    </style>
+    <script>
+        //Change the 5000 to a value which you need so that loading image shows till your page completely
+        $(window).load(function () { $("#spinner").fadeOut(500); })
+
+        function loader() { $("#spinner").fadeOut(500); }
+    </script>
+
 </head>
 
 <body class="hold-transition login-page">
 
     <form id="form1" runat="server">
+
+        <!-- Preloader -->
+        <div id="spinner">
+        </div>
 
 
         <div class="login-box">
@@ -88,7 +117,7 @@
 
                         <div class="form-group" align="right">
                             <p style="margin-top: 6px;">
-                                <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="login" OnClick="btn_login_Click" />
+                                <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="login" OnClientClick="loader()"  OnClick="btn_login_Click" />
                                 <asp:Button ID="btnLogOut" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="logout" OnClick="btnLogOut_Click" />
                             </p>
                         </div>
@@ -128,6 +157,13 @@
             });
         </script>
     </form>
+
+
+    <script>
+        $(document).ready(function () { $("#spinner").fadeOut(1000); });
+    </script>
+
+
 </body>
 
 </html>

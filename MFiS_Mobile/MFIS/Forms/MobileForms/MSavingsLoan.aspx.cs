@@ -426,7 +426,7 @@ namespace MFIS.Forms.MobileForms
 
                 divPrint.Visible = true;
 
-                //ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify()", true);
+                //ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "loader()", true);
                 txtIdNo.Text = "";
             }
         }

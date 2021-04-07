@@ -19,17 +19,27 @@
     <script src="../Scripts/iziToastv1.4.0.js"></script>
 
 
-    <script type="text/javascript">
-        function notify(Amount) {
-
-            var Credit = Amount
-            iziToast.success({
-                title: 'Successfully',
-                position: 'topCenter',
-                message: 'Inserted Deposit: ' + Credit + '\n',
-            });
+     <%--Loading Animation attempt--%>
+    <style>
+        #spinner {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            /*Change your loading image here*/
+            background: url(../Scripts/dist/img/Loading-unscreen.gif) 50% 50% no-repeat #ede9df;
         }
+    </style>
+    <script>
+        //Change the 5000 to a value which you need so that loading image shows till your page completely
+        $(window).load(function () { $("#spinner").fadeOut(500); })
+
+        function loader() { $("#spinner").fadeOut(500); }
     </script>
+
+
 
     <link rel="stylesheet" href="footer.css" />
 
@@ -44,6 +54,10 @@
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
         <asp:Label runat="server" ID="lblStaffName" Visible="false"></asp:Label>
         <asp:Label runat="server" ID="lblAddedVoucher" Visible="false"></asp:Label>
+
+         <!-- Preloader -->
+        <div id="spinner">
+        </div>
 
         <div class="form-row">
             <div class="col-12" align="right">
@@ -195,6 +209,11 @@
         </div>
 
     </form>
+
+    <script src="../Scripts/dist/jquery1.11.js"></script>
+    <script>
+        $(document).ready(function () { $("#spinner").fadeOut(1000); });
+    </script>
 
 </body>
 

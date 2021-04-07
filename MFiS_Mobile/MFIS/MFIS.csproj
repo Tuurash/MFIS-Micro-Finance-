@@ -659,6 +659,8 @@
     <Content Include="Forms\Scripts\bootstrap.bundle.min.js" />
     <Content Include="Forms\Scripts\Bootstrap5.css" />
     <Content Include="Forms\Scripts\dist\Blockui.min.js" />
+    <Content Include="Forms\Scripts\dist\img\Loading-unscreen.gif" />
+    <Content Include="Forms\Scripts\dist\img\Loading.gif" />
     <Content Include="Forms\Scripts\iziToastv1.4.0.css" />
     <Content Include="Index.html" />
     <Content Include="Reports\crystalreportviewers13\ActiveXControls\PrintControl.cab" />

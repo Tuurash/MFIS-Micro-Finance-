@@ -11,6 +11,27 @@
     <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
     <link rel="stylesheet" href="footer.css" />
 
+
+     <%--Loading Animation attempt--%>
+    <style>
+        #spinner {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            /*Change your loading image here*/
+            background: url(../Scripts/dist/img/Loading-unscreen.gif) 50% 50% no-repeat #ede9df;
+        }
+    </style>
+    <script>
+        //Change the 5000 to a value which you need so that loading image shows till your page completely
+        $(window).load(function () { $("#spinner").fadeOut(500); })
+
+        function loader() { $("#spinner").fadeOut(500); }
+    </script>
+
 </head>
 
 <body>
@@ -20,6 +41,12 @@
     <form runat="server">
         <asp:ScriptManager runat="server" ID="Script1"></asp:ScriptManager>
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
+
+
+         <!-- Preloader -->
+        <div id="spinner">
+        </div>
+
 
         <div class="form-row">
             <div class="col-12" align="right">
@@ -101,6 +128,11 @@
         </div>
 
     </form>
+
+    <script src="../Scripts/dist/jquery1.11.js"></script>
+    <script>
+        $(document).ready(function () { $("#spinner").fadeOut(1000); });
+    </script>
 
 </body>
 

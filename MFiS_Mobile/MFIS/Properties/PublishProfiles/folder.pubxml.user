@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\Backup_Turash\Publish</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\Backup_Turash\MFIS\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="aspnet_client/system_web/4_0_30319/crystalreportviewers13/ActiveXControls/PrintControl.cab">
@@ -1753,7 +1753,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2016 04:23:54</publishTime>
     </File>
     <File Include="bin/MFIS.dll">
-      <publishTime>04/05/2021 17:35:32</publishTime>
+      <publishTime>04/07/2021 13:50:43</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>
@@ -1831,19 +1831,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/20/2021 17:09:23</publishTime>
     </File>
     <File Include="Forms/MobileForms/MCustInfo.aspx">
-      <publishTime>04/05/2021 10:43:33</publishTime>
+      <publishTime>04/07/2021 13:26:50</publishTime>
     </File>
     <File Include="Forms/MobileForms/MCustReg.aspx">
-      <publishTime>03/27/2021 17:35:38</publishTime>
+      <publishTime>04/07/2021 13:27:16</publishTime>
     </File>
     <File Include="Forms/MobileForms/MDashboard.aspx">
-      <publishTime>03/27/2021 17:35:14</publishTime>
+      <publishTime>04/07/2021 12:39:04</publishTime>
     </File>
     <File Include="Forms/MobileForms/MDeposit.aspx">
-      <publishTime>04/05/2021 16:57:31</publishTime>
+      <publishTime>04/07/2021 13:27:31</publishTime>
     </File>
     <File Include="Forms/MobileForms/MSavingsLoan.aspx">
-      <publishTime>04/05/2021 14:01:58</publishTime>
+      <publishTime>04/07/2021 13:24:08</publishTime>
     </File>
     <File Include="Forms/Pages/Dashboard.aspx">
       <publishTime>03/13/2021 16:33:17</publishTime>
@@ -1852,7 +1852,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/14/2021 13:31:38</publishTime>
     </File>
     <File Include="Forms/Pages/LoginPage.aspx">
-      <publishTime>04/05/2021 10:32:09</publishTime>
+      <publishTime>04/07/2021 12:39:13</publishTime>
     </File>
     <File Include="Forms/Scripts/bootstrap.bundle.min.js">
       <publishTime>03/27/2021 17:03:35</publishTime>
@@ -3989,6 +3989,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Forms/Scripts/dist/img/icons.png">
       <publishTime>10/19/2016 08:34:24</publishTime>
+    </File>
+    <File Include="Forms/Scripts/dist/img/Loading-unscreen.gif">
+      <publishTime>04/07/2021 12:07:55</publishTime>
+    </File>
+    <File Include="Forms/Scripts/dist/img/Loading.gif">
+      <publishTime>04/07/2021 11:53:44</publishTime>
     </File>
     <File Include="Forms/Scripts/dist/img/photo1.png">
       <publishTime>10/19/2016 08:34:24</publishTime>
@@ -6646,7 +6652,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/19/2016 10:45:20</publishTime>
     </File>
     <File Include="Index.html">
-      <publishTime>04/05/2021 17:33:56</publishTime>
+      <publishTime>04/07/2021 13:25:38</publishTime>
     </File>
     <File Include="js/fakeLoader.min.js">
       <publishTime>03/22/2021 13:17:51</publishTime>
@@ -8353,10 +8359,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2016 03:46:18</publishTime>
     </File>
     <File Include="Reports/DepoReport.cs">
-      <publishTime>03/24/2021 18:34:34</publishTime>
+      <publishTime>04/05/2021 14:38:26</publishTime>
     </File>
     <File Include="Reports/DepoReport.rpt">
-      <publishTime>03/24/2021 13:54:46</publishTime>
+      <publishTime>04/05/2021 14:38:23</publishTime>
     </File>
     <File Include="Reports/DepositReport.cs">
       <publishTime>03/24/2021 14:27:51</publishTime>

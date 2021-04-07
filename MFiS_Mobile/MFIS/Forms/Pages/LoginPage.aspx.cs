@@ -43,8 +43,7 @@ namespace MFIS.Pages
             {
                 // User_license();
                 //   User_license_Status();
-                //   UserPC_IP();
-                //  MAC_Address();
+
             }
         }
 
@@ -117,44 +116,6 @@ namespace MFIS.Pages
             }
         }
 
-        private void GetDeviceInfo()
-        {
-            device obj_device = new device();
-            var DataObj = new List<DeviceInfoRoot>();
-            string Info = "";
-            string Ismobile = "";
-            string os = "";
-            string brand = "";
-            string brandCode = "";
-            string name = "";
-
-            try
-            {
-                string json = new WebClient().DownloadString("http://api.userstack.com/detect?access_key=26e642baf121685bb63cf249ef70d791&ua=Mozilla/5.0%20(Windows%20NT%2010.0;%20Win64;%20x64;%20rv:86.0)%20Gecko/20100101%20Firefox/86.0");
-                DeviceInfoRoot obj = JsonConvert.DeserializeObject<DeviceInfoRoot>(json);
-                DataObj.Add(obj);
-
-                foreach (var data in DataObj)
-                {
-                    os = data.os.name;
-                    Ismobile = data.device.is_mobile_device.ToString();
-                    brand = data.device.brand;
-                    brandCode = data.device.brand_code;
-                    name = data.device.name;
-                }
-            }
-            catch (Exception) { }
-
-            try
-            {
-                Info = name + os + brand + brandCode;
-                string query = @"INSERT INTO MAK_Address (MAK_Addr,ComputerName,PCStatus,IsMobile,Info)
-                                     VALUES ('" + GetIP() + "','" + os + "','Active','" + Ismobile + "','" + Info + "')";
-
-                db.ExecuteNonQuery(query);
-            }
-            catch (Exception) { }
-        }
 
         private void MAC_Address()
         {
@@ -300,7 +261,7 @@ namespace MFIS.Pages
                         if (dt.Rows.Count > 0)
                         {
                             //Gets Device Information
-                            GetDeviceInfo();
+                            //GetDeviceInfo();
                             chk_current_user();
                             Session["USERID"] = txtUserID.Text;
                             Session["EMP_ID"] = "GPAC";

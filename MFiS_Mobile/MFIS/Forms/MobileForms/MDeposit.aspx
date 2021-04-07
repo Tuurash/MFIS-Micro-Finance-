@@ -45,22 +45,6 @@
         <asp:Label runat="server" ID="lblStaffName" Visible="false"></asp:Label>
         <asp:Label runat="server" ID="lblAddedVoucher" Visible="false"></asp:Label>
 
-        <script type="text/javascript">
-            function Report() {
-                $.ajax({
-                    type: "POST",
-                    url: "default.aspx/DayBook",
-                    data: "{Project: '" + $('#cboProjectName').val() + "',datestart: '" + $('#txtStartDate').val() + "',dateend: '" + $('#txtEndDate').val() + "'}",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (data) {
-                        window.location.href = "../../../Home/admin/ReportPreview/ReportViewer.aspx";
-                    }
-                });
-            }
-        </script>
-
-
         <div class="form-row">
             <div class="col-12" align="right">
                 <asp:Label runat="server" ID="Label1"></asp:Label>&nbsp &nbsp &nbsp

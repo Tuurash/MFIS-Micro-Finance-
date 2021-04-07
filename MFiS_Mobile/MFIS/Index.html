@@ -3,17 +3,40 @@
 <head>
     <title>GPAC software</title>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh"
-          content="5; url = Forms/Pages/LoginPage.aspx" />
+    <script src="Services/IMEI_Scripts/Cornova.js"></script>
+    <script src="Services/IMEI_Scripts/imei.js"></script>
+
 
     <script>
-        window.onload = function () {
-            // similar behavior as clicking on a link
-            window.location.href = "Forms/Pages/LoginPage.aspx";
+
+        function onLoad() {
+            console.log("I've been loaded");
+            document.addEventListener("deviceready", onDeviceReady, true);
         }
+
+        function onDeviceReady() {
+            console.log("We got device ready");
+            window.plugins.imei.get(function (imei) {
+                var imeiVal = document.getElementById('imei');
+                imeiVal.innerHTML = imei;
+            }, function () {
+                console.log("fail");
+            });
+
+            window.location.href = "Forms/Pages/LoginPage.aspx?Imei=" + imei;
+        }
+
     </script>
+
 </head>
-<body>
+
+<body onload="onLoad();">
+
+    <h2>IMEI v1.5</h2>
+    IMEI: <span id="imei"></span><br />
+
+    window.location.href = "Forms/Pages/LoginPage.aspx";
 
 </body>
+
 </html>

@@ -162,7 +162,7 @@ namespace MFIS.Forms.MobileForms
                 crystalReport.SetDataSource(dt);
                 CrystalReportViewer1.ReportSource = crystalReport;
 
-                ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify(" + txtSAamount.Text + ")", true);
+                //ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "notify(" + txtSAamount.Text + ")", true);
                 divPrint.Visible = true;
                 Clear();
             }

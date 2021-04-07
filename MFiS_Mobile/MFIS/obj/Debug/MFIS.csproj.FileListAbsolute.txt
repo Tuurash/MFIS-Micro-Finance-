@@ -202,3 +202,4 @@ D:\Backup_Turash\MFIS\MFiS_Mobile\MFIS\bin\Microsoft.CodeDom.Providers.DotNetCom
 D:\Backup_Turash\MFIS\MFiS_Mobile\MFIS\bin\Newtonsoft.Json.xml
 D:\Backup_Turash\MFIS\MFiS_Mobile\MFIS\obj\Debug\MFIS.dll
 D:\Backup_Turash\MFIS\MFiS_Mobile\MFIS\obj\Debug\MFIS.pdb
+D:\Backup_Turash\MFIS\MFiS_Mobile\MFIS\obj\Debug\MFIS.csprojResolveAssemblyReference.cache

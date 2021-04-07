@@ -3,39 +3,52 @@
 <head>
     <title>GPAC software</title>
     <meta charset="utf-8" />
+    <script src="Forms/Scripts/dist/jquery1.11.js"></script>
     <script src="Services/IMEI_Scripts/Cornova.js"></script>
     <script src="Services/IMEI_Scripts/imei.js"></script>
 
 
-    <script>
+    <!--<script>
 
-        function onLoad() {
-            console.log("I've been loaded");
-            document.addEventListener("deviceready", onDeviceReady, true);
-        }
+        ////function onLoad() {
+        ////    console.log("I've been loaded");
+        ////    //document.addEventListener("deviceready", onDeviceReady, true);
+        ////    document.addEventListener("deviceready", onDeviceReady, false);
 
-        function onDeviceReady() {
-            console.log("We got device ready");
-            window.plugins.imei.get(function (imei) {
-                var imeiVal = document.getElementById('imei');
-                imeiVal.innerHTML = imei;
-            }, function () {
-                console.log("fail");
-            });
+        ////}
+        //$(document).ready()
+        //{
+        //    document.addEventListener("deviceready", onDeviceReady, false);
+        //}
 
-            window.location.href = "Forms/Pages/LoginPage.aspx?Imei=" + imei;
-        }
+        //function onDeviceReady() {
+        //    console.log("We got device ready");
+        //    window.plugins.imei.get(function (imei) {
+        //        var imeiVal = document.getElementById('imei');
+        //        imeiVal.innerHTML = imei;
+        //    }, function () {
+        //        console.log("fail");
+        //    });
 
-    </script>
+        //    window.location.href = "Forms/Pages/LoginPage.aspx?Imei=" + imei;
+        //}
+
+    </script>-->
 
 </head>
 
-<body onload="onLoad();">
-
+<body>
+    <!--onload="onLoad()"-->
     <h2>IMEI v1.5</h2>
     IMEI: <span id="imei"></span><br />
 
-    window.location.href = "Forms/Pages/LoginPage.aspx";
+    <script>
+        //GET SERIAL NUMBER
+        function getSerialNumber() {
+            return Android.getSerialNumber();
+        }
+    </script>
+    <a href="javascript:console.log(getSerialNumber());">Get Serial Number</a>
 
 </body>
 

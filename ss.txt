@@ -1,4 +1,4 @@
-﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.CrystalReports.Engine;
 using MFIS.Services;
 using System;
 using System.Data;
@@ -146,8 +146,7 @@ namespace MFIS.Forms.MobileForms
             if (DropdownLAno.SelectedItem.ToString() != "select" && txtLAAmount.Text != "" && txtLAAmount.Text != null)
             {
                 int insertStatus = 0;
-                LoadAccSubSubCode();
-                LoadLeadgerCode();
+
                 //LedgerCode=1101002
                 //, Notes, Profit, CustAccTrSL,Dr, Profit,  [Excluded]
                 query = @"INSERT into Loan_DataEntry (EntryNo,PYear, PDate, LoanNo, Account_Sub_SubCode, Cr,TransactionType, TransactionStatus, LedgerCode, AddDate,StaffID,VoucherNo,BranchCode,UserId,EntryPlatform)
@@ -211,15 +210,13 @@ namespace MFIS.Forms.MobileForms
             }
         }
 
-        //MSavingsLoan Entry is being shared In LoanInsert, LoanSchedule
-
         private void InsertLoanSchedule()
         {
             int ScheduleStatus = 0;
 
             //EntryNo, [Excluded]
             query = @"INSERT into LoanSchedule (PDate, LoanNo, Receipt_amt, VoucherNo,TransactionType,StaffID,UserId) 
-                    VALUES (" + getCustLoanCount() + ",'" + Time_now.Date + "', '" + DropdownLAno.SelectedValue + "', " + txtLAAmount.Text + ", '" + lblVoucherNo.Text + "','Reciept','" + getStaffID + "','" + getStaffID + "' )";
+                    VALUES ('" + Time_now.Date + "', '" + DropdownLAno.SelectedValue + "', " + txtLAAmount.Text + ", '" + lblVoucherNo.Text + "','Reciept','" + getStaffID + "','" + getStaffID + "' )";
             try { ScheduleStatus = db.ExecuteNonQuery(query); } catch (Exception exc) { throw exc; }
 
         }
@@ -289,6 +286,7 @@ namespace MFIS.Forms.MobileForms
             }
         }
 
+
         private void FillSAStatusInfo()
         {
             query = @"select top 1 * from Deposit_DataEntry where CustAccNo='" + DropdownSAno.SelectedValue + "' order by PDate desc ";
@@ -318,8 +316,7 @@ namespace MFIS.Forms.MobileForms
 
         private void SavingsInsert()
         {
-            LoadAccSubSubCode();
-            LoadLeadgerCode();
+
             if (DropdownSAno.SelectedItem.ToString() != "select" && txtSAamount.Text != "" && txtSAamount.Text != null)
             {
                 int sInsertStatus = 0;
@@ -368,6 +365,7 @@ namespace MFIS.Forms.MobileForms
                 return "1";
             }
         }
+
 
         #endregion
 
@@ -445,21 +443,7 @@ namespace MFIS.Forms.MobileForms
 
         protected void btnDashboard_Click(object sender, EventArgs e)
         {
-            Session["CustMobileNo"] = "";
             Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
-        }
-
-        protected void btnClear_Click(object sender, EventArgs e)
-        {
-            DropdownLAno.Visible = false;
-            divLAsearch.Visible = true;
-
-            DropdownSAno.Visible = false;
-            divSASearch.Visible = true;
-
-            Session["CustMobileNo"] = "";
-
-            Response.Redirect("MSavingsLoan.aspx");
         }
 
         private void BindReport()

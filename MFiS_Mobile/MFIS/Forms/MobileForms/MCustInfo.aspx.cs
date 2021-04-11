@@ -61,10 +61,11 @@ namespace MFIS.Forms.MobileForms
             }
         }
 
-        private void GenerateCustIDNo()
+        private string GenerateCustIDNo()
         {
             getCustIDNo = getBranchCode + "-" + int.Parse(getSlNo).ToString("D6");
             txtCustIDNO.Text = getCustIDNo;
+            return getCustIDNo;
         }
 
         private void GenerateSerialNumberByBranch()
@@ -123,7 +124,7 @@ namespace MFIS.Forms.MobileForms
             if (txtCustIDNO.Text != "")
             {
                 query = @"INSERT into CustInfo (SlNoAll,SlNo,AdDate,BranchCode,AreaCode,CustIDNO,AccType,AccName,CustName,Sex,DateOfBirth,CityDistrict,Mobile,NIDNo,AccName_Bangla) 
-                      VALUES (" + getSlNoAll + "," + getSlNo + ", '" + getAdDate + "','" + getBranchCode + "'," + getAreaCodeForBranch + ", '" + txtCustIDNO.Text + "', '" + ComAccType.SelectedValue + "', '" + TxtCustName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "','" + TxtDOB.Text + "','" + TxtCityDistrict.SelectedValue + "','" + TxtMobileNo.Text + "','" + TxtNIDNo.Text.Trim() + "','" + Translate(TxtCustName.Text) + "')";
+                      VALUES (" + getSlNoAll + "," + getSlNo + ", '" + getAdDate + "','" + getBranchCode + "'," + getAreaCodeForBranch + ", '" + GenerateCustIDNo() + "', '" + ComAccType.SelectedValue + "', '" + TxtCustName.Text + "','" + TxtCustName.Text + "','" + ComSex.SelectedValue + "','" + TxtDOB.Text + "','" + TxtCityDistrict.SelectedValue + "','" + TxtMobileNo.Text + "','" + TxtNIDNo.Text.Trim() + "','" + Translate(TxtCustName.Text) + "')";
 
 
             }
@@ -139,7 +140,7 @@ namespace MFIS.Forms.MobileForms
                     sms.SendSMS(TxtMobileNo.Text, msg);
                 }
                 catch (Exception) { }
-                getCustIDNo = txtCustIDNO.Text;
+                getCustIDNo = GenerateCustIDNo();
                 ShowCustInfoScuccessMsg();
                 Response.Redirect("~/Forms/MobileForms/MCustReg.aspx?CustIDNo=" + getCustIDNo);
             }

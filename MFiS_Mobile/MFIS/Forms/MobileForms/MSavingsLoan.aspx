@@ -2,55 +2,17 @@
 
 <%@ Register Assembly="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 
-
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<html lang="en">
+
+<head>
     <title>MFIS</title>
     <meta charset="etf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
+    <link href="footer.css" rel="stylesheet" />
     <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
     <script src="../../Reports/crystalreportviewers13/js/crviewer/crv.js"></script>
-
-    <%--Notification--%>
-    <link href="../Scripts/iziToastv1.4.0.css" rel="stylesheet" />
-    <script src="../Scripts/iziToastv1.4.0.js"></script>
-
-
-    <%--    <script type="text/javascript">
-        function notify() {
-
-            var Credit = Amount
-            iziToast.success({
-                title: 'Submission Successful',
-                position: 'topCenter',
-                message: 'Print Available',
-            });
-        }
-    </script>--%>
-
-
-    <%--Loading Animation attempt--%>
-    <style>
-        #spinner {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            /*Change your loading image here*/
-            background: url(../Scripts/dist/img/Loading-unscreen.gif) 50% 50% no-repeat #ede9df;
-        }
-    </style>
-    <script>
-        //Change the 5000 to a value which you need so that loading image shows till your page completely
-        $(window).load(function () { $("#spinner").fadeOut(500); })
-
-        function loader() { $("#spinner").fadeOut(500); }
-    </script>
-
 
 </head>
 
@@ -58,15 +20,11 @@
 <body>
     <form id="form1" runat="server">
 
-        <!-- Preloader -->
-        <div id="spinner">
-        </div>
-
         <div class="form-row">
             <div class="col-12 d-flex justify-content-between">
                 <asp:LinkButton ID="btnDashboard" runat="server" CssClass="btn btn-sm btn-light" Text="Dashboard" OnClick="btnDashboard_Click"></asp:LinkButton>
-                <asp:Label runat="server" ID="lblStaffName"  CssClass="btn btn-sm btn-light"></asp:Label>
-                    <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click"></asp:LinkButton>
+                <asp:Label runat="server" ID="lblStaffName" CssClass="btn btn-sm btn-light"></asp:Label>
+                <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click"></asp:LinkButton>
             </div>
         </div>
         <div class="text-white" style="background-color: #221181">
@@ -109,7 +67,7 @@
                 <%-- Amount --%>
                 <div class="input-group mb-3">
                     <span class="input-group-text col-3">Amount </span>
-                    <asp:TextBox runat="server" class="form-control" Style="text-transform: capitalize;" ID="txtLAAmount" aria-describedby="basic-addon1" />
+                    <asp:TextBox runat="server" class="form-control" Style="text-transform: capitalize;" TextMode="Number" ID="txtLAAmount" aria-describedby="basic-addon1" />
                 </div>
 
                 <%-- S/A(loan Account): --%>
@@ -124,7 +82,7 @@
                 <%-- Amount --%>
                 <div class="input-group mb-3">
                     <span class="input-group-text col-3">Amount </span>
-                    <asp:TextBox runat="server" type="txtSAamount" class="form-control" Style="text-transform: capitalize;" ID="txtSAamount" aria-describedby="basic-addon1" />
+                    <asp:TextBox runat="server" type="txtSAamount" class="form-control" TextMode="Number" Style="text-transform: capitalize;" ID="txtSAamount" aria-describedby="basic-addon1" />
                 </div>
 
                 <div class="col-12">
@@ -144,6 +102,7 @@
                             padding: 2px;
                         }
                     </style>
+
                     <%--Payment Option--%>
                     <div class="input-group mb-3">
 
@@ -188,11 +147,9 @@
                     <script type="text/javascript">
 
                         function Print() {
-
                             var dvReport = document.getElementById("dvReport");
                             var frame1 = dvReport.getElementsByTagName("iframe")[0];
                             if (navigator.appName.indexOf("Internet Explorer") != -1 || navigator.appVersion.indexOf("Trident") != -1) {
-
                                 frame1.name = frame1.id;
                                 window.frames[frame1.id].focus();
                                 window.frames[frame1.id].print();
@@ -215,7 +172,7 @@
                                 x.style.display = "none";
                             }
 
-                            window.location.href = "MSavingsLoan.aspx";
+                            //window.location.href = "MSavingsLoan.aspx";
                         }
 
                     </script>
@@ -224,13 +181,19 @@
 
             </div>
 
+
+
         </div>
+
+        <div class="footer">
+            <p class="justify-content-center">
+                <asp:LinkButton ID="btnClear" CssClass="btn" Style="background-color: #221181; width: 100%; color: white" runat="server" Text="New Entry" OnClick="btnClear_Click" />
+            </p>
+        </div>
+
     </form>
 
-    <script src="../Scripts/dist/jquery1.11.js"></script>
-    <script>
-        $(document).ready(function () { $("#spinner").fadeOut(1000); });
-    </script>
+
 
 </body>
 

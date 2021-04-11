@@ -28,6 +28,7 @@
         }
     </style>
     <script>
+
         //Change the 5000 to a value which you need so that loading image shows till your page completely
         $(window).load(function () { $("#spinner").fadeOut(500); })
 
@@ -51,7 +52,7 @@
 
         <div class="form-row">
             <div class="col-12 d-flex justify-content-between">
-                <asp:LinkButton ID="btnDashboard" runat="server" CssClass="btn btn-sm btn-light" Text="Dashboard" OnClick="btnDashboard_Click"></asp:LinkButton>
+                <asp:LinkButton ID="btnDashboard" runat="server" CssClass="btn btn-sm btn-light" Style Text="Dashboard" OnClick="btnDashboard_Click"></asp:LinkButton>
                 <asp:Label runat="server" ID="lblStaffName" CssClass="btn btn-sm btn-light"></asp:Label>
                 <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click"></asp:LinkButton>
             </div>
@@ -121,7 +122,7 @@
                 <%--Phone Number--%>
                 <div class="input-group mb-3">
                     <span class="input-group-text col-3" id="basic-addon5">Phone </span>
-                    <asp:TextBox ID="TxtMobileNo" runat="server" CssClass="form-control" Style="padding: 20px" placeholder="01712xxxxxx" MaxLength="11" aria-describedby="basic-addon5" required></asp:TextBox>
+                    <asp:TextBox ID="TxtMobileNo" runat="server" CssClass="form-control" Style="padding: 20px" placeholder="11 digit" TextMode="Number" MaxLength="11" aria-describedby="basic-addon5" required></asp:TextBox>
 
                     <div class="invalid-tooltip">
                         Please provide a valid Phone Number.

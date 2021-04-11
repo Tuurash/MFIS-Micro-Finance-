@@ -77,6 +77,7 @@ namespace MFIS.Forms.MobileForms
             SavingsInsert();
         }
 
+
         private void LoadAccSubSubCode()
         {
             query = "select * from Deposit_SubScheme where SubDepositCodeNo='" + getSubDepositCode + "'";
@@ -108,12 +109,14 @@ namespace MFIS.Forms.MobileForms
                 LoadAccSubSubCode();
                 LoadLeadgerCode();
                 lblAddedVoucher.Text = getVoucherNo;
-                //BranchCode, EntryNo, Dr,Notes,CustAccTrSL,Vou_ChqNo
-                query = @"INSERT into Deposit_DataEntry (PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo)
-                    VALUES ('" + Time_now.Year + "', '" + getCustAccNo + "', '" + Time_now.Date + "', '" + getAccSubSubCode + "', " + DepoAmount + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "','" + getLedgerCode + "' ,'" + getStaffID + "','" + lblAddedVoucher.Text + "')";
+                //, EntryNo, Dr,Notes,CustAccTrSL
+                query = @"INSERT into Deposit_DataEntry (EntryNo,BranchCode,PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo, EntryPlatform)
+                        VALUES (1,'" + getBranchCode + "','" + Time_now.Year + "', '" + getCustAccNo + "', '" + Time_now.Date + "', " + getAccSubSubCode + ", " + DepoAmount + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "'," + getLedgerCode + " ,'" + getStaffID + "','" + lblAddedVoucher.Text + "', 'Mobile Webapp')";
+                sInsertStatus = db.ExecuteNonQuery(query);
                 try
                 {
-                    sInsertStatus = db.ExecuteNonQuery(query);
+
+                    //sInsertStatus = db.ExecuteNonQuery(query);
                 }
                 catch (Exception) { }
                 if (sInsertStatus > 0)
@@ -125,9 +128,7 @@ namespace MFIS.Forms.MobileForms
                     try
                     {
                         query = @"select CustAccNo,SUM(Cr) as SumAmount,COUNT(Cr) as EntryCount from Deposit_DataEntry where CustAccNo='" + getCustAccNo + "' group by CustAccNo";
-
                         dt = db.ExecuteQuery(query);
-
                         string Balance = dt.Rows[0]["SumAmount"].ToString();
 
                         string msg = "Dear Sir, A/C: '" + getCustAccNo + "' cash recieved by BDT:" + DepoAmount + " on " + DateTime.Now + "  Balance:" + Balance + " Thanks, Safety MCL.";
@@ -206,12 +207,6 @@ namespace MFIS.Forms.MobileForms
             {
                 Response.Redirect("~/Forms/Pages/LoginPage.aspx");
             }
-        }
-
-        protected void linkbtnPrintNow_Click(object sender, EventArgs e)
-        {
-
-            Response.Redirect("~/Reports/ReportViewer.aspx?CustomerID=" + getCustIDNo + "&VoucherNo=" + lblAddedVoucher.Text);
         }
 
         protected void btnDashboard_Click(object sender, EventArgs e)

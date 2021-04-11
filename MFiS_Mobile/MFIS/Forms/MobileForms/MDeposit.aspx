@@ -13,34 +13,6 @@
     <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
     <script src="../../Reports/crystalreportviewers13/js/crviewer/crv.js"></script>
 
-
-    <%--Notification--%>
-    <link href="../Scripts/iziToastv1.4.0.css" rel="stylesheet" />
-    <script src="../Scripts/iziToastv1.4.0.js"></script>
-
-
-    <%--Loading Animation attempt--%>
-    <style>
-        #spinner {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            /*Change your loading image here*/
-            background: url(../Scripts/dist/img/Loading-unscreen.gif) 50% 50% no-repeat #ede9df;
-        }
-    </style>
-    <script>
-        //Change the 5000 to a value which you need so that loading image shows till your page completely
-        $(window).load(function () { $("#spinner").fadeOut(500); })
-
-        function loader() { $("#spinner").fadeOut(500); }
-    </script>
-
-
-
     <link rel="stylesheet" href="footer.css" />
 
 </head>
@@ -94,7 +66,7 @@
                 <%-- Amount --%>
                 <div class="input-group mb-3">
                     <span class="input-group-text col-3">Amount</span>
-                    <asp:TextBox runat="server" type="text" class="form-control" ID="txtSAamount" aria-describedby="basic-addon1" required />
+                    <asp:TextBox runat="server" type="text" class="form-control" TextMode="Number" ID="txtSAamount" aria-describedby="basic-addon1" required />
                 </div>
 
                 <%--Payment Option--%>
@@ -211,11 +183,10 @@
 
     </form>
 
-    <script src="../Scripts/dist/jquery1.11.js"></script>
+    <%--    <script src="../Scripts/dist/jquery1.11.js"></script>
     <script>
         $(document).ready(function () { $("#spinner").fadeOut(1000); });
-    </script>
-
+    </script>--%>
 </body>
 
 </html>

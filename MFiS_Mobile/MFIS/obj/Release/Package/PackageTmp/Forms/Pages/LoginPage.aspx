@@ -28,14 +28,7 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="../Scripts/plugins/iCheck/square/blue.css" />
 
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-    <script>
-        function goto_forget_password() {
-            alert("Sorry!!! This feature isn't available right now");
-        }
-    </script>
 
 
     <%--Loading Animation attempt--%>
@@ -117,7 +110,7 @@
 
                         <div class="form-group" align="right">
                             <p style="margin-top: 6px;">
-                                <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="login" OnClientClick="loader()"  OnClick="btn_login_Click" />
+                                <asp:Button ID="btnLogin" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="login" OnClientClick="loader()" OnClick="btn_login_Click" />
                                 <asp:Button ID="btnLogOut" runat="server" class="btn btn-primary btn-sm btn-block col-5" Text="logout" OnClick="btnLogOut_Click" />
                             </p>
                         </div>
@@ -162,7 +155,14 @@
     <script>
         $(document).ready(function () { $("#spinner").fadeOut(1000); });
     </script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
+    <script>
+        function goto_forget_password() {
+            alert("Sorry!!! This feature isn't available right now");
+        }
+    </script>
 
 </body>
 

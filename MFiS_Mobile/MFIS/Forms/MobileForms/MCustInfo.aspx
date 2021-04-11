@@ -10,10 +10,8 @@
     <meta charset="etf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-
     <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
     <link rel="stylesheet" href="footer.css" />
-
     <%--Loading Animation attempt--%>
     <style>
         #spinner {
@@ -30,33 +28,24 @@
     <script>
         //Change the 5000 to a value which you need so that loading image shows till your page completely
         $(window).load(function () { $("#spinner").fadeOut(500); })
-
         function loader() { $("#spinner").fadeOut(500); }
     </script>
-
 </head>
-
 <body>
-
     <script src="../Scripts/bootstrap.min.js"></script>
-
     <!-- Preloader -->
     <div id="spinner">
     </div>
-
     <form runat="server">
         <asp:ScriptManager runat="server" ID="Script1"></asp:ScriptManager>
         <asp:Label runat="server" ID="TxtSlNo" Visible="false"></asp:Label>
-
-
         <div class="form-row">
             <div class="col-12 d-flex justify-content-between">
-                <asp:LinkButton ID="btnDashboard" runat="server" CssClass="btn btn-sm btn-light" Text="Dashboard" OnClick="btnDashboard_Click"></asp:LinkButton>
+                <asp:LinkButton ID="btnDashboard" runat="server" CssClass="btn btn-sm btn-light" Style Text="Dashboard" OnClick="btnDashboard_Click"></asp:LinkButton>
                 <asp:Label runat="server" ID="lblStaffName" CssClass="btn btn-sm btn-light"></asp:Label>
                 <asp:LinkButton ID="btnLogout" runat="server" CssClass="btn btn-sm btn-danger" Text="logout" OnClick="btnLogout_Click"></asp:LinkButton>
             </div>
         </div>
-
         <div class="text-white" style="background-color: #221181">
             <div class="card-body">
                 <h5 class="card-title text-center">Customer ID</h5>
@@ -65,8 +54,6 @@
                 </p>
             </div>
         </div>
-
-
         <div class="progress" style="height: 30px">
             <div class="progress-bar bg-info" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">Custumer Info</div>
         </div>
@@ -121,7 +108,7 @@
                 <%--Phone Number--%>
                 <div class="input-group mb-3">
                     <span class="input-group-text col-3" id="basic-addon5">Phone </span>
-                    <asp:TextBox ID="TxtMobileNo" runat="server" CssClass="form-control" Style="padding: 20px" placeholder="01712xxxxxx" MaxLength="11" aria-describedby="basic-addon5" required></asp:TextBox>
+                    <asp:TextBox ID="TxtMobileNo" runat="server" CssClass="form-control" Style="padding: 20px" placeholder="11 digit" TextMode="Number" MaxLength="11" aria-describedby="basic-addon5" required></asp:TextBox>
 
                     <div class="invalid-tooltip">
                         Please provide a valid Phone Number.
@@ -154,7 +141,7 @@
                 <%--Footer--%>
                 <div class="footer">
                     <p class="justify-content-center">
-                        <asp:LinkButton ID="btnSubmitCustInfo" CssClass="btn" Style="background-color: #221181; width: 100%; color: white" runat="server" Text="Save & Continue" OnClick="btnSubmitCustInfo_Click" />
+                        <asp:Button ID="btnSubmitCustInfo" CssClass="btn" Style="background-color: #221181; width: 100%; color: white" runat="server" Text="Save & Continue" OnClick="btnSubmitCustInfo_Click" />
                     </p>
                 </div>
             </div>
@@ -167,7 +154,6 @@
     <script>
         $(document).ready(function () { $("#spinner").fadeOut(1000); });
     </script>
-
 
 </body>
 

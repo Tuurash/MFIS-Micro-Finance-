@@ -10,8 +10,10 @@
     <meta charset="etf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
+    <link href="footer.css" rel="stylesheet" />
     <link href="../Scripts/Bootstrap5.css" rel="stylesheet" />
     <script src="../../Reports/crystalreportviewers13/js/crviewer/crv.js"></script>
+
 </head>
 
 
@@ -180,7 +182,15 @@
             </div>
 
 
+
         </div>
+
+        <div class="footer">
+            <p class="justify-content-center">
+                <asp:LinkButton ID="btnClear" CssClass="btn" Style="background-color: #221181; width: 100%; color: white" runat="server" Text="New Entry" OnClick="btnClear_Click" />
+            </p>
+        </div>
+
     </form>
 
 

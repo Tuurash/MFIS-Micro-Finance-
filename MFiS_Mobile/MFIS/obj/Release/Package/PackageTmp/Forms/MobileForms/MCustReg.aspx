@@ -68,9 +68,7 @@
             <div class="progress-bar bg-info" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%">Account Info</div>
         </div>
         <div class="container">
-
             <br />
-
             <div>
 
                 <%-- CustAccNo --%>
@@ -86,17 +84,12 @@
                     <asp:TextBox runat="server" type="text" class="form-control" ID="TxtMIntr" Enabled="false" aria-describedby="basic-addon1" required />
                 </div>
 
-
                 <%--Deposit Scheme/ SubdepositCodeNo --%>
                 <div class="input-group mb-2">
                     <span class="input-group-text col-6">Deposit Scheme</span>
                     <asp:DropDownList ID="ComSub_DepositScheme" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ComSub_DepositScheme_SelectedIndexChanged" required>
                     </asp:DropDownList>
                 </div>
-
-
-
-
 
                 <%-- Month Duration --%>
                 <div class="input-group mb-3">

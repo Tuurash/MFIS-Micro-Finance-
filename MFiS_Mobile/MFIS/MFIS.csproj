@@ -1881,7 +1881,6 @@
     <Content Include="Forms\Scripts\bower_components\raphael\raphael.no-deps.js" />
     <Content Include="Forms\Scripts\bower_components\raphael\raphael.no-deps.min.js" />
     <Content Include="Forms\Scripts\bower_components\raphael\webpack.config.js" />
-    <Content Include="Forms\Scripts\dist\css\AdminLTE.css" />
     <Content Include="Forms\Scripts\dist\css\AdminLTE.min.css" />
     <Content Include="Forms\Scripts\dist\css\skins\skin-black-light.css" />
     <Content Include="Forms\Scripts\dist\css\skins\skin-black-light.min.css" />

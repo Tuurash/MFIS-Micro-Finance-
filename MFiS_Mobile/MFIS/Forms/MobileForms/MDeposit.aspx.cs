@@ -63,7 +63,8 @@ namespace MFIS.Forms.MobileForms
 
         private void GenerateVoucherNo()
         {
-            string GeneratedVoucher = getCustIDNo + '-' + DateTime.Now.ToString("yyyy-MM-dd-HHmmss-ffff");
+            string ID = getCustIDNo.Remove(3);
+            string GeneratedVoucher = ID.Trim('-') + DateTime.Now.ToString("yyyyMMddHHmmssffff");
             getVoucherNo = GeneratedVoucher;
         }
 
@@ -99,6 +100,21 @@ namespace MFIS.Forms.MobileForms
             else { getLedgerCode = "1101002"; }
         }
 
+        private string getSavingCount()
+        {
+            query = @"select COUNT(AutoSlNo)+1 as DepoEntryNo from Deposit_DataEntry where CustAccNo='" + getCustAccNo + "'";
+            try { dt = db.ExecuteQuery(query); }
+            catch (Exception) { }
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0]["DepoEntryNo"].ToString();
+            }
+            else
+            {
+                return "1";
+            }
+        }
+
         private void SavingsInsert()
         {
             if (txtSAamount.Text != "")
@@ -110,8 +126,8 @@ namespace MFIS.Forms.MobileForms
                 LoadLeadgerCode();
                 lblAddedVoucher.Text = getVoucherNo;
                 //, EntryNo, Dr,Notes,CustAccTrSL
-                query = @"INSERT into Deposit_DataEntry (EntryNo,BranchCode,PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo, EntryPlatform)
-                        VALUES (1,'" + getBranchCode + "','" + Time_now.Year + "', '" + getCustAccNo + "', '" + Time_now.Date + "', " + getAccSubSubCode + ", " + DepoAmount + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "'," + getLedgerCode + " ,'" + getStaffID + "','" + lblAddedVoucher.Text + "', 'Mobile Webapp')";
+                query = @"INSERT into Deposit_DataEntry (CustAccTrSL,ProfitCR,Notes,UserId,Dr,EntryNo,BranchCode,PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo, EntryPlatform)
+                        VALUES (" + getSavingCount() + " ,0 ,'Recieved By Cash','" + getStaffID + "',0 ," + getSavingCount() + " ,'" + getBranchCode + "','" + Time_now.Year + "', '" + getCustAccNo + "', '" + Time_now + "', " + getAccSubSubCode + ", " + DepoAmount + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now + "'," + getLedgerCode + " ,'" + getStaffID + "','" + lblAddedVoucher.Text + "', 'Mobile Webapp')";
                 sInsertStatus = db.ExecuteNonQuery(query);
                 try
                 {

@@ -42,46 +42,12 @@ namespace MFIS.Forms.MobileForms
 
         private void GenerateVoucherNo()
         {
-            string GeneratedVoucher = txtIdNo.Text + '-' + DateTime.Now.ToString("yyyy-MM-dd-HHmmss-ffff");
+            string ID = txtIdNo.Text.Remove(3);
+            string GeneratedVoucher = ID.Trim('-') + DateTime.Now.ToString("yyyyMMddHHmmssffff");
             lblVoucherNo.Text = GeneratedVoucher;
         }
 
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            int logoutStatus = 0;
-            string query = @"select UserID,comName from User_Now where UserId =  '" + getStaffID + "'";
 
-            DataTable dt3 = db.ExecuteQuery(query);
-
-            if (dt3.Rows.Count > 0)
-            {
-                if (dt3.Rows[0]["comName"].ToString() == System.Environment.MachineName)
-                {
-
-                    try
-                    {
-                        string UserInfo = @"delete from User_Now where UserID='" + Session["USERID"] + "'";
-                        logoutStatus = db.ExecuteNonQuery(UserInfo);
-                    }
-                    catch (Exception)
-                    {
-                        //throw new Exception(ex.Message);
-                    }
-
-                    Session.RemoveAll();
-                    Session.Abandon();
-                    //Response.Redirect("~/frmLogin.aspx");
-                }
-                else
-                {
-                    Response.Write("<script>alert('Please try another user')</script>");
-                }
-            }
-            if (logoutStatus > 0)
-            {
-                Response.Redirect("~/Forms/Pages/LoginPage.aspx");
-            }
-        }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
@@ -125,6 +91,57 @@ namespace MFIS.Forms.MobileForms
             else { }
         }
 
+        protected void DropdownLAno_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropdownLAno.SelectedValue == "Other")
+            {
+                divLAsearch.Visible = true;
+                DropdownLAno.Visible = false;
+            }
+        }
+
+        protected void btnLASearch_Click(object sender, EventArgs e)
+        {
+
+            query = @"select * from Loan_Application where LoanNo='" + txtLANo.Text + "'";
+            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { }
+            if (dt.Rows.Count > 0)
+            {
+                txtIdNo.Text = dt.Rows[0]["CustIDNO"].ToString();
+                FillCustomerInfo();
+            }
+            else { }
+        }
+
+        protected void btnSearchSA_Click(object sender, EventArgs e)
+        {
+            query = @"select * from CustReg where CustAccNo = '" + txtSANo.Text + "'";
+            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { }
+            if (dt.Rows.Count > 0)
+            {
+                txtIdNo.Text = dt.Rows[0]["CustIDNO"].ToString();
+                FillCustomerInfo();
+            }
+            else { }
+        }
+
+        protected void btnDashboard_Click(object sender, EventArgs e)
+        {
+            Session["CustMobileNo"] = "";
+            Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
+        }
+
+        private void LoadLeadgerCode()
+        {
+            query = @"select * from Acc_Sub_SubHead where Acc_Name='" + RadioPaymnetMethod.SelectedValue + "'";
+            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { throw exc; }
+            if (dt.Rows.Count > 0)
+            {
+                getLedgerCode = dt.Rows[0]["Account_Sub_SubCode"].ToString();
+            }
+            else { getLedgerCode = "1101002"; }
+        }
+
         #region LoanRegion
 
         private void FillLoanInfo()
@@ -140,6 +157,28 @@ namespace MFIS.Forms.MobileForms
 
         }
 
+        private decimal GetLAProfit(string LA_Amount, string LANo)
+        {
+            decimal AmountWithProfit = decimal.Parse(LA_Amount);
+            decimal ProfitPercentage = 0;
+
+            decimal Principal = 0;
+            decimal profitAmount = 0;
+
+            query = @"select ServiceChrg from Loan_Application where LoanNo='" + LANo + "'";
+            dt = db.ExecuteQuery(query);
+
+            if (dt.Rows.Count > 0)
+            {
+                ProfitPercentage = decimal.Parse(dt.Rows[0]["ServiceChrg"].ToString());
+            }
+
+            Principal = (100 * AmountWithProfit) / (100 + ProfitPercentage);
+            profitAmount = AmountWithProfit - Principal;
+            return profitAmount;
+
+        }
+
         private void LoanInsert()
         {
 
@@ -148,10 +187,9 @@ namespace MFIS.Forms.MobileForms
                 int insertStatus = 0;
                 LoadAccSubSubCode();
                 LoadLeadgerCode();
-                //LedgerCode=1101002
-                //, Notes, Profit, CustAccTrSL,Dr, Profit,  [Excluded]
-                query = @"INSERT into Loan_DataEntry (EntryNo,PYear, PDate, LoanNo, Account_Sub_SubCode, Cr,TransactionType, TransactionStatus, LedgerCode, AddDate,StaffID,VoucherNo,BranchCode,UserId,EntryPlatform)
-                        VALUES (" + getCustLoanCount() + ",'" + Time_now.Year + "', '" + Time_now.Date + "','" + DropdownLAno.SelectedValue + "', '103001', " + txtLAAmount.Text + ", 'Reciept', 'Cr', " + getLedgerCode + " , '" + DateTime.Now + "','" + getStaffID + "','" + lblVoucherNo.Text + "', '" + getBranchCode + "', '" + getStaffID + "', 'Mobile Webapp' )";
+
+                query = @"INSERT into Loan_DataEntry (CustAccTrSL ,Profit,Notes ,Dr, EntryNo,PYear, PDate, LoanNo, Account_Sub_SubCode, Cr,TransactionType, TransactionStatus, LedgerCode, AddDate,StaffID,VoucherNo,BranchCode,UserId,EntryPlatform)
+                        VALUES (" + getCustLoanCount() + " ,ROUND(" + GetLAProfit(txtLAAmount.Text, DropdownLAno.SelectedValue) + " ,2) , 'Recieved By Cash' ,0," + getCustLoanCount() + ",'" + Time_now.Year + "', '" + Time_now.Date + "','" + DropdownLAno.SelectedValue + "', '103001', " + txtLAAmount.Text + ", 'Reciepts', 'Cr', " + getLedgerCode + " , '" + DateTime.Now + "','" + getStaffID + "','" + lblVoucherNo.Text + "', '" + getBranchCode + "', '" + getStaffID + "', 'Mobile Webapp' )";
                 insertStatus = db.ExecuteNonQuery(query);
                 try
                 {
@@ -181,6 +219,8 @@ namespace MFIS.Forms.MobileForms
                 else { }
             }
         }
+
+
 
         private string getCustLoanCount()
         {
@@ -217,9 +257,8 @@ namespace MFIS.Forms.MobileForms
         {
             int ScheduleStatus = 0;
 
-            //EntryNo, [Excluded]
-            query = @"INSERT into LoanSchedule (PDate, LoanNo, Receipt_amt, VoucherNo,TransactionType,StaffID,UserId) 
-                    VALUES (" + getCustLoanCount() + ",'" + Time_now.Date + "', '" + DropdownLAno.SelectedValue + "', " + txtLAAmount.Text + ", '" + lblVoucherNo.Text + "','Reciept','" + getStaffID + "','" + getStaffID + "' )";
+            query = @"INSERT into LoanSchedule (CustAccTrSL ,EntryNo,PDate, LoanNo, Receipt_amt, VoucherNo,TransactionType,StaffID,UserId) 
+                    VALUES (" + getCustLoanCount() + " ," + getCustLoanCount() + ",'" + Time_now + "', '" + DropdownLAno.SelectedValue + "', " + txtLAAmount.Text + ", '" + lblVoucherNo.Text + "','Reciept','" + getStaffID + "','" + getStaffID + "' )";
             try { ScheduleStatus = db.ExecuteNonQuery(query); } catch (Exception exc) { throw exc; }
 
         }
@@ -325,14 +364,10 @@ namespace MFIS.Forms.MobileForms
                 int sInsertStatus = 0;
 
                 //, , , Dr,Notes,CustAccTrSL
-                query = @"INSERT into Deposit_DataEntry (EntryNo,PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo,BranchCode,EntryPlatform)
-                    VALUES (" + getSavingCount() + ",'" + Time_now.Year + "', '" + DropdownSAno.SelectedValue + "', '" + Time_now.Date + "', " + getAccSubSubCode + ", " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now.Date + "'," + getLedgerCode + " ,'1241','" + lblVoucherNo.Text + "','" + getBranchCode + "', 'Mobile Webapp')";
+                query = @"INSERT into Deposit_DataEntry (ProfitCR,Notes,UserId,Dr,EntryNo,PYear, CustAccNo, PDate, Account_Sub_SubCode,Cr, PMonth, TransactionType, TransactionStatus, AddDate,LedgerCode,StaffID,Vou_ChqNo,BranchCode,EntryPlatform)
+                    VALUES (0,'Recieved By Cash','" + getStaffID + "',0," + getSavingCount() + ",'" + Time_now.Year + "', '" + DropdownSAno.SelectedValue + "', '" + Time_now + "', " + getAccSubSubCode + ", " + txtSAamount.Text + ", '" + Time_now.Month + "', 'Receipts','Cr', '" + Time_now + "'," + getLedgerCode + " ,'" + getStaffID + "','" + lblVoucherNo.Text + "','" + getBranchCode + "', 'Mobile Webapp')";
                 sInsertStatus = db.ExecuteNonQuery(query);
-                try
-                {
 
-                }
-                catch (Exception) { }
                 if (sInsertStatus > 0)
                 {
                     Sms_Manager sms = new Sms_Manager();
@@ -356,7 +391,7 @@ namespace MFIS.Forms.MobileForms
 
         private string getSavingCount()
         {
-            query = @"select COUNT(AutoSlNo)+1 as DepoEntryNo from Deposit_DataEntry where CustAccNo='" + DropdownLAno.SelectedValue + "'";
+            query = @"select COUNT(AutoSlNo)+1 as DepoEntryNo from Deposit_DataEntry where CustAccNo='" + DropdownSAno.SelectedValue + "'";
             try { dt = db.ExecuteQuery(query); }
             catch (Exception) { }
             if (dt.Rows.Count > 0)
@@ -398,69 +433,54 @@ namespace MFIS.Forms.MobileForms
             txtLANo.Text = "";
         }
 
-        private void LoadLeadgerCode()
-        {
-            query = @"select * from Acc_Sub_SubHead where Acc_Name='" + RadioPaymnetMethod.SelectedValue + "'";
-            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { throw exc; }
-            if (dt.Rows.Count > 0)
-            {
-                getLedgerCode = dt.Rows[0]["Account_Sub_SubCode"].ToString();
-            }
-            else { getLedgerCode = "1101002"; }
-        }
-
-        protected void DropdownLAno_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DropdownLAno.SelectedValue == "Other")
-            {
-                divLAsearch.Visible = true;
-                DropdownLAno.Visible = false;
-            }
-        }
-
-        protected void btnLASearch_Click(object sender, EventArgs e)
-        {
-
-            query = @"select * from Loan_Application where LoanNo='" + txtLANo.Text + "'";
-            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { }
-            if (dt.Rows.Count > 0)
-            {
-                txtIdNo.Text = dt.Rows[0]["CustIDNO"].ToString();
-                FillCustomerInfo();
-            }
-            else { }
-        }
-
-        protected void btnSearchSA_Click(object sender, EventArgs e)
-        {
-            query = @"select * from CustReg where CustAccNo = '" + txtSANo.Text + "'";
-            try { dt = db.ExecuteQuery(query); } catch (Exception exc) { }
-            if (dt.Rows.Count > 0)
-            {
-                txtIdNo.Text = dt.Rows[0]["CustIDNO"].ToString();
-                FillCustomerInfo();
-            }
-            else { }
-        }
-
-        protected void btnDashboard_Click(object sender, EventArgs e)
-        {
-            Session["CustMobileNo"] = "";
-            Response.Redirect("~/Forms/MobileForms/MDashboard.aspx");
-        }
-
         protected void btnClear_Click(object sender, EventArgs e)
         {
             DropdownLAno.Visible = false;
             divLAsearch.Visible = true;
-
             DropdownSAno.Visible = false;
             divSASearch.Visible = true;
-
             Session["CustMobileNo"] = "";
-
             Response.Redirect("MSavingsLoan.aspx");
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            int logoutStatus = 0;
+            string query = @"select UserID,comName from User_Now where UserId =  '" + getStaffID + "'";
+
+            DataTable dt3 = db.ExecuteQuery(query);
+
+            if (dt3.Rows.Count > 0)
+            {
+                if (dt3.Rows[0]["comName"].ToString() == System.Environment.MachineName)
+                {
+
+                    try
+                    {
+                        string UserInfo = @"delete from User_Now where UserID='" + Session["USERID"] + "'";
+                        logoutStatus = db.ExecuteNonQuery(UserInfo);
+                    }
+                    catch (Exception)
+                    {
+                        //throw new Exception(ex.Message);
+                    }
+
+                    Session.RemoveAll();
+                    Session.Abandon();
+                    //Response.Redirect("~/frmLogin.aspx");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Please try another user')</script>");
+                }
+            }
+            if (logoutStatus > 0)
+            {
+                Response.Redirect("~/Forms/Pages/LoginPage.aspx");
+            }
+        }
+
+        //Report Binding
 
         private void BindReport()
         {
